@@ -1,523 +1,1471 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yousif Al Gailani | Portfolio</title>
-    <meta name="description" content="Portfolio de Yousif Al Gailani, Étudiant en Informatique spécialisé en ML & IA.">
+    <title>Yousif Al Gailani | Portfolio Ingénieur IA & Développeur Software</title>
     
-    <!-- GSAP & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#070a11',
+                        'obsidian-card': '#0e1422',
+                        'neon-cyan': '#00f0ff',
+                        'neon-purple': '#8a2be2',
+                        'neon-violet': '#a855f7',
+                        'cyber-pink': '#ff007f',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    boxShadow: {
+                        'cyan-glow': '0 0 25px rgba(0, 240, 255, 0.25)',
+                        'purple-glow': '0 0 25px rgba(138, 43, 226, 0.25)',
+                        'glass-glow': '0 8px 32px 0 rgba(0, 240, 255, 0.1)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(0, 240, 255, 0.4))' },
+                            '50%': { opacity: '0.8', filter: 'drop-shadow(0 0 25px rgba(168, 85, 247, 0.7))' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* ================= VARIABLES & THEMES ================= */
-        :root {
-            --bg-color: #fbfbfd;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --accent-color: #0066cc;
-            --accent-hover: #0071e3;
-            --card-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.05);
-            --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-            --nav-bg: rgba(251, 251, 253, 0.8);
+        /* Modern styled scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        [data-theme="dark"] {
-            --bg-color: #000000;
-            --text-primary: #f5f5f7;
-            --text-secondary: #a1a1a6;
-            --accent-color: #2997ff;
-            --accent-hover: #42a2ff;
-            --card-bg: rgba(28, 28, 30, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-            --nav-bg: rgba(0, 0, 0, 0.8);
+        ::-webkit-scrollbar-track {
+            background: #070a11;
         }
-
-        /* ================= BASE & TYPOGRAPHY ================= */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.5;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--accent-hover);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        h1, h2, h3 {
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 48px;
-            text-align: center;
-        }
-
-        .text-muted {
-            color: var(--text-secondary);
-        }
-
-        /* ================= NAVIGATION ================= */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            opacity: 0.8;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            opacity: 1;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        /* ================= HERO ================= */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            padding-top: 60px;
-        }
-
-        #hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            margin-bottom: 16px;
-            letter-spacing: -0.04em;
-        }
-
-        #hero .title {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .placeholder {
-            background-color: rgba(255, 193, 7, 0.2);
-            color: #d97706;
-            padding: 4px 8px;
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
             border-radius: 4px;
-            font-size: 0.9em;
-            display: inline-block;
-            margin-bottom: 32px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 980px;
-            font-size: 1rem;
-            font-weight: 500;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
+        /* Glassmorphism styling */
+        .glass-panel {
+            background: rgba(14, 20, 34, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.12);
         }
 
-        .btn-primary {
-            background-color: var(--text-primary);
-            color: var(--bg-color);
+        .glass-panel:hover {
+            border-color: rgba(0, 240, 255, 0.35);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
         }
 
-        .btn-primary:hover {
-            transform: scale(1.02);
-            background-color: var(--text-secondary);
-            color: var(--bg-color);
+        .glass-card {
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            margin-left: 12px;
+        .gradient-text-cyan {
+            background: linear-gradient(135deg, #ffffff 0%, #00f0ff 50%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* ================= ABOUT & EDUCATION ================= */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+        .gradient-text-purple {
+            background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .timeline-item {
-            padding: 24px;
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            margin-bottom: 24px;
-            box-shadow: var(--glass-shadow);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .timeline-date {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        /* ================= PROJECTS (TILT CARDS) ================= */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: var(--glass-shadow);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            transition: transform 0.1s ease;
-        }
-
-        .project-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            transform: translateZ(30px);
-        }
-
-        .project-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-            transform: translateZ(20px);
-        }
-
-        .project-card ul {
-            padding-left: 20px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            transform: translateZ(20px);
-            margin-bottom: 16px;
-        }
-
-        /* ================= SKILLS & OTHERS ================= */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .skill-tag {
-            padding: 8px 16px;
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 980px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: var(--glass-shadow);
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        /* ================= FOOTER ================= */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        /* ================= RESPONSIVE ================= */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* Simplification pour mobile */
-            .grid-2 { grid-template-columns: 1fr; }
-            #hero h1 { font-size: 2.5rem; }
-        }
-
-        /* ================= PRINT STYLES ================= */
-        @media print {
-            body { background: white; color: black; }
-            nav, .theme-toggle, .btn { display: none; }
-            section { padding: 20px 0; page-break-inside: avoid; }
-            .project-card, .timeline-item { box-shadow: none; border: 1px solid #ccc; }
+        /* Subtle grid background pattern */
+        .bg-cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         }
     </style>
 </head>
-<body>
+<body class="bg-obsidian text-slate-200 font-sans antialiased selection:bg-neon-cyan selection:text-obsidian relative min-h-screen overflow-x-hidden bg-cyber-grid">
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div style="font-weight: 600;">Y.A.</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#education">Formation</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#skills">Compétences</a></li>
-            </ul>
-            <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">🌓</button>
+    <!-- Interactive Canvas Particle Background -->
+    <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-60"></canvas>
+
+    <!-- Ambient glowing light spots -->
+    <div class="fixed top-1/4 left-10 w-96 h-96 bg-neon-cyan/10 rounded-full filter blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-1/4 right-10 w-96 h-96 bg-neon-purple/15 rounded-full filter blur-[140px] pointer-events-none z-0"></div>
+
+    <!-- Notification Toast Container -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 ease-out glass-panel px-5 py-4 rounded-xl flex items-center space-x-3 shadow-cyan-glow border border-neon-cyan/40">
+        <i id="toastIcon" class="fas fa-check-circle text-neon-cyan text-xl"></i>
+        <span id="toastMsg" class="text-sm font-medium text-white">Action effectuée avec succès !</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-4 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto glass-panel rounded-2xl px-5 py-3 flex items-center justify-between border border-slate-800/80">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-neon-cyan to-neon-purple p-[1px] flex items-center justify-center shadow-cyan-glow group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-obsidian rounded-[11px] flex items-center justify-center">
+                        <span class="font-mono font-bold text-neon-cyan text-lg">&lt;Y/&gt;</span>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-base tracking-wide text-white group-hover:text-neon-cyan transition-colors">Yousif Al Gailani</span>
+                    <span class="text-[10px] font-mono text-slate-400 tracking-wider">INGÉNIEUR IA & SOFTWARE</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 font-mono text-xs">
+                <a href="#about" class="px-3 py-2 rounded-lg text-slate-300 hover:text-neon-cyan hover:bg-slate-800/50 transition-all">01. // À PROPOS</a>
+                <a href="#skills" class="px-3 py-2 rounded-lg text-slate-300 hover:text-neon-cyan hover:bg-slate-800/50 transition-all">02. // COMPÉTENCES</a>
+                <a href="#projects" class="px-3 py-2 rounded-lg text-slate-300 hover:text-neon-cyan hover:bg-slate-800/50 transition-all">03. // PROJETS</a>
+                <a href="#education" class="px-3 py-2 rounded-lg text-slate-300 hover:text-neon-cyan hover:bg-slate-800/50 transition-all">04. // PARCOURS</a>
+                <a href="#contact" class="px-3 py-2 rounded-lg text-slate-300 hover:text-neon-cyan hover:bg-slate-800/50 transition-all">05. // CONTACT</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden sm:flex items-center space-x-3">
+                <button onclick="toggleResumeModal()" class="px-4 py-2 text-xs font-mono font-semibold rounded-xl bg-slate-800/80 hover:bg-slate-700 text-neon-cyan border border-neon-cyan/30 hover:border-neon-cyan transition-all flex items-center space-x-2">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>VOIR MON CV</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-neon-cyan p-2 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <header id="hero" class="container gs-reveal">
-        <h1>Yousif Al Gailani</h1>
-        <p class="title">Étudiant en Informatique – ML & IA</p>
-        <p class="placeholder">[À COMPLÉTER : Courte accroche de 1-2 phrases (ex: Passionné par l'intelligence artificielle, je conçois des solutions innovantes...)]</p>
-        <div>
-            <a href="CV_Yousif_Al_Gailani.pdf" target="_blank" class="btn btn-primary">Télécharger le CV</a>
-            <a href="#contact" class="btn btn-secondary">Me contacter</a>
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden max-w-7xl mx-auto mt-2 glass-panel rounded-2xl p-5 flex-col space-y-3 font-mono text-sm border border-slate-800">
+            <a href="#about" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-neon-cyan">01. // À PROPOS</a>
+            <a href="#skills" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-neon-cyan">02. // COMPÉTENCES</a>
+            <a href="#projects" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-neon-cyan">03. // PROJETS</a>
+            <a href="#education" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-neon-cyan">04. // PARCOURS</a>
+            <a href="#contact" class="mobile-link py-2 px-3 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-neon-cyan">05. // CONTACT</a>
+            <button onclick="toggleResumeModal()" class="w-full text-center py-2.5 rounded-xl bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/40 font-semibold">
+                VOIR LE CV COMPLET
+            </button>
         </div>
     </header>
 
-    <!-- À Propos -->
-    <section id="about" class="container gs-reveal">
-        <h2>À propos</h2>
-        <div class="timeline-item text-center">
-            <p class="placeholder">[À COMPLÉTER : Présentation courte de 3-4 lignes détaillant votre parcours précis, vos objectifs et vos ambitions professionnelles.]</p>
-        </div>
-    </section>
+    <!-- Main Content Container -->
+    <main class="relative z-10 pt-28 pb-16 px-4 sm:px-8 max-w-7xl mx-auto space-y-28">
 
-    <!-- Formation -->
-    <section id="education" class="container gs-reveal">
-        <h2>Formation</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="timeline-date">2029 - 2031 (Objectif)</span>
-                <h3>Master Informatique - ML & IA</h3>
-                <p class="text-muted">Université de Lille</p>
-                <p>Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-date">2026 - 2029</span>
-                <h3>Licence d'Informatique</h3>
-                <p class="text-muted">Université d'Artois - Lens</p>
-                <p>Fondations solides en algorithmique et programmation (C, Python).</p>
-            </div>
-            <div class="placeholder" style="display: block; text-align: center;">[À COMPLÉTER : Baccalauréat ou autres diplômes antérieurs si souhaité]</div>
-        </div>
-    </section>
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-[82vh] flex flex-col justify-center relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Info -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Availability Pill -->
+                    <div class="inline-flex items-center space-x-3 px-4 py-2 rounded-full glass-card border border-neon-cyan/30 text-xs font-mono text-slate-300 shadow-cyan-glow">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-neon-cyan"></span>
+                        </span>
+                        <span>Disponible pour Projets & Opportunités IA / Dev</span>
+                    </div>
 
-    <!-- Projets & Expériences -->
-    <section id="projects" class="container gs-reveal">
-        <h2>Expériences & Projets</h2>
-        <div class="projects-grid">
+                    <!-- Main Headline & Dynamic Typing Title -->
+                    <div class="space-y-3">
+                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+                            Bonjour, je suis <span class="gradient-text-cyan block mt-1">Yousif Al Gailani</span>
+                        </h1>
+                        <div class="text-xl sm:text-2xl font-mono text-slate-400 flex items-center h-10">
+                            <span class="mr-2 text-neon-purple">&gt;</span>
+                            <span id="typedText" class="text-white font-medium"></span>
+                            <span class="animate-pulse text-neon-cyan font-bold">|</span>
+                        </div>
+                    </div>
+
+                    <!-- Intro Text -->
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+                        Étudiant en <strong class="text-slate-200">Licence d'Informatique</strong> à l'Université d'Artois (Lens), spécialisé en développement <strong class="text-neon-cyan">Python (Expert)</strong>, <strong class="text-slate-200">C & C++</strong> et <strong class="text-slate-200">C# Unity</strong>. Futur étudiant en <strong class="text-neon-purple">Master ML & IA</strong> à l'Université de Lille pour concevoir des modèles d'intelligence artificielle de pointe.
+                    </p>
+
+                    <!-- Contact & Location Badges -->
+                    <div class="flex flex-wrap gap-3 font-mono text-xs text-slate-300">
+                        <span class="glass-card px-3 py-1.5 rounded-lg flex items-center space-x-2 border border-slate-800">
+                            <i class="fas fa-location-dot text-neon-cyan"></i>
+                            <span>Lens, France (62300)</span>
+                        </span>
+                        <a href="mailto:yousifalgailani62@gmail.com" class="glass-card px-3 py-1.5 rounded-lg flex items-center space-x-2 border border-slate-800 hover:border-neon-cyan/50 hover:text-neon-cyan transition-all">
+                            <i class="fas fa-envelope text-neon-purple"></i>
+                            <span>yousifalgailani62@gmail.com</span>
+                        </a>
+                        <a href="tel:+33667472686" class="glass-card px-3 py-1.5 rounded-lg flex items-center space-x-2 border border-slate-800 hover:border-neon-cyan/50 hover:text-neon-cyan transition-all">
+                            <i class="fas fa-phone text-emerald-400"></i>
+                            <span>+33 6 67 47 26 86</span>
+                        </a>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="pt-4 flex flex-wrap gap-4 items-center">
+                        <a href="#projects" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-purple text-obsidian font-bold text-sm hover:opacity-95 transition-all shadow-cyan-glow flex items-center space-x-2 group">
+                            <span>Voir les Projets</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#contact" class="px-7 py-3.5 rounded-xl glass-panel text-white font-semibold text-sm hover:border-neon-cyan/60 transition-all flex items-center space-x-2">
+                            <i class="fas fa-paper-plane text-neon-cyan"></i>
+                            <span>Me Contacter</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right Code Window Widget -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Glowing aura -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-neon-cyan via-neon-purple to-cyber-pink rounded-3xl blur opacity-30 animate-pulse-glow"></div>
+                        
+                        <!-- Terminal Mockup -->
+                        <div class="relative glass-panel rounded-2xl p-6 space-y-5 border border-slate-700/60 shadow-2xl">
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">yousif_profile.py</span>
+                            </div>
+
+                            <div class="font-mono text-xs sm:text-sm space-y-2 leading-relaxed text-slate-300">
+                                <div><span class="text-purple-400">class</span> <span class="text-yellow-300">Developpeur</span>:</div>
+                                <div class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(<span class="text-orange-300">self</span>):</div>
+                                <div class="pl-8"><span class="text-orange-300">self</span>.nom = <span class="text-emerald-300">"Yousif Al Gailani"</span></div>
+                                <div class="pl-8"><span class="text-orange-300">self</span>.expertise = <span class="text-emerald-300">"Python (Expert)"</span></div>
+                                <div class="pl-8"><span class="text-orange-300">self</span>.langages = [<span class="text-emerald-300">"C/C++"</span>, <span class="text-emerald-300">"C#"</span>, <span class="text-emerald-300">"Python"</span>]</div>
+                                <div class="pl-8"><span class="text-orange-300">self</span>.parcours = [</div>
+                                <div class="pl-12 text-slate-400">"Licence Info (Univ. d'Artois)",</div>
+                                <div class="pl-12 text-slate-400">"Master ML & IA (Univ. de Lille)"</div>
+                                <div class="pl-8">]</div>
+                                <br/>
+                                <div class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">get_objectif</span>(<span class="text-orange-300">self</span>):</div>
+                                <div class="pl-8"><span class="text-purple-400">return</span> <span class="text-neon-cyan">"Créer des systèmes IA haute performance."</span></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-800/80 text-center">
+                                <div class="glass-card p-3 rounded-xl">
+                                    <div class="text-2xl font-bold font-mono text-neon-cyan" data-counter="98">0%</div>
+                                    <div class="text-[11px] font-mono text-slate-400">Maîtrise Python</div>
+                                </div>
+                                <div class="glass-card p-3 rounded-xl">
+                                    <div class="text-2xl font-bold font-mono text-neon-purple" data-counter="4">0</div>
+                                    <div class="text-[11px] font-mono text-slate-400">Langages Clés</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- À PROPOS SECTION -->
+        <section id="about" class="space-y-8">
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 space-y-8 border border-slate-800 relative overflow-hidden">
+                <div class="space-y-2">
+                    <div class="inline-flex items-center space-x-2 font-mono text-xs text-neon-cyan uppercase tracking-widest">
+                        <span>// Présentation Générale</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                        À Propos de <span class="gradient-text-cyan">Moi</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+                        <p>
+                            Passionné par la programmation informatique et la résolution de problèmes complexes, je suis actuellement en <strong>Licence d'Informatique à la Faculté des Sciences de l'Université d'Artois (Lens)</strong>.
+                        </p>
+                        <p>
+                            Mon parcours est orienté vers l'excellence technique : je maîtrise <strong>Python à niveau expert</strong>, ainsi que les langages de bas et haut niveau tels que le <strong>C, C++ et C#</strong>. Mon ambition académique est de poursuivre en <strong>Master Machine Learning & Intelligence Artificielle à l'Université de Lille</strong> afin d'approfondir le Deep Learning, les modèles Transformers, le Reinforcement Learning et l'MLOps.
+                        </p>
+                        <p>
+                            En parallèle de mes études, j'allie rigueur algorithmique, esprit d'initiative avec la création d'applications de suivi sportif, le développement indépendant de jeux vidéo sur <strong>Unity Engine</strong> et l'analyse de données e-commerce (Jungle Scout, Amazon & Cdiscount).
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-4 space-y-4">
+                        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-3">
+                            <div class="flex items-center space-x-3 text-neon-cyan">
+                                <i class="fas fa-bullseye text-xl"></i>
+                                <span class="font-mono text-xs font-bold uppercase">Objectif Clé</span>
+                            </div>
+                            <p class="text-xs text-slate-300">
+                                Devenir Ingénieur Machine Learning & IA spécialisé dans les modèles d'apprentissage profond et distribués.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-3">
+                            <div class="flex items-center space-x-3 text-neon-purple">
+                                <i class="fas fa-dumbbell text-xl"></i>
+                                <span class="font-mono text-xs font-bold uppercase">Mindset & Discipline</span>
+                            </div>
+                            <p class="text-xs text-slate-300">
+                                Pratique régulière du sport et de la musculation, transposant la rigueur et la progression continue au code.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPÉTENCES SECTION -->
+        <section id="skills" class="space-y-12">
+            <div class="space-y-3 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 font-mono text-xs text-neon-cyan uppercase tracking-widest">
+                    <span>// Arsenal Technique</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                    Compétences & <span class="gradient-text-cyan">Savoir-Faire</span>
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base max-w-2xl">
+                    Une solide combinaison de programmation système, de développement d'applications interactive, d'outils d'ingénierie logicielle et d'analyse e-commerce.
+                </p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Skill 1: Python (Expert) -->
+                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-4px] transition-all group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center text-neon-cyan text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">Python</h3>
+                                <span class="text-xs font-mono text-neon-cyan">NIVEAU EXPERT</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-extrabold font-mono text-slate-200">95%</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Conception d'algorithmes, traitement de données, scripts automatisés, bases pour le Machine Learning et architecture logicielle propre.
+                    </p>
+                    <div class="w-full bg-slate-800/80 rounded-full h-2.5 overflow-hidden p-0.5">
+                        <div class="bg-gradient-to-r from-neon-cyan to-blue-500 h-1.5 rounded-full transition-all duration-1000 ease-out" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 2: C & C++ -->
+                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-4px] transition-all group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-neon-purple/10 border border-neon-purple/30 flex items-center justify-center text-neon-purple text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">C & C++</h3>
+                                <span class="text-xs font-mono text-neon-purple">AVANCÉ & SYSTÈME</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-extrabold font-mono text-slate-200">88%</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Gestion mémoire, structures de données bas niveau, pointeurs, optimisation de vitesse de calcul et rigueur algorithmique.
+                    </p>
+                    <div class="w-full bg-slate-800/80 rounded-full h-2.5 overflow-hidden p-0.5">
+                        <div class="bg-gradient-to-r from-neon-purple to-pink-500 h-1.5 rounded-full transition-all duration-1000 ease-out" style="width: 88%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 3: C# & Unity Engine -->
+                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-4px] transition-all group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">C# & Unity Engine</h3>
+                                <span class="text-xs font-mono text-emerald-400">JEUX VIDÉO MOBILE</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-extrabold font-mono text-slate-200">85%</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Programmation de mécaniques de jeu interactives, gestion de la physique, entrées tactiles et optimisation pour mobiles.
+                    </p>
+                    <div class="w-full bg-slate-800/80 rounded-full h-2.5 overflow-hidden p-0.5">
+                        <div class="bg-gradient-to-r from-emerald-400 to-teal-500 h-1.5 rounded-full transition-all duration-1000 ease-out" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 4: Problem Solving & Logique -->
+                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-4px] transition-all group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">Résolution de Problèmes</h3>
+                                <span class="text-xs font-mono text-amber-400">LOGIQUE & COMPLEXITÉ</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-extrabold font-mono text-slate-200">92%</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Analyse algorithmique, décomposition de problèmes complexes, optimisation de la complexité temporelle et spatiale.
+                    </p>
+                    <div class="w-full bg-slate-800/80 rounded-full h-2.5 overflow-hidden p-0.5">
+                        <div class="bg-gradient-to-r from-amber-400 to-orange-500 h-1.5 rounded-full transition-all duration-1000 ease-out" style="width: 92%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 5: Gestion de Projet -->
+                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-4px] transition-all group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">Gestion de Projet</h3>
+                                <span class="text-xs font-mono text-blue-400">ORGANISATION & SUIVI</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-extrabold font-mono text-slate-200">86%</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Cahier des charges, suivi des jalons de développement, versionning avec Git, organisation autonome de projets software.
+                    </p>
+                    <div class="w-full bg-slate-800/80 rounded-full h-2.5 overflow-hidden p-0.5">
+                        <div class="bg-gradient-to-r from-blue-400 to-indigo-500 h-1.5 rounded-full transition-all duration-1000 ease-out" style="width: 86%;"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 6: E-Commerce & Jungle Scout -->
+                <div class="glass-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-4px] transition-all group">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-cyber-pink/10 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">E-Commerce & Data</h3>
+                                <span class="text-xs font-mono text-cyber-pink">AMAZON & CDISCOUNT</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-extrabold font-mono text-slate-200">84%</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Recherche de produits gagnants via Jungle Scout, revente automatisée, calcul de marge et affiliation TikTok Shop.
+                    </p>
+                    <div class="w-full bg-slate-800/80 rounded-full h-2.5 overflow-hidden p-0.5">
+                        <div class="bg-gradient-to-r from-cyber-pink to-purple-500 h-1.5 rounded-full transition-all duration-1000 ease-out" style="width: 84%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROJETS & EXPÉRIENCES SECTION -->
+        <section id="projects" class="space-y-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div class="space-y-2">
+                    <div class="inline-flex items-center space-x-2 font-mono text-xs text-neon-cyan uppercase tracking-widest">
+                        <span>// Réalisations & Expériences</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                        Projets et <span class="gradient-text-purple">Expériences</span>
+                    </h2>
+                </div>
+
+                <!-- Category Tabs Filter -->
+                <div class="flex items-center space-x-2 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800 font-mono text-xs">
+                    <button onclick="filterProjects('all')" class="project-tab active-tab px-4 py-2 rounded-lg transition-all bg-neon-cyan/20 text-neon-cyan font-semibold">TOUS</button>
+                    <button onclick="filterProjects('software')" class="project-tab px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all">LOGICIEL</button>
+                    <button onclick="filterProjects('gamedev')" class="project-tab px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all">JEUX VIDÉO</button>
+                    <button onclick="filterProjects('ecom')" class="project-tab px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all">E-COMMERCE</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- PROJECT 1: Application Suivi Sportif -->
+                <div class="project-card software glass-panel rounded-2xl overflow-hidden flex flex-col justify-between hover:border-neon-cyan/50 transition-all group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30">
+                                LOGICIEL & SPORT TECH
+                            </span>
+                            <i class="fas fa-dumbbell text-slate-500 group-hover:text-neon-cyan transition-colors"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white group-hover:text-neon-cyan transition-colors">
+                            Application de Suivi Sportif & Performance
+                        </h3>
+
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Programmation d'un outil guidant régulièrement les performances physiques et sportives. Conçu avec une architecture permettant le suivi de la charge d'entraînement, du volume et de la progression au fil des semaines.
+                        </p>
+
+                        <ul class="space-y-2 text-xs text-slate-300">
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-neon-cyan text-[10px] mt-1"></i>
+                                <span>Suivi complet des charges d'entraînement, du volume, du poids et de la masse musculaire.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-neon-cyan text-[10px] mt-1"></i>
+                                <span>Projet de liaison directe avec les réseaux de salles de sport commerciales françaises.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-neon-cyan text-[10px] mt-1"></i>
+                                <span>Visualisation claire des progrès physiques pour une surcharge progressive optimale.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 pt-0 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-slate-300">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Python</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Data Analytics</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">API Salles de Sport</span>
+                        </div>
+                        
+                        <button onclick="openProjectModal('sports')" class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-neon-cyan/10 text-slate-200 hover:text-neon-cyan border border-slate-700 hover:border-neon-cyan/40 text-xs font-mono font-semibold transition-all flex items-center justify-center space-x-2">
+                            <span>DÉCOUVRIR LE PROJET</span>
+                            <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: Jeu Vidéo Mobile Unity -->
+                <div class="project-card gamedev glass-panel rounded-2xl overflow-hidden flex flex-col justify-between hover:border-neon-purple/50 transition-all group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-neon-purple/10 text-neon-purple border border-neon-purple/30">
+                                JEU VIDÉO INDÉPENDANT
+                            </span>
+                            <i class="fas fa-gamepad text-slate-500 group-hover:text-neon-purple transition-colors"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white group-hover:text-neon-purple transition-colors">
+                            Développement de Jeu Vidéo Mobile
+                        </h3>
+
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Projet indépendant de création de jeu vidéo mobile. Programmation complète des mécaniques de jeu interactives avec C# sous le moteur de jeu Unity Engine.
+                        </p>
+
+                        <ul class="space-y-2 text-xs text-slate-300">
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-neon-purple text-[10px] mt-1"></i>
+                                <span>Développement de mécaniques interactives et fluides en C#.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-neon-purple text-[10px] mt-1"></i>
+                                <span>Gestion des collisions, des moteurs de physique et des contrôles tactiles.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-neon-purple text-[10px] mt-1"></i>
+                                <span>Optimisation des performances et de la mémoire sur appareils mobiles.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 pt-0 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-slate-300">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">C#</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Unity Engine</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Game Design</span>
+                        </div>
+                        
+                        <button onclick="openProjectModal('game')" class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-neon-purple/10 text-slate-200 hover:text-neon-purple border border-slate-700 hover:border-neon-purple/40 text-xs font-mono font-semibold transition-all flex items-center justify-center space-x-2">
+                            <span>DÉCOUVRIR LE PROJET</span>
+                            <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: E-Commerce & Jungle Scout -->
+                <div class="project-card ecom glass-panel rounded-2xl overflow-hidden flex flex-col justify-between hover:border-cyber-pink/50 transition-all group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-cyber-pink/10 text-cyber-pink border border-cyber-pink/30">
+                                E-COMMERCE & DATA SCOUT
+                            </span>
+                            <i class="fas fa-shopping-cart text-slate-500 group-hover:text-cyber-pink transition-colors"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyber-pink transition-colors">
+                            E-Commerce & Recherche de Produits
+                        </h3>
+
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Activité entrepreneuriale d'analyse de marché et de revente. Recherche scientifique de produits gagnants via l'outil Jungle Scout et exploitation sur Amazon & Cdiscount.
+                        </p>
+
+                        <ul class="space-y-2 text-xs text-slate-300">
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-cyber-pink text-[10px] mt-1"></i>
+                                <span>Sourcing de produits à forte demande avec l'outil de data mining Jungle Scout.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-cyber-pink text-[10px] mt-1"></i>
+                                <span>Activité de revente et gestion de boutiques sur Amazon et Cdiscount.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fas fa-check text-cyber-pink text-[10px] mt-1"></i>
+                                <span>Opportunités d'affiliation et croissance sur TikTok Shop.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 pt-0 space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-slate-300">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Jungle Scout</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Amazon Seller</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Cdiscount</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">TikTok Shop</span>
+                        </div>
+                        
+                        <button onclick="openProjectModal('ecom')" class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-cyber-pink/10 text-slate-200 hover:text-cyber-pink border border-slate-700 hover:border-cyber-pink/40 text-xs font-mono font-semibold transition-all flex items-center justify-center space-x-2">
+                            <span>DÉCOUVRIR LE PROJET</span>
+                            <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FORMATION & PARCOURS ACADÉMIQUE -->
+        <section id="education" class="space-y-12">
+            <div class="space-y-2 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 font-mono text-xs text-neon-cyan uppercase tracking-widest">
+                    <span>// Parcours Académique</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                    Formation & <span class="gradient-text-cyan">Spécialisation</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-xl">
+                    Une feuille de route académique claire visant une maîtrise totale des sciences de l'informatique et de l'intelligence artificielle.
+                </p>
+            </div>
+
+            <!-- Glowing Timeline -->
+            <div class="relative pl-6 sm:pl-10 space-y-12 before:absolute before:left-2.5 sm:before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-neon-cyan before:via-neon-purple before:to-slate-800">
+
+                <!-- Timeline Step 2: Master ML & IA (Projection) -->
+                <div class="relative group">
+                    <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-obsidian border-2 border-neon-cyan flex items-center justify-center shadow-cyan-glow group-hover:scale-125 transition-transform">
+                        <div class="w-2 h-2 rounded-full bg-neon-cyan"></div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-6 sm:p-8 space-y-4 hover:border-neon-cyan/50 transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+                            <div>
+                                <span class="text-xs font-mono text-neon-cyan font-bold tracking-wider">OBJECTIF MASTER (SPÉCIALISATION)</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">Master Informatique - Machine Learning & IA</h3>
+                                <p class="text-slate-300 font-medium text-sm">Université de Lille</p>
+                            </div>
+                            <div class="px-3 py-1.5 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan font-mono text-xs font-bold w-fit">
+                                2029 — 2031
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Spécialisation avancée axée sur l'apprentissage profond, les réseaux de neurones complexes, l'industrialisation des modèles d'IA et le calcul distribué.
+                        </p>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2">
+                            <div class="glass-card p-2.5 rounded-xl text-xs flex items-center space-x-2 border border-slate-800 text-slate-200">
+                                <i class="fas fa-brain text-neon-cyan"></i>
+                                <span>Deep Learning</span>
+                            </div>
+                            <div class="glass-card p-2.5 rounded-xl text-xs flex items-center space-x-2 border border-slate-800 text-slate-200">
+                                <i class="fas fa-network-wired text-neon-purple"></i>
+                                <span>Transformers</span>
+                            </div>
+                            <div class="glass-card p-2.5 rounded-xl text-xs flex items-center space-x-2 border border-slate-800 text-slate-200">
+                                <i class="fas fa-cogs text-emerald-400"></i>
+                                <span>Pipelines MLOps</span>
+                            </div>
+                            <div class="glass-card p-2.5 rounded-xl text-xs flex items-center space-x-2 border border-slate-800 text-slate-200">
+                                <i class="fas fa-robot text-amber-400"></i>
+                                <span>Reinforcement Learning</span>
+                            </div>
+                            <div class="glass-card p-2.5 rounded-xl text-xs flex items-center space-x-2 border border-slate-800 text-slate-200">
+                                <i class="fas fa-server text-blue-400"></i>
+                                <span>Modèles Distribués</span>
+                            </div>
+                            <div class="glass-card p-2.5 rounded-xl text-xs flex items-center space-x-2 border border-slate-800 text-slate-200">
+                                <i class="fas fa-microchip text-cyber-pink"></i>
+                                <span>Optimisation AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Step 1: Licence Informatique -->
+                <div class="relative group">
+                    <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-obsidian border-2 border-neon-purple flex items-center justify-center shadow-purple-glow group-hover:scale-125 transition-transform">
+                        <div class="w-2 h-2 rounded-full bg-neon-purple"></div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-6 sm:p-8 space-y-4 hover:border-neon-purple/50 transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+                            <div>
+                                <span class="text-xs font-mono text-neon-purple font-bold tracking-wider">FORMATION EN COURS</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">Licence d'Informatique</h3>
+                                <p class="text-slate-300 font-medium text-sm">Université d'Artois — Faculté des Sciences, Lens</p>
+                            </div>
+                            <div class="px-3 py-1.5 rounded-xl bg-neon-purple/10 border border-neon-purple/30 text-neon-purple font-mono text-xs font-bold w-fit">
+                                2026 — 2029
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Acquisition de bases fondamentales et rigoureuses en science informatique, algorithmique avancée, structures de données, programmation système et orientée objet.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700">Algorithmique</span>
+                            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700">Langage C</span>
+                            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700">Python Expert</span>
+                            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700">Structures de Données</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LANGUES & CENTRES D'INTÉRÊT -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <div class="project-card tilt-card">
-                <h3>Application de Suivi Sportif</h3>
-                <p>Programmation d'un outil guidant régulièrement les performances sportives.</p>
-                <ul>
-                    <li>Liaison aux différentes salles de sport commerciales françaises pour un meilleur suivi.</li>
-                    <li>Suivi de la charge d'entraînement, du volume et de la progression au fil des semaines.</li>
-                </ul>
-                <span class="placeholder">[À COMPLÉTER : Lien GitHub ou Démo]</span>
+            <!-- Langues Column -->
+            <div class="lg:col-span-6 glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center space-x-2 font-mono text-xs text-neon-cyan uppercase">
+                        <span><i class="fas fa-globe text-neon-cyan"></i> Compétences Linguistiques</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Langues</h3>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card p-4 rounded-xl space-y-2 border border-slate-800 hover:border-neon-cyan/40 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white">Français</span>
+                            <span class="text-xs font-mono text-neon-cyan">Natif / Courant</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-1.5">
+                            <div class="bg-neon-cyan h-1.5 rounded-full w-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl space-y-2 border border-slate-800 hover:border-neon-cyan/40 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white">Anglais</span>
+                            <span class="text-xs font-mono text-neon-purple">Courant / Pro</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-1.5">
+                            <div class="bg-neon-purple h-1.5 rounded-full w-[90%]"></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl space-y-2 border border-slate-800 hover:border-neon-cyan/40 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white">Arabe</span>
+                            <span class="text-xs font-mono text-emerald-400">Natif</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-1.5">
+                            <div class="bg-emerald-400 h-1.5 rounded-full w-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl space-y-2 border border-slate-800 hover:border-neon-cyan/40 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white">Espagnol</span>
+                            <span class="text-xs font-mono text-amber-400">Conversationnel</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-1.5">
+                            <div class="bg-amber-400 h-1.5 rounded-full w-[65%]"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-card tilt-card">
-                <h3>Jeu Vidéo Mobile Indépendant</h3>
-                <p>Programmation de mécaniques de jeu interactives.</p>
-                <ul>
-                    <li>Développement réalisé avec C# sous Unity Engine.</li>
-                </ul>
-                <span class="placeholder">[À COMPLÉTER : Lien Play Store / App Store ou GitHub]</span>
+            <!-- Centres d'Intérêt Column -->
+            <div class="lg:col-span-6 glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center space-x-2 font-mono text-xs text-neon-purple uppercase">
+                        <span><i class="fas fa-heart text-neon-purple"></i> Passions Personnelles</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Centres d'Intérêt</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    
+                    <div class="glass-card p-5 rounded-xl text-center space-y-3 hover:scale-105 transition-all group border border-slate-800">
+                        <div class="w-12 h-12 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center text-neon-cyan text-xl mx-auto group-hover:scale-110 transition-transform">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">Sport & Musculation</h4>
+                        <p class="text-[11px] text-slate-400">Entraînement régulier, discipline et suivi du volume de travail.</p>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl text-center space-y-3 hover:scale-105 transition-all group border border-slate-800">
+                        <div class="w-12 h-12 rounded-xl bg-neon-purple/10 border border-neon-purple/30 flex items-center justify-center text-neon-purple text-xl mx-auto group-hover:scale-110 transition-transform">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">Jeux Vidéo</h4>
+                        <p class="text-[11px] text-slate-400">Console Switch, jeux de course, analyse des mécaniques de game design.</p>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl text-center space-y-3 hover:scale-105 transition-all group border border-slate-800">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl mx-auto group-hover:scale-110 transition-transform">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">Codage & IA</h4>
+                        <p class="text-[11px] text-slate-400">Veille technologique, entraînement algorithmique et projets personnels.</p>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="project-card tilt-card">
-                <h3>E-commerce & Recherche de Produits</h3>
-                <p>Activité entrepreneuriale de revente sur les plateformes Amazon et Cdiscount.</p>
-                <ul>
-                    <li>Recherche de produits gagnants sur Amazon avec l'utilisation de l'outil Jungle Scout.</li>
-                </ul>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="space-y-12">
+            <div class="text-center space-y-3 max-w-2xl mx-auto">
+                <div class="inline-flex items-center space-x-2 font-mono text-xs text-neon-cyan uppercase tracking-widest">
+                    <span>// Prendre Contact</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                    Discutons de vos <span class="gradient-text-cyan">Projets</span>
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    N'hésitez pas à me contacter pour toute proposition de projet, stage, opportunité académique ou échange technique.
+                </p>
             </div>
 
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <!-- Contact Info Cards -->
+                <div class="lg:col-span-5 space-y-4">
+                    
+                    <div class="glass-panel p-6 rounded-2xl flex items-center justify-between border border-slate-800 hover:border-neon-cyan/40 transition-all group">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center text-neon-cyan text-xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-slate-400">ADRESSE EMAIL</span>
+                                <h4 class="font-bold text-white text-sm sm:text-base">yousifalgailani62@gmail.com</h4>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('yousifalgailani62@gmail.com', 'Email copié dans le presse-papier !')" class="p-2.5 rounded-xl bg-slate-800 hover:bg-neon-cyan/20 text-slate-300 hover:text-neon-cyan transition-all" title="Copier l'email">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl flex items-center justify-between border border-slate-800 hover:border-neon-purple/40 transition-all group">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-neon-purple/10 border border-neon-purple/30 flex items-center justify-center text-neon-purple text-xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-mono text-slate-400">TÉLÉPHONE</span>
+                                <h4 class="font-bold text-white text-sm sm:text-base">+33 6 67 47 26 86</h4>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('+33667472686', 'Numéro copié !')" class="p-2.5 rounded-xl bg-slate-800 hover:bg-neon-purple/20 text-slate-300 hover:text-neon-purple transition-all" title="Copier le téléphone">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl flex items-center space-x-4 border border-slate-800">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-mono text-slate-400">LOCALISATION</span>
+                            <h4 class="font-bold text-white text-sm sm:text-base">Lens, 62300, France</h4>
+                            <p class="text-xs text-slate-400">Métropole d'Artois & Région Lilloise</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Interactive Form -->
+                <div class="lg:col-span-7">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="glass-panel p-6 sm:p-8 rounded-2xl space-y-5 border border-slate-800 relative">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="space-y-2">
+                                <label class="text-xs font-mono text-slate-300">VOTRE NOM *</label>
+                                <input type="text" required placeholder="ex: Jean Dupont" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan text-sm transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-mono text-slate-300">VOTRE EMAIL *</label>
+                                <input type="email" required placeholder="jean@exemple.fr" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan text-sm transition-all">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono text-slate-300">SUJET</label>
+                            <input type="text" placeholder="Proposition de projet / Opportunité" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan text-sm transition-all">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono text-slate-300">MESSAGE *</label>
+                            <textarea required rows="4" placeholder="Bonjour Yousif, je souhaiterais échanger avec vous à propos de..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan text-sm transition-all resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-purple text-obsidian font-bold text-sm hover:opacity-90 transition-all shadow-cyan-glow flex items-center justify-center space-x-2">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>ENVOYER LE MESSAGE</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 border-t border-slate-800/80 py-8 bg-obsidian/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+            <div class="flex items-center space-x-2">
+                <span class="text-neon-cyan">&lt;YAG/&gt;</span>
+                <span>© <span id="currentYear"></span> Yousif Al Gailani. Tous droits réservés.</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <span>Design Cyberpunk & Ergonomique</span>
+                <a href="#hero" class="text-neon-cyan hover:underline flex items-center space-x-1">
+                    <span>Haut de page</span>
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
         </div>
-    </section>
-
-    <!-- Compétences & Autres -->
-    <section id="skills" class="container gs-reveal">
-        <h2>Compétences</h2>
-        <div class="skills-container">
-            <div class="skill-tag">Python (Expert)</div>
-            <div class="skill-tag">Langage C & C++</div>
-            <div class="skill-tag">C# (Unity)</div>
-            <div class="skill-tag">Résolution de problèmes</div>
-            <div class="skill-tag">Gestion de projet</div>
-        </div>
-
-        <div class="grid-2">
-            <div class="timeline-item text-center">
-                <h3>Langues</h3>
-                <ul style="list-style:none; margin-top:16px; color:var(--text-secondary);">
-                    <li>Anglais <span class="placeholder">[À COMPLÉTER : Niveau]</span></li>
-                    <li>Espagnol <span class="placeholder">[À COMPLÉTER : Niveau]</span></li>
-                    <li>Arabe <span class="placeholder">[À COMPLÉTER : Niveau]</span></li>
-                </ul>
-            </div>
-            <div class="timeline-item text-center">
-                <h3>Centres d'intérêt</h3>
-                <ul style="list-style:none; margin-top:16px; color:var(--text-secondary);">
-                    <li>Sport</li>
-                    <li>Jeux Vidéo</li>
-                    <li>Codage</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="container gs-reveal">
-        <h2>Contact</h2>
-        <div class="timeline-item text-center">
-            <p><strong>Ville :</strong> Lens, 62300</p>
-            <p><strong>Téléphone :</strong> <a href="tel:+33667472686">+33 6 67 47 26 86</a></p>
-            <p><strong>Email :</strong> <a href="mailto:yousifalgailani62@gmail.com">yousifalgailani62@gmail.com</a></p>
-            <div style="margin-top: 24px;">
-                <span class="placeholder">[À COMPLÉTER : Lien LinkedIn]</span>
-                <span class="placeholder">[À COMPLÉTER : Lien GitHub]</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© <span id="year"></span> Yousif Al Gailani. Tous droits réservés.</p>
     </footer>
 
+    <!-- MODAL 1: PROJET DÉTAIL -->
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 sm:p-8 border border-slate-700 space-y-6 shadow-2xl transform scale-95 transition-transform duration-300" id="modalContainer">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <div id="modalIcon" class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/40 flex items-center justify-center text-neon-cyan">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div>
+                        <h3 id="modalTitle" class="text-xl font-bold text-white">Titre du Projet</h3>
+                        <span id="modalCategory" class="text-xs font-mono text-neon-cyan">Catégorie</span>
+                    </div>
+                </div>
+                <button onclick="closeProjectModal()" class="text-slate-400 hover:text-white p-2 text-xl focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div id="modalContent" class="space-y-4 text-slate-300 text-sm leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+                <!-- Dynamic Content injected via JS -->
+            </div>
+
+            <div class="flex justify-end pt-4 border-t border-slate-800">
+                <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 text-white font-mono text-xs hover:bg-slate-700 transition-all">
+                    FERMER LA FENÊTRE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CV INTERACTIF & IMPRESSION -->
+    <div id="resumeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-3xl rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-file-pdf text-neon-cyan text-2xl"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">CV - Yousif Al Gailani</h3>
+                        <p class="text-xs text-slate-400">Curriculum Vitae Officiel</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30 text-xs font-mono hover:bg-neon-cyan hover:text-obsidian transition-all">
+                        <i class="fas fa-print mr-1"></i> Imprimer / Télécharger PDF
+                    </button>
+                    <button onclick="toggleResumeModal()" class="text-slate-400 hover:text-white p-2 text-xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CV Preview -->
+            <div class="overflow-y-auto space-y-6 text-slate-200 text-sm pr-3 font-sans">
+                <!-- Header CV -->
+                <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+                    <div>
+                        <h1 class="text-2xl font-black text-white">YOUSIF AL GAILANI</h1>
+                        <p class="text-neon-cyan font-mono text-xs">Licence Informatique — Spécialisation IA & Python</p>
+                    </div>
+                    <div class="text-xs text-slate-400 font-mono space-y-1">
+                        <div>Lens, 62300, France</div>
+                        <div>+33 6 67 47 26 86</div>
+                        <div>yousifalgailani62@gmail.com</div>
+                    </div>
+                </div>
+
+                <!-- Compétences -->
+                <div class="space-y-2">
+                    <h2 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider">COMPÉTENCES</h2>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Python (Expert)</div>
+                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Langages C, C++ & C#</div>
+                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Résolution de problèmes & Algorithmes</div>
+                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Gestion de projet & Jungle Scout</div>
+                    </div>
+                </div>
+
+                <!-- Expérience & Projets -->
+                <div class="space-y-3">
+                    <h2 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider">EXPÉRIENCE PROFESSIONNELLE & PROJETS</h2>
+                    
+                    <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-800 space-y-1">
+                        <h3 class="font-bold text-white text-sm">Développement d'une Application de Suivi Sportif</h3>
+                        <p class="text-xs text-slate-300">• Programmation d'un outil guidant régulièrement les performances physiques et sportives.</p>
+                        <p class="text-xs text-slate-300">• Liaison aux différentes salles de sport commerciales françaises pour un meilleur suivi.</p>
+                        <p class="text-xs text-slate-300">• Suivi de la charge d'entraînement, du volume et de la progression au fil des semaines.</p>
+                    </div>
+
+                    <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-800 space-y-1">
+                        <h3 class="font-bold text-white text-sm">Développement Indépendant de Jeu Vidéo Mobile</h3>
+                        <p class="text-xs text-slate-300">• Programmation de mécaniques de jeu interactives avec C# sous Unity Engine.</p>
+                    </div>
+
+                    <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-800 space-y-1">
+                        <h3 class="font-bold text-white text-sm">E-commerce & Recherche de Produits</h3>
+                        <p class="text-xs text-slate-300">• Recherche de produits gagnants sur Amazon avec l'utilisation de l'outil Jungle Scout.</p>
+                        <p class="text-xs text-slate-300">• Activité de revente sur les plateformes Amazon et Cdiscount.</p>
+                    </div>
+                </div>
+
+                <!-- Formation -->
+                <div class="space-y-3">
+                    <h2 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider">FORMATION</h2>
+                    
+                    <div class="flex justify-between items-start text-xs border-l-2 border-neon-cyan pl-3">
+                        <div>
+                            <div class="font-bold text-white">Master Informatique - Machine Learning & IA (Projet)</div>
+                            <div class="text-slate-400">Université de Lille</div>
+                            <p class="text-[11px] text-slate-300 mt-1">Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.</p>
+                        </div>
+                        <div class="font-mono text-neon-cyan text-[11px]">2029 - 2031</div>
+                    </div>
+
+                    <div class="flex justify-between items-start text-xs border-l-2 border-neon-purple pl-3">
+                        <div>
+                            <div class="font-bold text-white">Licence d'Informatique</div>
+                            <div class="text-slate-400">Université d'Artois — Faculté des Sciences, Lens</div>
+                            <p class="text-[11px] text-slate-300 mt-1">Fondations solides en algorithmique et programmation (C, Python, structures de données).</p>
+                        </div>
+                        <div class="font-mono text-neon-purple text-[11px]">2026 - 2029</div>
+                    </div>
+                </div>
+
+                <!-- Langues & Interets -->
+                <div class="grid grid-cols-2 gap-4 text-xs pt-2">
+                    <div>
+                        <h2 class="font-mono font-bold text-neon-cyan uppercase mb-1">LANGUES</h2>
+                        <ul class="space-y-1 text-slate-300">
+                            <li>• Français (Courant / Natif)</li>
+                            <li>• Anglais (Courant)</li>
+                            <li>• Arabe (Langue maternelle)</li>
+                            <li>• Espagnol (Notions)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="font-mono font-bold text-neon-purple uppercase mb-1">CENTRES D'INTÉRÊT</h2>
+                        <ul class="space-y-1 text-slate-300">
+                            <li>• Sport & Musculation</li>
+                            <li>• Jeux Vidéo (Switch, Course)</li>
+                            <li>• Codage & Recherche IA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // 1. Année automatique pour le footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // Set dynamic current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // 2. Gestion du Thème (Dark/Light mode) avec prefers-color-scheme
-        const themeToggle = document.getElementById('themeToggle');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
         
-        function setTheme(isDark) {
-            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        }
-
-        // Init theme
-        let isDarkMode = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark.matches);
-        setTheme(isDarkMode);
-
-        themeToggle.addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            setTheme(isDarkMode);
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
         });
 
-        // 3. Effet Tilt 3D pour les cartes (désactivé si prefers-reduced-motion)
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        
-        if (!prefersReducedMotion.matches) {
-            const cards = document.querySelectorAll('.tilt-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg
-                    const rotateY = ((x - centerX) / centerX) * 10;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-                });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Typed Text Loop in French
+        const typedStrings = [
+            "Étudiant en Informatique",
+            "Développeur Python (Expert)",
+            "Développeur C / C++ / C#",
+            "Futur Ingénieur Machine Learning & IA",
+            "Créateur de Jeux Vidéo Unity"
+        ];
+        let stringIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedTextElement = document.getElementById("typedText");
+
+        function typeLoop() {
+            const currentString = typedStrings[stringIndex];
+
+            if (isDeleting) {
+                typedTextElement.textContent = currentString.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextElement.textContent = currentString.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 35 : 75;
+
+            if (!isDeleting && charIndex === currentString.length) {
+                typeSpeed = 2200;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                stringIndex = (stringIndex + 1) % typedStrings.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            typeLoop();
+            initCanvasBackground();
+            initCounterAnimation();
+        });
+
+        // Particle Canvas Background Loop
+        function initCanvasBackground() {
+            const canvas = document.getElementById('bgCanvas');
+            const ctx = canvas.getContext('2d');
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
             });
 
-            // 4. Animations GSAP au scroll
-            gsap.registerPlugin(ScrollTrigger);
-            
-            const elementsToReveal = document.querySelectorAll('.gs-reveal');
-            elementsToReveal.forEach((el) => {
-                gsap.fromTo(el, 
-                    { y: 50, opacity: 0 }, 
-                    {
-                        y: 0, 
-                        opacity: 1, 
-                        duration: 1, 
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: el,
-                            start: "top 85%", // Déclenche quand le haut de l'élément atteint 85% de la fenêtre
-                            toggleActions: "play none none reverse"
+            const particleCount = Math.floor(Math.min(width, 1200) / 12);
+            const particles = [];
+
+            let mouse = { x: null, y: null, radius: 120 };
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
+            window.addEventListener('mouseleave', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.6;
+                    this.vy = (Math.random() - 0.5) * 0.6;
+                    this.radius = Math.random() * 1.8 + 0.8;
+                    this.color = Math.random() > 0.5 ? '#00f0ff' : '#a855f7';
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                    if (mouse.x && mouse.y) {
+                        let dx = mouse.x - this.x;
+                        let dy = mouse.y - this.y;
+                        let dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < mouse.radius) {
+                            let force = (mouse.radius - dist) / mouse.radius;
+                            this.x -= (dx / dist) * force * 2;
+                            this.y -= (dy / dist) * force * 2;
                         }
                     }
-                );
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = this.color;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function animateCanvas() {
+                ctx.clearRect(0, 0, width, height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+
+                    for (let j = i + 1; j < particles.length; j++) {
+                        let dx = particles[i].x - particles[j].x;
+                        let dy = particles[i].y - particles[j].y;
+                        let dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 110) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 - dist / 110 * 0.15})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(animateCanvas);
+            }
+
+            animateCanvas();
+        }
+
+        // Counter Numbers Observer
+        function initCounterAnimation() {
+            const counters = document.querySelectorAll('[data-counter]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-counter');
+                        let count = 0;
+                        const speed = target / 30;
+                        
+                        const updateCount = () => {
+                            count += speed;
+                            if (count < target) {
+                                entry.target.innerText = Math.ceil(count) + (target === 98 ? '%' : '');
+                                setTimeout(updateCount, 40);
+                            } else {
+                                entry.target.innerText = target + (target === 98 ? '%' : '+');
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(c => observer.observe(c));
+        }
+
+        // Filter Projects
+        function filterProjects(category) {
+            const tabs = document.querySelectorAll('.project-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-neon-cyan/20', 'text-neon-cyan', 'font-semibold');
+                tab.classList.add('text-slate-400');
             });
+
+            event.target.classList.add('bg-neon-cyan/20', 'text-neon-cyan', 'font-semibold');
+            event.target.classList.remove('text-slate-400');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Project Detail Modal Data (In French)
+        const projectDetails = {
+            sports: {
+                title: "Application de Suivi Sportif & Performance",
+                category: "LOGICIEL & ANALYSE DE DONNÉES",
+                icon: "fas fa-dumbbell",
+                color: "text-neon-cyan",
+                content: `
+                    <div class="space-y-4">
+                        <p>Cette application a été conçue pour offrir un suivi rigoureux des séances d'entraînement et de la progression physique au fil des semaines. Elle intègre des algorithmes de calcul de surcharge progressive.</p>
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2 font-mono text-xs">
+                            <div class="text-neon-cyan font-bold">// FONCTIONNALITÉS CLÉS</div>
+                            <div>• Journal d'Entraînement : Enregistrement fluide des séries, répétitions et charges.</div>
+                            <div>• Interconnexion Réseaux : Projet d'intégration avec les réseaux de salles de sport françaises.</div>
+                            <div>• Analytics & Courbes : Visualisation du volume d'entraînement et de l'évolution de la masse corporelle.</div>
+                        </div>
+                        <p class="text-xs text-slate-400">Développé avec Python et des modules d'analyse de données pour structurer le suivi sportif.</p>
+                    </div>
+                `
+            },
+            game: {
+                title: "Jeu Vidéo Mobile Indépendant (Unity & C#)",
+                category: "JEUX VIDÉO & INTERACTION",
+                icon: "fas fa-gamepad",
+                color: "text-neon-purple",
+                content: `
+                    <div class="space-y-4">
+                        <p>Développement autonome d'un jeu vidéo mobile complet sous Unity Engine. Mise en œuvre de mécaniques interactives et d'une physique adaptée aux contrôles sur écran tactile.</p>
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2 font-mono text-xs">
+                            <div class="text-neon-purple font-bold">// ARCHITECTURE TECHNIQUE</div>
+                            <div>• Scripts C# Modulaires : Gestion propre des états de jeu (State Pattern) et de la physique.</div>
+                            <div>• Optimisation Mobile : Réduction du Garbage Collector pour garantir un framerate stable.</div>
+                            <div>• Ergonomie Tactile : Prise en charge des gestures et entrées utilisateur réactives.</div>
+                        </div>
+                        <p class="text-xs text-slate-400">Projet démontrant la maîtrise de C# et de la programmation orientée objet dans un contexte temps réel.</p>
+                    </div>
+                `
+            },
+            ecom: {
+                title: "E-Commerce & Recherche de Produits Jungle Scout",
+                category: "DATA ANALYSIS & MARKETPLACE",
+                icon: "fas fa-shopping-cart",
+                color: "text-cyber-pink",
+                content: `
+                    <div class="space-y-4">
+                        <p>Analyse stratégique de marché et revente de produits gagnants sur les principales marketplaces européennes (Amazon & Cdiscount) alliée à une dynamique TikTok Shop.</p>
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2 font-mono text-xs">
+                            <div class="text-cyber-pink font-bold">// STRATÉGIE & OUTILS</div>
+                            <div>• Jungle Scout Data Mining : Identification des niches à fort volume et faible concurrence.</div>
+                            <div>• Revente Multi-Plateforme : Gestion automatisée des fiches articles sur Amazon & Cdiscount.</div>
+                            <div>• Affiliation & Contenu : Exploitation des canaux TikTok Shop pour l'acquisition de trafic.</div>
+                        </div>
+                        <p class="text-xs text-slate-400">Démontre une capacité d'analyse de données marché et un esprit d'entreprise concret.</p>
+                    </div>
+                `
+            }
+        };
+
+        function openProjectModal(key) {
+            const data = projectDetails[key];
+            if (!data) return;
+
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalCategory').textContent = data.category;
+            document.getElementById('modalIcon').className = `w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-xl ${data.color}`;
+            document.getElementById('modalIcon').innerHTML = `<i class="${data.icon}"></i>`;
+            document.getElementById('modalContent').innerHTML = data.content;
+
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('modalContainer').classList.remove('scale-95');
+            document.getElementById('modalContainer').classList.add('scale-100');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            document.getElementById('modalContainer').classList.remove('scale-100');
+            document.getElementById('modalContainer').classList.add('scale-95');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Resume Modal Toggle
+        function toggleResumeModal() {
+            const modal = document.getElementById('resumeModal');
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Copy Clipboard Helper
+        function copyToClipboard(text, successMsg) {
+            const tempInput = document.createElement("textarea");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast(successMsg);
+        }
+
+        // Toast Feedback
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Contact Form Handle
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast("Message transmis ! Yousif vous répondra rapidement.");
+            document.getElementById('contactForm').reset();
         }
     </script>
 </body>
