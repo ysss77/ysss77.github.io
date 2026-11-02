@@ -33,12 +33,9 @@
     <style>
         .canvas-3d-container {
             width: 100%;
-            height: 180px;
+            height: 220px;
             position: relative;
-            cursor: grab;
-        }
-        .canvas-3d-container:active {
-            cursor: grabbing;
+            cursor: pointer;
         }
         .glass-card {
             background: rgba(30, 41, 59, 0.7);
@@ -46,7 +43,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .light .glass-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
     </style>
@@ -93,21 +90,21 @@
                     <i class="fa-solid fa-code text-sky-400"></i> Compétences Techniques
                 </h2>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block">Python</span>
-                        <span class="text-xs text-slate-400">Niveau Expert</span>
+                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                        <span class="font-bold text-sky-400 block text-lg">Python</span>
+                        <span class="text-xs text-slate-400">Expertise avancée, scripting, structures de données.</span>
                     </div>
-                    <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block">Langage C & C++</span>
-                        <span class="text-xs text-slate-400">Fondations & Algorithmes</span>
+                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                        <span class="font-bold text-sky-400 block text-lg">Langage C & C++</span>
+                        <span class="text-xs text-slate-400">Programmation bas niveau, gestion mémoire, C# Unity.</span>
                     </div>
-                    <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block">Résolution de Problèmes</span>
-                        <span class="text-xs text-slate-400">Logique & Structure</span>
+                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                        <span class="font-bold text-sky-400 block text-lg">Résolution de Problèmes</span>
+                        <span class="text-xs text-slate-400">Analyse algorithmique et logique complexe.</span>
                     </div>
-                    <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block">Gestion de Projet</span>
-                        <span class="text-xs text-slate-400">Organisation & Suivi</span>
+                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                        <span class="font-bold text-sky-400 block text-lg">Gestion de Projet</span>
+                        <span class="text-xs text-slate-400">Conception globale, déploiement et optimisation.</span>
                     </div>
                 </div>
             </section>
@@ -119,16 +116,16 @@
                         <i class="fa-solid fa-language text-sky-400"></i> Langues
                     </h2>
                     <div class="flex gap-4">
-                        <span class="px-3 py-1 bg-sky-950 text-sky-300 rounded-full text-sm font-medium border border-sky-800">Anglais</span>
-                        <span class="px-3 py-1 bg-sky-950 text-sky-300 rounded-full text-sm font-medium border border-sky-800">Espagnol</span>
-                        <span class="px-3 py-1 bg-sky-950 text-sky-300 rounded-full text-sm font-medium border border-sky-800">Arabe</span>
+                        <span class="px-4 py-2 bg-sky-950 text-sky-300 rounded-xl text-sm font-medium border border-sky-800">Anglais</span>
+                        <span class="px-4 py-2 bg-sky-950 text-sky-300 rounded-xl text-sm font-medium border border-sky-800">Espagnol</span>
+                        <span class="px-4 py-2 bg-sky-950 text-sky-300 rounded-xl text-sm font-medium border border-sky-800">Arabe</span>
                     </div>
                 </div>
                 <div>
                     <h2 class="text-2xl font-bold mb-4 flex items-center gap-3 border-b border-slate-700 pb-3">
                         <i class="fa-solid fa-icons text-sky-400"></i> Centres d'Intérêt
                     </h2>
-                    <div class="flex gap-4 text-slate-300">
+                    <div class="flex gap-6 text-slate-300">
                         <span class="flex items-center gap-2"><i class="fa-solid fa-dumbbell text-sky-400"></i> Sport</span>
                         <span class="flex items-center gap-2"><i class="fa-solid fa-gamepad text-sky-400"></i> Jeux Vidéo</span>
                         <span class="flex items-center gap-2"><i class="fa-solid fa-laptop-code text-sky-400"></i> Codage</span>
@@ -149,10 +146,11 @@
                     <div>
                         <div id="canvas-dumbbell" class="canvas-3d-container"></div>
                         <h3 class="text-xl font-bold text-sky-400 mb-2">App de Suivi Sportif</h3>
-                        <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-                            <li>Outil de guidage régulier des performances.</li>
-                            <li>Liaison aux salles de sport commerciales françaises.</li>
-                            <li>Suivi de charge, volume et progression.</li>
+                        <p class="text-sm text-slate-300 mb-3">Développement d'un outil complet de guidage et suivi régulier des performances sportives.</p>
+                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
+                            <li>Liaison aux réseaux de salles de sport françaises.</li>
+                            <li>Suivi précis de la charge d'entraînement et du volume.</li>
+                            <li>Analyse de progression au fil des semaines.</li>
                         </ul>
                     </div>
                 </div>
@@ -162,9 +160,11 @@
                     <div>
                         <div id="canvas-gamepad" class="canvas-3d-container"></div>
                         <h3 class="text-xl font-bold text-sky-400 mb-2">Jeu Vidéo Mobile 3D</h3>
-                        <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-                            <li>Développement indépendant.</li>
-                            <li>Mécaniques interactives avec C# sous Unity Engine.</li>
+                        <p class="text-sm text-slate-300 mb-3">Conception et développement indépendant d'un jeu vidéo interactif sur mobile.</p>
+                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
+                            <li>Programmation des mécaniques de jeu en C#.</li>
+                            <li>Moteur graphique Unity Engine.</li>
+                            <li>Optimisation des performances sur appareils mobiles.</li>
                         </ul>
                     </div>
                 </div>
@@ -174,9 +174,11 @@
                     <div>
                         <div id="canvas-box" class="canvas-3d-container"></div>
                         <h3 class="text-xl font-bold text-sky-400 mb-2">E-Commerce & Produits</h3>
-                        <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
+                        <p class="text-sm text-slate-300 mb-3">Gestion complète d'activité de revente en ligne et analyse de marché.</p>
+                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
                             <li>Recherche de produits gagnants via Jungle Scout.</li>
-                            <li>Activité de revente sur Amazon & Cdiscount.</li>
+                            <li>Gestion des catalogues Amazon & Cdiscount.</li>
+                            <li>Stratégie de prix et gestion des stocks.</li>
                         </ul>
                     </div>
                 </div>
@@ -191,24 +193,24 @@
 
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Master -->
-                <div class="glass-card p-6 rounded-2xl flex gap-4 items-start shadow-xl">
-                    <div id="canvas-brain" class="w-24 h-24 flex-shrink-0"></div>
+                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-4 items-center shadow-xl">
+                    <div id="canvas-brain" class="w-full md:w-48 h-40 flex-shrink-0"></div>
                     <div>
                         <span class="text-xs font-semibold text-sky-400 bg-sky-950 px-2 py-1 rounded">2029 - 2031</span>
                         <h3 class="text-xl font-bold mt-2">Master Informatique - ML & IA</h3>
                         <p class="text-sm text-slate-400 mb-2">Université de Lille</p>
-                        <p class="text-xs text-slate-300">Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.</p>
+                        <p class="text-xs text-slate-300">Spécialisation poussée en Deep Learning, architecture Transformers, MLOps, apprentissage par renforcement et systèmes distribués.</p>
                     </div>
                 </div>
 
                 <!-- Licence -->
-                <div class="glass-card p-6 rounded-2xl flex gap-4 items-start shadow-xl">
-                    <div id="canvas-code" class="w-24 h-24 flex-shrink-0"></div>
+                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-4 items-center shadow-xl">
+                    <div id="canvas-code" class="w-full md:w-48 h-40 flex-shrink-0"></div>
                     <div>
                         <span class="text-xs font-semibold text-sky-400 bg-sky-950 px-2 py-1 rounded">2026 - 2029</span>
                         <h3 class="text-xl font-bold mt-2">Licence d'Informatique</h3>
                         <p class="text-sm text-slate-400 mb-2">Université d'Artois - Lens</p>
-                        <p class="text-xs text-slate-300">Fondations solides en algorithmique et programmation (C, Python).</p>
+                        <p class="text-xs text-slate-300">Fondations théoriques et pratiques solides en algorithmique, programmation système (C) et développement haut niveau (Python).</p>
                     </div>
                 </div>
             </div>
@@ -221,120 +223,184 @@
         © 2026 Yousif Al Gailani. Portfolio 3D interactif hébergé sur GitHub Pages.
     </footer>
 
-    <!-- Three.js 3D Models Script -->
+    <!-- Three.js 3D Interactive Models -->
     <script>
         AOS.init({ duration: 800, once: true });
 
-        // Helper function to create 3D canvas
-        function create3DScene(containerId, createMeshCallback) {
+        // Base setup for realistic reactive 3D models (no auto-spin, mouse reactive)
+        function setup3DModel(containerId, buildModelCallback) {
             const container = document.getElementById(containerId);
             if (!container) return;
 
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
             
             renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.shadowMap.enabled = true;
             container.appendChild(renderer.domElement);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            // Lighting setup
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
             scene.add(ambientLight);
 
-            const dirLight = new THREE.DirectionalLight(0x38bdf8, 1.5);
-            dirLight.position.set(5, 5, 5);
+            const dirLight = new THREE.DirectionalLight(0x38bdf8, 2);
+            dirLight.position.set(5, 8, 5);
             scene.add(dirLight);
 
-            const group = createMeshCallback(scene);
-            camera.position.z = 5;
+            const pointLight = new THREE.PointLight(0x0284c7, 1.5, 10);
+            pointLight.position.set(-3, -2, 3);
+            scene.add(pointLight);
 
-            // Mouse Interaction
-            let mouseX = 0, mouseY = 0;
+            const modelGroup = buildModelCallback(scene);
+            camera.position.z = 5.5;
+
+            // Target rotation for smooth reactivity
+            let targetRotX = 0;
+            let targetRotY = 0;
+
             container.addEventListener('mousemove', (e) => {
                 const rect = container.getBoundingClientRect();
-                mouseX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
-                mouseY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+                const x = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+                const y = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+
+                targetRotY = x * 0.6;
+                targetRotX = -y * 0.4;
             });
 
-            function animate() {
-                requestAnimationFrame(animate);
-                group.rotation.y += 0.01;
-                group.rotation.x = mouseY * 0.5;
-                group.rotation.y += mouseX * 0.02;
+            container.addEventListener('mouseleave', () => {
+                targetRotX = 0;
+                targetRotY = 0;
+            });
+
+            function render() {
+                requestAnimationFrame(render);
+                // Smooth interpolation (lerp)
+                modelGroup.rotation.x += (targetRotX - modelGroup.rotation.x) * 0.08;
+                modelGroup.rotation.y += (targetRotY - modelGroup.rotation.y) * 0.08;
                 renderer.render(scene, camera);
             }
-            animate();
+            render();
         }
 
-        // 1. Dumbbell (Sport)
-        create3DScene('canvas-dumbbell', (scene) => {
+        // 1. Detailed Dumbbell (Gym / Sport)
+        setup3DModel('canvas-dumbbell', () => {
             const group = new THREE.Group();
-            const mat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.8, roughness: 0.2 });
-            
-            const handle = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 2, 16), mat);
-            handle.rotation.z = Math.PI / 2;
-            group.add(handle);
+            const metalMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.9, roughness: 0.2 });
+            const plateMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.5, roughness: 0.4 });
+            const ringMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.8, roughness: 0.2 });
 
-            const weight1 = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 0.3, 32), mat);
-            weight1.rotation.z = Math.PI / 2;
-            weight1.position.x = -0.7;
-            group.add(weight1);
+            // Knurled Bar
+            const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 32), metalMat);
+            bar.rotation.z = Math.PI / 2;
+            group.add(bar);
 
-            const weight2 = weight1.clone();
-            weight2.position.x = 0.7;
-            group.add(weight2);
+            // Plates on both sides
+            [-0.7, -0.82, 0.7, 0.82].forEach((x, idx) => {
+                const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.65, 0.65, 0.1, 32), plateMat);
+                plate.rotation.z = Math.PI / 2;
+                plate.position.x = x;
+                group.add(plate);
 
-            scene.add(group);
+                const ring = new THREE.Mesh(new THREE.TorusGeometry(0.66, 0.02, 16, 32), ringMat);
+                ring.rotation.y = Math.PI / 2;
+                ring.position.x = x;
+                group.add(ring);
+            });
+
+            // Fasteners
+            [-0.92, 0.92].forEach(x => {
+                const lock = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.08, 16), ringMat);
+                lock.rotation.z = Math.PI / 2;
+                lock.position.x = x;
+                group.add(lock);
+            });
+
             return group;
         });
 
-        // 2. Gamepad (Gaming)
-        create3DScene('canvas-gamepad', (scene) => {
+        // 2. Pro Game Controller (Gaming / Unity)
+        setup3DModel('canvas-gamepad', () => {
             const group = new THREE.Group();
-            const mat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.3 });
-            
-            const body = new THREE.Mesh(new THREE.BoxGeometry(2, 1, 0.4), mat);
+            const bodyMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.3 });
+            const btnMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.5 });
+            const accentMat = new THREE.MeshStandardMaterial({ color: 0x0284c7 });
+
+            // Main Body
+            const body = new THREE.Mesh(new THREE.BoxGeometry(2.2, 1.1, 0.4), bodyMat);
             group.add(body);
 
-            const btnMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8 });
-            const btn1 = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.2, 16), btnMat);
-            btn1.position.set(0.6, 0.1, 0.2);
+            // Joysticks
+            [-0.6, 0.4].forEach((x, i) => {
+                const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.1, 0.3, 16), accentMat);
+                stick.position.set(x, i === 0 ? 0.1 : -0.2, 0.25);
+                group.add(stick);
+            });
+
+            // Action Buttons
+            const btn1 = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.1, 16), btnMat);
+            btn1.position.set(0.6, 0.2, 0.22);
             group.add(btn1);
 
-            scene.add(group);
             return group;
         });
 
-        // 3. Amazon Box (E-Commerce)
-        create3DScene('canvas-box', (scene) => {
+        // 3. Sealed Parcel / Box (E-Commerce)
+        setup3DModel('canvas-box', () => {
             const group = new THREE.Group();
-            const mat = new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.8 });
-            const box = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.2, 1.2), mat);
+            const cardboardMat = new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.9 });
+            const tapeMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.3 });
+
+            const box = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.2, 1.2), cardboardMat);
             group.add(box);
-            scene.add(group);
+
+            const tape = new THREE.Mesh(new THREE.BoxGeometry(1.62, 1.22, 0.2), tapeMat);
+            group.add(tape);
+
             return group;
         });
 
-        // 4. Brain / AI (Master)
-        create3DScene('canvas-brain', (scene) => {
+        // 4. Neural Network / AI Brain (Master)
+        setup3DModel('canvas-brain', () => {
             const group = new THREE.Group();
-            const mat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, wireframe: true });
-            const sphere = new THREE.Mesh(new THREE.IcosahedronGeometry(1.2, 2), mat);
+            const coreMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, wireframe: true });
+            const nodeMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.2 });
+
+            const sphere = new THREE.Mesh(new THREE.IcosahedronGeometry(1.1, 2), coreMat);
             group.add(sphere);
-            scene.add(group);
+
+            for (let i = 0; i < 12; i++) {
+                const node = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8), nodeMat);
+                node.position.set(
+                    (Math.random() - 0.5) * 2,
+                    (Math.random() - 0.5) * 2,
+                    (Math.random() - 0.5) * 2
+                );
+                group.add(node);
+            }
+
             return group;
         });
 
-        // 5. Code / Logic (Licence)
-        create3DScene('canvas-code', (scene) => {
+        // 5. Curved Code Screen (Licence)
+        setup3DModel('canvas-code', () => {
             const group = new THREE.Group();
-            const mat = new THREE.MeshStandardMaterial({ color: 0x0284c7 });
-            const cube = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.2, 1.2), mat);
-            group.add(cube);
-            scene.add(group);
+            const screenMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.2 });
+            const lineMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8 });
+
+            const screen = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.2, 0.1), screenMat);
+            group.add(screen);
+
+            for (let i = 0; i < 4; i++) {
+                const line = new THREE.Mesh(new THREE.BoxGeometry(1.2 - i * 0.2, 0.08, 0.02), lineMat);
+                line.position.set(-0.2 + (i * 0.05), 0.3 - (i * 0.2), 0.06);
+                group.add(line);
+            }
+
             return group;
         });
 
-        // Dark/Light Mode Toggle
+        // Theme Toggle Logic
         const toggleBtn = document.getElementById('theme-toggle');
         toggleBtn.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
