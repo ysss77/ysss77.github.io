@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yousif Al Gailani | Portfolio Ingénieur IA & Développeur Software</title>
+    <title>Yousif Al Gailani | Ingénieur IA & Développeur Software</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- FontAwesome Icons -->
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Tailwind Configuration with Earthy Palette -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -23,8 +24,8 @@
                 extend: {
                     colors: {
                         earthBg: '#171614',
-                        earthCard: '#22201d',
-                        earthCardHover: '#2a2723',
+                        earthCard: '#201e1a',
+                        earthCardHover: '#282521',
                         earthBorder: '#524639',
                         earthTaupe: '#9f958a',
                         earthStone: '#918574',
@@ -35,7 +36,7 @@
                         mono: ['Fira Code', 'monospace'],
                     },
                     boxShadow: {
-                        'earth-glow': '0 0 30px rgba(82, 70, 57, 0.25)',
+                        'earth-glow': '0 0 25px rgba(82, 70, 57, 0.25)',
                         'earth-card': '0 10px 30px -10px rgba(0, 0, 0, 0.6)',
                     }
                 }
@@ -44,7 +45,7 @@
     </script>
 
     <style>
-        /* Modern Earthy Scrollbar */
+        /* Custom Earthy Scrollbar */
         ::-webkit-scrollbar {
             width: 7px;
         }
@@ -59,9 +60,9 @@
             background: #9f958a;
         }
 
-        /* Glassmorphism Earthy Panels */
+        /* Earthy Glass Panels & Cards */
         .earth-panel {
-            background: rgba(34, 32, 29, 0.85);
+            background: rgba(32, 30, 26, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid #524639;
@@ -72,7 +73,7 @@
         }
 
         .earth-card {
-            background: rgba(42, 39, 35, 0.7);
+            background: rgba(40, 37, 33, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(82, 70, 57, 0.6);
         }
@@ -97,10 +98,10 @@
 </head>
 <body class="bg-earthBg text-earthLight font-sans antialiased selection:bg-earthBorder selection:text-earthLight relative min-h-screen overflow-x-hidden bg-earth-grid">
 
-    <!-- Interactive Canvas Particle Background -->
+    <!-- Canvas Particle Background -->
     <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-35"></canvas>
 
-    <!-- Ambient Glow Spot -->
+    <!-- Ambient Subtle Glow Spot -->
     <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-earthBorder/20 rounded-full filter blur-[150px] pointer-events-none z-0"></div>
 
     <!-- Notification Toast -->
@@ -120,11 +121,11 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-sm tracking-wide text-earthLight group-hover:text-earthTaupe transition-colors">Yousif Al Gailani</span>
-                    <span class="text-[10px] font-mono text-earthStone uppercase tracking-wider">Ingénieur IA & Software</span>
+                    <span class="text-[10px] font-mono text-earthStone uppercase tracking-wider">Master IA (Univ. Lille) & Software</span>
                 </div>
             </a>
 
-            <!-- Desktop Navigation -->
+            <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex items-center space-x-1 font-mono text-xs text-earthTaupe">
                 <a href="#about" class="px-3.5 py-2 rounded-lg hover:text-earthLight hover:bg-earthCardHover transition-all">01. // À PROPOS</a>
                 <a href="#skills" class="px-3.5 py-2 rounded-lg hover:text-earthLight hover:bg-earthCardHover transition-all">02. // COMPÉTENCES</a>
@@ -141,7 +142,7 @@
                 </button>
             </div>
 
-            <!-- Mobile Toggle -->
+            <!-- Mobile Toggle Button -->
             <button id="mobileMenuBtn" class="md:hidden text-earthTaupe hover:text-earthLight p-2 focus:outline-none">
                 <i class="fas fa-bars text-lg"></i>
             </button>
@@ -167,19 +168,19 @@
         <section id="hero" class="min-h-[75vh] flex flex-col justify-center relative">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Hero Left Info -->
+                <!-- Hero Left Column -->
                 <div class="lg:col-span-7 space-y-6">
                     
                     <!-- Status Badge -->
-                    <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full earth-card border border-earthBorder text-xs font-mono text-earthTaupe">
+                    <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full earth-card border border-earthBorder text-xs font-mono text-earthTaupe shadow-earth-glow">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-earthTaupe opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-earthTaupe"></span>
                         </span>
-                        <span>Disponible pour Projets & Opportunités IA / Dev</span>
+                        <span>Diplômé Master IA — En recherche d'opportunités (CDI / Projets)</span>
                     </div>
 
-                    <!-- Main Headline & Dynamic Typing Title -->
+                    <!-- Main Headline & Dynamic Typing Subtitle -->
                     <div class="space-y-3">
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-earthLight leading-tight">
                             Bonjour, je suis <span class="gradient-heading block mt-1">Yousif Al Gailani</span>
@@ -191,12 +192,12 @@
                         </div>
                     </div>
 
-                    <!-- Intro Paragraph -->
+                    <!-- Intro Summary -->
                     <p class="text-earthTaupe text-sm sm:text-base leading-relaxed max-w-xl">
-                        Étudiant en <button onclick="openSourceModal('artois')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthLight">Licence d'Informatique</strong> <i class="fas fa-info-circle text-[10px] text-earthTaupe"></i></button> à l'Université d'Artois (Lens), spécialisé en développement <button onclick="openSourceModal('python')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthTaupe">Python (Expert)</strong> <i class="fas fa-info-circle text-[10px]"></i></button>, <button onclick="openSourceModal('cpp')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthLight">C & C++</strong> <i class="fas fa-info-circle text-[10px] text-earthTaupe"></i></button> et <button onclick="openSourceModal('unity')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthLight">C# Unity</strong> <i class="fas fa-info-circle text-[10px] text-earthTaupe"></i></button>. Futur étudiant en <button onclick="openSourceModal('lille')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthTaupe transition-all text-xs font-mono"><strong class="text-earthLight">Master ML & IA</strong> <i class="fas fa-info-circle text-[10px]"></i></button> à l'Université de Lille.
+                        Diplômé du <button onclick="openSourceModal('lille')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthLight">Master IA & Machine Learning</strong> <i class="fas fa-graduation-cap text-[10px] text-earthTaupe"></i></button> de l'Université de Lille. Ingénieur spécialisé en <button onclick="openSourceModal('python')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthTaupe">Python Expert</strong> <i class="fas fa-info-circle text-[10px]"></i></button>, <button onclick="openSourceModal('cpp')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthLight">C / C++</strong> <i class="fas fa-info-circle text-[10px] text-earthTaupe"></i></button> et <button onclick="openSourceModal('unity')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-earthCard border border-earthBorder text-earthLight hover:border-earthTaupe transition-all text-xs font-mono"><strong class="text-earthLight">C# Unity</strong> <i class="fas fa-info-circle text-[10px] text-earthTaupe"></i></button>, prêt à relever vos défis technologiques.
                     </p>
 
-                    <!-- Contact & Location Badges -->
+                    <!-- Contact Quick Badges -->
                     <div class="flex flex-wrap gap-2.5 font-mono text-xs text-earthLight">
                         <span class="earth-card px-3 py-1.5 rounded-lg flex items-center space-x-2 border border-earthBorder">
                             <i class="fas fa-location-dot text-earthTaupe"></i>
@@ -225,46 +226,46 @@
                     </div>
                 </div>
 
-                <!-- Hero Right Profile Card with Integrated profile.jpg -->
+                <!-- Hero Right Profile Card with profile.jpg -->
                 <div class="lg:col-span-5">
                     <div class="relative mx-auto max-w-sm">
                         <div class="earth-panel rounded-3xl p-6 space-y-6 border border-earthBorder shadow-earth-card relative overflow-hidden">
                             
-                            <!-- Profile Picture -->
+                            <!-- Profile Picture & Info -->
                             <div class="flex items-center space-x-4">
                                 <div class="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-earthBorder shadow-earth-glow bg-earthCard shrink-0">
                                     <img src="profile.jpg" 
                                          alt="Yousif Al Gailani" 
-                                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/22201d/e0d9d3?text=Yousif+AG';" 
+                                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/201e1a/e0d9d3?text=Yousif+AG';" 
                                          class="w-full h-full object-cover object-center">
                                 </div>
                                 <div class="space-y-1">
                                     <h3 class="font-bold text-earthLight text-base">Yousif Al Gailani</h3>
-                                    <p class="text-xs font-mono text-earthTaupe">Développeur & Futur MLOps</p>
-                                    <p class="text-[11px] text-earthStone">Univ. d'Artois / Univ. Lille</p>
+                                    <p class="text-xs font-mono text-earthTaupe">Diplômé Master IA & ML</p>
+                                    <p class="text-[11px] text-earthStone">Université de Lille (2031)</p>
                                 </div>
                             </div>
 
-                            <!-- Terminal Config Widget -->
+                            <!-- Terminal Code Widget -->
                             <div class="bg-earthBg/90 rounded-2xl p-4 font-mono text-xs space-y-1.5 border border-earthBorder text-earthLight">
                                 <div class="text-earthStone text-[10px] mb-2 flex items-center justify-between border-b border-earthBorder pb-1.5">
                                     <span>yousif_profile.py</span>
                                     <span class="w-2 h-2 rounded-full bg-earthTaupe"></span>
                                 </div>
-                                <div><span class="text-earthTaupe">status</span> = <span class="text-earthLight">"Licence Info (Lens)"</span></div>
-                                <div><span class="text-earthTaupe">target</span> = <span class="text-earthLight">"Master ML & IA (Lille)"</span></div>
-                                <div><span class="text-earthTaupe">expertise</span> = [<span class="text-earthStone">"Python"</span>, <span class="text-earthStone">"C/C++"</span>, <span class="text-earthStone">"Unity"</span>]</div>
+                                <div><span class="text-earthTaupe">diplome</span> = <span class="text-earthLight">"Master IA (Univ. Lille)"</span></div>
+                                <div><span class="text-earthTaupe">statut</span> = <span class="text-earthLight">"En Recherche Active (CDI)"</span></div>
+                                <div><span class="text-earthTaupe">langages</span> = [<span class="text-earthStone">"Python"</span>, <span class="text-earthStone">"C/C++"</span>, <span class="text-earthStone">"C#"</span>]</div>
                             </div>
 
-                            <!-- Quick Stats Counter -->
+                            <!-- Stats Counter Grid -->
                             <div class="grid grid-cols-2 gap-3 pt-1 text-center">
                                 <div class="earth-card p-3 rounded-2xl border border-earthBorder">
                                     <div class="text-2xl font-bold font-mono text-earthLight" data-counter="98">0%</div>
                                     <div class="text-[10px] font-mono text-earthStone mt-0.5">Maîtrise Python</div>
                                 </div>
                                 <div class="earth-card p-3 rounded-2xl border border-earthBorder">
-                                    <div class="text-2xl font-bold font-mono text-earthTaupe" data-counter="4">0</div>
-                                    <div class="text-[10px] font-mono text-earthStone mt-0.5">Langages Maîtrisés</div>
+                                    <div class="text-2xl font-bold font-mono text-earthTaupe" data-counter="5">0</div>
+                                    <div class="text-[10px] font-mono text-earthStone mt-0.5">Ans de Spécialisation</div>
                                 </div>
                             </div>
 
@@ -275,12 +276,12 @@
             </div>
         </section>
 
-        <!-- À PROPOS SECTION -->
+        <!-- À PROPOS SECTION (Exact Requested Text) -->
         <section id="about" class="space-y-8">
             <div class="earth-panel rounded-3xl p-8 sm:p-12 space-y-8 border border-earthBorder relative overflow-hidden">
                 <div class="space-y-2">
                     <div class="inline-flex items-center space-x-2 font-mono text-xs text-earthTaupe uppercase tracking-widest">
-                        <span>// Présentation Générale</span>
+                        <span>// Présentation Professionnelle</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-earthLight tracking-tight">
                         À Propos de <span class="gradient-heading">Moi</span>
@@ -288,48 +289,56 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-8 space-y-4 text-earthLight text-sm sm:text-base leading-relaxed">
+                    <div class="lg:col-span-8 space-y-5 text-earthLight text-sm sm:text-base leading-relaxed">
                         <p>
-                            Passionné par l'informatique algorithmique et la conception de logiciels optimisés, je suis actuellement étudiant en <strong>Licence d'Informatique à la Faculté des Sciences de l'Université d'Artois (Lens)</strong>.
-                            <button onclick="openSourceModal('artois')" class="ml-1.5 px-2.5 py-1 rounded-lg bg-earthCard hover:bg-earthCardHover border border-earthBorder text-earthTaupe text-xs font-mono transition-all inline-flex items-center space-x-1">
-                                <i class="fas fa-university text-[10px]"></i>
-                                <span>Voir Univ. Artois</span>
-                            </button>
+                            Diplômé du Master Informatique, parcours Intelligence artificielle (Machine Learning) de l’Université de Lille, je mets mes compétences en développement et en intelligence artificielle au service de projets concrets. Je maîtrise Python, C, C++ et C#, et j’aime transformer des problèmes complexes en solutions fiables, efficaces et bien conçues.
                         </p>
                         <p>
-                            Orienté vers l'ingénierie système et l'intelligence artificielle, je possède un niveau <strong>expert en Python</strong> ainsi qu'une maîtrise solide des langages <strong>C, C++ et C#</strong>. Mon objectif académique est d'intégrer le <strong>Master Machine Learning & IA à l'Université de Lille</strong> afin de concevoir des architectures d'apprentissage profond et distribué.
-                            <button onclick="openSourceModal('lille')" class="ml-1.5 px-2.5 py-1 rounded-lg bg-earthCard hover:bg-earthCardHover border border-earthBorder text-earthTaupe text-xs font-mono transition-all inline-flex items-center space-x-1">
-                                <i class="fas fa-graduation-cap text-[10px]"></i>
-                                <span>Voir Univ. Lille</span>
-                            </button>
+                            Mon parcours m’a permis d’explorer plusieurs domaines : j’ai développé une application de suivi sportif en Python, conçu un jeu vidéo avec Unity et C#, et analysé des données e-commerce liées à Amazon et Cdiscount avec Jungle Scout. Ces projets témoignent de ma capacité à apprendre rapidement, à travailler en autonomie et à mener une idée jusqu’à sa réalisation.
                         </p>
                         <p>
-                            En parallèle, je mène des projets indépendants stimulants : développement d'une application de suivi sportif, création de jeux vidéo sur <strong>Unity Engine</strong> et analyse de données e-commerce (Jungle Scout, Amazon, Cdiscount).
-                            <button onclick="openSourceModal('junglescout')" class="ml-1.5 px-2.5 py-1 rounded-lg bg-earthCard hover:bg-earthCardHover border border-earthBorder text-earthLight text-xs font-mono transition-all inline-flex items-center space-x-1">
-                                <i class="fas fa-chart-line text-[10px] text-earthTaupe"></i>
-                                <span>Outils Data</span>
-                            </button>
+                            Rigoureux, curieux et motivé, je souhaite rejoindre une équipe où je pourrai contribuer activement à des projets ambitieux en développement logiciel, en intelligence artificielle ou en ingénierie système,
                         </p>
+
+                        <!-- Source Badges -->
+                        <div class="pt-2 flex flex-wrap gap-2">
+                            <button onclick="openSourceModal('lille')" class="px-3 py-1.5 rounded-lg bg-earthCard hover:bg-earthCardHover border border-earthBorder text-earthTaupe text-xs font-mono transition-all inline-flex items-center space-x-1.5">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Master IA Univ. Lille</span>
+                            </button>
+                            <button onclick="openSourceModal('python')" class="px-3 py-1.5 rounded-lg bg-earthCard hover:bg-earthCardHover border border-earthBorder text-earthLight text-xs font-mono transition-all inline-flex items-center space-x-1.5">
+                                <i class="fab fa-python text-earthTaupe"></i>
+                                <span>Python Expert</span>
+                            </button>
+                            <button onclick="openSourceModal('unity')" class="px-3 py-1.5 rounded-lg bg-earthCard hover:bg-earthCardHover border border-earthBorder text-earthLight text-xs font-mono transition-all inline-flex items-center space-x-1.5">
+                                <i class="fas fa-gamepad text-earthTaupe"></i>
+                                <span>Unity Engine & C#</span>
+                            </button>
+                            <button onclick="openSourceModal('junglescout')" class="px-3 py-1.5 rounded-lg bg-earthCard hover:bg-earthCardHover border border-earthBorder text-earthLight text-xs font-mono transition-all inline-flex items-center space-x-1.5">
+                                <i class="fas fa-chart-line text-earthTaupe"></i>
+                                <span>Jungle Scout Data</span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="lg:col-span-4 space-y-4">
                         <div class="earth-card p-5 rounded-2xl border border-earthBorder space-y-2">
                             <div class="flex items-center space-x-2 text-earthTaupe">
                                 <i class="fas fa-bullseye text-base"></i>
-                                <span class="font-mono text-xs font-semibold uppercase">Objectif Principal</span>
+                                <span class="font-mono text-xs font-semibold uppercase">Ambition Professionnelle</span>
                             </div>
                             <p class="text-xs text-earthStone leading-relaxed">
-                                Devenir Ingénieur Machine Learning & MLOps spécialisé dans les grands modèles distribués.
+                                Intégrer une équipe innovante en tant qu'Ingénieur IA, Développeur Software ou Ingénieur Système MLOps.
                             </p>
                         </div>
 
                         <div class="earth-card p-5 rounded-2xl border border-earthBorder space-y-2">
                             <div class="flex items-center space-x-2 text-earthTaupe">
-                                <i class="fas fa-dumbbell text-base"></i>
-                                <span class="font-mono text-xs font-semibold uppercase">Discipline & Rigueur</span>
+                                <i class="fas fa-check-double text-base"></i>
+                                <span class="font-mono text-xs font-semibold uppercase">Atouts Majeurs</span>
                             </div>
                             <p class="text-xs text-earthStone leading-relaxed">
-                                Pratique assidue du sport et de la musculation, transposant la consistance au développement logiciel.
+                                Autonomie éprouvée, capacité d'apprentissage rapide, rigueur algorithmique et polyvalence multi-langages.
                             </p>
                         </div>
                     </div>
@@ -341,7 +350,7 @@
         <section id="skills" class="space-y-10">
             <div class="space-y-2">
                 <div class="inline-flex items-center space-x-2 font-mono text-xs text-earthTaupe uppercase tracking-widest">
-                    <span>// Stack Technique</span>
+                    <span>// Stack Technique & Expertise</span>
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-bold text-earthLight tracking-tight">
                     Compétences & <span class="gradient-heading">Savoir-Faire</span>
@@ -351,7 +360,7 @@
             <!-- Skills Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-                <!-- Skill 1: Python -->
+                <!-- Skill 1: Python (Expert) -->
                 <div class="earth-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-2px] transition-all group">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -368,7 +377,7 @@
                         </button>
                     </div>
                     <p class="text-xs text-earthStone leading-relaxed">
-                        Conception d'algorithmes complexes, manipulation de données, scripts d'automation et bases solides pour le Machine Learning.
+                        Machine Learning (PyTorch/TensorFlow), scripts avancés, automatisation, traitement de données et architecture logicielle propre.
                     </p>
                     <div class="w-full bg-earthBg rounded-full h-1.5 overflow-hidden">
                         <div class="bg-earthTaupe h-1.5 rounded-full" style="width: 95%;"></div>
@@ -392,7 +401,7 @@
                         </button>
                     </div>
                     <p class="text-xs text-earthStone leading-relaxed">
-                        Gestion manuelle de la mémoire, pointeurs, structures de données bas niveau et optimisation des temps de calcul.
+                        Gestion mémoire explicite, pointeurs, structures de données bas niveau, performance numérique et optimisation.
                     </p>
                     <div class="w-full bg-earthBg rounded-full h-1.5 overflow-hidden">
                         <div class="bg-earthTaupe h-1.5 rounded-full" style="width: 88%;"></div>
@@ -408,7 +417,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-earthLight text-base">C# & Unity Engine</h3>
-                                <span class="text-[10px] font-mono text-earthTaupe uppercase font-semibold">JEUX VIDÉO MOBILE</span>
+                                <span class="text-[10px] font-mono text-earthTaupe uppercase font-semibold">DEVELOPPEMENT INTERACTIF</span>
                             </div>
                         </div>
                         <button onclick="openSourceModal('unity')" class="p-2 rounded-lg bg-earthCard hover:bg-earthCardHover text-earthStone hover:text-earthLight transition-all text-xs" title="Informations">
@@ -416,7 +425,7 @@
                         </button>
                     </div>
                     <p class="text-xs text-earthStone leading-relaxed">
-                        Programmation de mécaniques de jeu interactives, moteurs de physique, contrôles tactiles et optimisation mobile.
+                        Conception de mécaniques de jeu interactives, moteurs de physique temps réel, interfaces utilisateur et optimisation mobile.
                     </p>
                     <div class="w-full bg-earthBg rounded-full h-1.5 overflow-hidden">
                         <div class="bg-earthTaupe h-1.5 rounded-full" style="width: 85%;"></div>
@@ -432,13 +441,13 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-earthLight text-base">Résolution de Problèmes</h3>
-                                <span class="text-[10px] font-mono text-earthTaupe uppercase font-semibold">LOGIQUE & COMPLEXITÉ</span>
+                                <span class="text-[10px] font-mono text-earthTaupe uppercase font-semibold">LOGIQUE & IA</span>
                             </div>
                         </div>
                         <span class="text-lg font-bold font-mono text-earthLight">92%</span>
                     </div>
                     <p class="text-xs text-earthStone leading-relaxed">
-                        Analyse d'algorithmes, décomposition logique de problèmes complexes et optimisation spatiale/temporelle.
+                        Capacité à décomposer des problèmes complexes en algorithmes fiables, efficaces et bien conçus.
                     </p>
                     <div class="w-full bg-earthBg rounded-full h-1.5 overflow-hidden">
                         <div class="bg-earthTaupe h-1.5 rounded-full" style="width: 92%;"></div>
@@ -454,20 +463,20 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-earthLight text-base">Gestion de Projet</h3>
-                                <span class="text-[10px] font-mono text-earthTaupe uppercase font-semibold">ORGANISATION</span>
+                                <span class="text-[10px] font-mono text-earthTaupe uppercase font-semibold">AUTONOMIE & RIGUEUR</span>
                             </div>
                         </div>
                         <span class="text-lg font-bold font-mono text-earthLight">86%</span>
                     </div>
                     <p class="text-xs text-earthStone leading-relaxed">
-                        Cahier des charges, suivi des étapes de développement, contrôle de version Git et méthodologie de travail autonome.
+                        Conduite autonome de projets de la phase de conception jusqu'à la livraison finale, gestion des versions avec Git.
                     </p>
                     <div class="w-full bg-earthBg rounded-full h-1.5 overflow-hidden">
                         <div class="bg-earthTaupe h-1.5 rounded-full" style="width: 86%;"></div>
                     </div>
                 </div>
 
-                <!-- Skill 6: E-Commerce & Data -->
+                <!-- Skill 6: E-Commerce Data -->
                 <div class="earth-panel rounded-2xl p-6 space-y-4 hover:translate-y-[-2px] transition-all group">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -475,7 +484,7 @@
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-earthLight text-base">E-Commerce & Data</h3>
+                                <h3 class="font-semibold text-earthLight text-base">Data & E-Commerce</h3>
                                 <span class="text-[10px] font-mono text-earthTaupe uppercase font-semibold">JUNGLE SCOUT & AMZ</span>
                             </div>
                         </div>
@@ -484,7 +493,7 @@
                         </button>
                     </div>
                     <p class="text-xs text-earthStone leading-relaxed">
-                        Analyse de marché via Jungle Scout, sourcing de produits à fort potentiel, revente Amazon/Cdiscount et affiliation.
+                        Analyse de marché, extraction de données e-commerce (Amazon, Cdiscount, TikTok Shop) pour décision stratégique.
                     </p>
                     <div class="w-full bg-earthBg rounded-full h-1.5 overflow-hidden">
                         <div class="bg-earthTaupe h-1.5 rounded-full" style="width: 84%;"></div>
@@ -499,7 +508,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div class="space-y-2">
                     <div class="inline-flex items-center space-x-2 font-mono text-xs text-earthTaupe uppercase tracking-widest">
-                        <span>// Portfolio</span>
+                        <span>// Réalisations Concrètes</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-earthLight tracking-tight">
                         Projets et <span class="gradient-heading">Réalisations</span>
@@ -523,7 +532,7 @@
                     <div class="p-6 space-y-4">
                         <div class="flex items-center justify-between">
                             <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-semibold bg-earthCard text-earthTaupe border border-earthBorder">
-                                LOGICIEL & SPORT
+                                LOGICIEL & PYTHON
                             </span>
                             <i class="fas fa-dumbbell text-earthStone group-hover:text-earthTaupe transition-colors"></i>
                         </div>
@@ -533,24 +542,24 @@
                         </h3>
 
                         <p class="text-earthStone text-xs leading-relaxed">
-                            Programmation d'un outil guidant les performances physiques. Conçu pour le suivi des charges d'entraînement, du volume et de la progression au fil des semaines.
+                            Programmation d'un outil guidant régulièrement les performances physiques et sportives. Conçu en Python avec suivi de la charge d'entraînement, du volume et de la progression au fil des semaines.
                         </p>
 
                         <ul class="space-y-2 text-xs text-earthLight">
                             <li class="flex items-start space-x-2">
                                 <i class="fas fa-check text-earthTaupe text-[10px] mt-1"></i>
-                                <span>Suivi complet de la charge d'entraînement, du poids et de la masse.</span>
+                                <span>Suivi de la charge d'entraînement, du volume et de la progression.</span>
                             </li>
                             <li class="flex items-start space-x-2">
                                 <i class="fas fa-check text-earthTaupe text-[10px] mt-1"></i>
-                                <span>Liaison aux différentes salles de sport commerciales françaises.</span>
+                                <span>Liaison aux différentes salles de sport commerciales françaises pour un meilleur suivi.</span>
                             </li>
                         </ul>
                     </div>
 
                     <div class="p-6 pt-0 space-y-4">
                         <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-earthStone">
-                            <span class="px-2 py-0.5 rounded bg-earthCard border border-earthBorder">Python</span>
+                            <span class="px-2 py-0.5 rounded bg-earthCard border border-earthBorder">Python (Expert)</span>
                             <span class="px-2 py-0.5 rounded bg-earthCard border border-earthBorder">Data Analytics</span>
                         </div>
                         
@@ -572,21 +581,21 @@
                         </div>
 
                         <h3 class="text-lg font-bold text-earthLight group-hover:text-earthTaupe transition-colors">
-                            Développement de Jeu Vidéo Mobile
+                            Développement Indépendant de Jeu Vidéo Mobile
                         </h3>
 
                         <p class="text-earthStone text-xs leading-relaxed">
-                            Projet indépendant de création de jeu vidéo mobile. Programmation complète des mécaniques de jeu interactives avec C# sous le moteur Unity Engine.
+                            Conception et développement d'un jeu vidéo mobile interactif. Programmation intégrale des mécaniques de gameplay avec C# sous Unity Engine.
                         </p>
 
                         <ul class="space-y-2 text-xs text-earthLight">
                             <li class="flex items-start space-x-2">
                                 <i class="fas fa-check text-earthTaupe text-[10px] mt-1"></i>
-                                <span>Mécaniques fluides et contrôles tactiles sous C#.</span>
+                                <span>Programmation de mécaniques de jeu interactives avec C#.</span>
                             </li>
                             <li class="flex items-start space-x-2">
                                 <i class="fas fa-check text-earthTaupe text-[10px] mt-1"></i>
-                                <span>Optimisation des performances et gestion de la mémoire.</span>
+                                <span>Moteur Unity Engine, contrôles tactiles et optimisation des performances.</span>
                             </li>
                         </ul>
                     </div>
@@ -619,17 +628,17 @@
                         </h3>
 
                         <p class="text-earthStone text-xs leading-relaxed">
-                            Activité d'analyse de marché et de revente. Recherche de produits gagnants via l'outil Jungle Scout et exploitation sur Amazon & Cdiscount.
+                            Activité d'analyse de marché et de revente. Recherche de produits gagnants sur Amazon avec l'utilisation de l'outil Jungle Scout et revente sur Amazon et Cdiscount.
                         </p>
 
                         <ul class="space-y-2 text-xs text-earthLight">
                             <li class="flex items-start space-x-2">
                                 <i class="fas fa-check text-earthTaupe text-[10px] mt-1"></i>
-                                <span>Recherche de produits gagnants avec Jungle Scout.</span>
+                                <span>Recherche de produits gagnants sur Amazon via l'outil Jungle Scout.</span>
                             </li>
                             <li class="flex items-start space-x-2">
                                 <i class="fas fa-check text-earthTaupe text-[10px] mt-1"></i>
-                                <span>Revente sur Amazon, Cdiscount & TikTok Shop.</span>
+                                <span>Activité de revente sur les plateformes Amazon, Cdiscount et TikTok Shop.</span>
                             </li>
                         </ul>
                     </div>
@@ -655,10 +664,10 @@
         <section id="education" class="space-y-10">
             <div class="space-y-2">
                 <div class="inline-flex items-center space-x-2 font-mono text-xs text-earthTaupe uppercase tracking-widest">
-                    <span>// Parcours Académique</span>
+                    <span>// Formation & Diplômes Obtenus</span>
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-bold text-earthLight tracking-tight">
-                    Formation & <span class="gradient-heading">Cursus</span>
+                    Parcours & <span class="gradient-heading">Diplômes</span>
                 </h2>
             </div>
 
@@ -667,27 +676,27 @@
 
                 <!-- Step 1: Master ML & IA -->
                 <div class="relative group">
-                    <div class="absolute -left-[21px] sm:-left-[25px] top-1.5 w-4 h-4 rounded-full bg-earthBg border-2 border-earthTaupe flex items-center justify-center">
+                    <div class="absolute -left-[21px] sm:-left-[25px] top-1.5 w-4 h-4 rounded-full bg-earthBg border-2 border-earthTaupe flex items-center justify-center shadow-earth-glow">
                         <div class="w-1.5 h-1.5 rounded-full bg-earthTaupe"></div>
                     </div>
 
                     <div class="earth-panel rounded-2xl p-6 space-y-3 border border-earthBorder hover:border-earthTaupe transition-all">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-earthBorder pb-3">
                             <div>
-                                <span class="text-[10px] font-mono text-earthTaupe font-semibold uppercase">SPÉCIALISATION IA & MLOPS</span>
+                                <span class="text-[10px] font-mono text-earthTaupe font-bold uppercase">DIPLÔME OBTENU (BAC+5)</span>
                                 <h3 class="text-lg font-bold text-earthLight mt-0.5">Master Informatique - Machine Learning & IA</h3>
                                 <div class="flex items-center space-x-2 mt-0.5">
-                                    <p class="text-earthLight text-xs">Université de Lille</p>
-                                    <button onclick="openSourceModal('lille')" class="px-2 py-0.5 rounded bg-earthCard text-earthTaupe text-[10px] font-mono">Source</button>
+                                    <p class="text-earthLight text-xs font-medium">Université de Lille</p>
+                                    <button onclick="openSourceModal('lille')" class="px-2 py-0.5 rounded bg-earthCard text-earthTaupe text-[10px] font-mono hover:text-earthLight">Source & Info</button>
                                 </div>
                             </div>
-                            <span class="px-3 py-1 rounded-lg bg-earthCard text-earthLight font-mono text-xs font-semibold w-fit">
+                            <span class="px-3 py-1 rounded-lg bg-earthCard text-earthLight font-mono text-xs font-bold w-fit border border-earthBorder">
                                 2029 — 2031
                             </span>
                         </div>
 
-                        <p class="text-earthStone text-xs leading-relaxed">
-                            Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.
+                        <p class="text-earthLight text-xs leading-relaxed">
+                            Spécialisation poussée en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.
                         </p>
                     </div>
                 </div>
@@ -701,20 +710,20 @@
                     <div class="earth-panel rounded-2xl p-6 space-y-3 border border-earthBorder hover:border-earthTaupe transition-all">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-earthBorder pb-3">
                             <div>
-                                <span class="text-[10px] font-mono text-earthStone font-semibold uppercase">FORMATION EN COURS</span>
+                                <span class="text-[10px] font-mono text-earthStone font-bold uppercase">DIPLÔME OBTENU (BAC+3)</span>
                                 <h3 class="text-lg font-bold text-earthLight mt-0.5">Licence d'Informatique</h3>
                                 <div class="flex items-center space-x-2 mt-0.5">
-                                    <p class="text-earthLight text-xs">Université d'Artois — Faculté des Sciences, Lens</p>
-                                    <button onclick="openSourceModal('artois')" class="px-2 py-0.5 rounded bg-earthCard text-earthTaupe text-[10px] font-mono">Source</button>
+                                    <p class="text-earthLight text-xs font-medium">Université d'Artois - Lens</p>
+                                    <button onclick="openSourceModal('artois')" class="px-2 py-0.5 rounded bg-earthCard text-earthTaupe text-[10px] font-mono hover:text-earthLight">Source & Info</button>
                                 </div>
                             </div>
-                            <span class="px-3 py-1 rounded-lg bg-earthCard text-earthLight font-mono text-xs font-semibold w-fit">
+                            <span class="px-3 py-1 rounded-lg bg-earthCard text-earthLight font-mono text-xs font-bold w-fit border border-earthBorder">
                                 2026 — 2029
                             </span>
                         </div>
 
-                        <p class="text-earthStone text-xs leading-relaxed">
-                            Fondations solides en algorithmique, programmation (C, Python), structures de données et logique mathématique.
+                        <p class="text-earthLight text-xs leading-relaxed">
+                            Fondations solides en algorithmique et programmation (C, Python, structures de données et génie logiciel).
                         </p>
                     </div>
                 </div>
@@ -722,91 +731,154 @@
             </div>
         </section>
 
-        <!-- CONTACT SECTION -->
+        <!-- LANGUES & CENTRES D'INTÉRÊT SECTION -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Langues Column -->
+            <div class="lg:col-span-6 earth-panel rounded-2xl p-6 space-y-5 border border-earthBorder">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center space-x-2 font-mono text-xs text-earthTaupe uppercase">
+                        <span><i class="fas fa-globe"></i> Langues Pratiquées</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-earthLight">Compétences Linguistiques</h3>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="earth-card p-3.5 rounded-xl space-y-1.5 border border-earthBorder">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-earthLight text-xs">Français</span>
+                            <span class="text-[10px] font-mono text-earthTaupe">Courant / Natif</span>
+                        </div>
+                        <div class="w-full bg-earthBg rounded-full h-1">
+                            <div class="bg-earthTaupe h-1 rounded-full w-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="earth-card p-3.5 rounded-xl space-y-1.5 border border-earthBorder">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-earthLight text-xs">Anglais</span>
+                            <span class="text-[10px] font-mono text-earthTaupe">Courant / Pro</span>
+                        </div>
+                        <div class="w-full bg-earthBg rounded-full h-1">
+                            <div class="bg-earthTaupe h-1 rounded-full w-[90%]"></div>
+                        </div>
+                    </div>
+
+                    <div class="earth-card p-3.5 rounded-xl space-y-1.5 border border-earthBorder">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-earthLight text-xs">Arabe</span>
+                            <span class="text-[10px] font-mono text-earthTaupe">Natif</span>
+                        </div>
+                        <div class="w-full bg-earthBg rounded-full h-1">
+                            <div class="bg-earthTaupe h-1 rounded-full w-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="earth-card p-3.5 rounded-xl space-y-1.5 border border-earthBorder">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-earthLight text-xs">Espagnol</span>
+                            <span class="text-[10px] font-mono text-earthStone">Conversationnel</span>
+                        </div>
+                        <div class="w-full bg-earthBg rounded-full h-1">
+                            <div class="bg-earthStone h-1 rounded-full w-[65%]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centres d'Intérêt Column -->
+            <div class="lg:col-span-6 earth-panel rounded-2xl p-6 space-y-5 border border-earthBorder">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center space-x-2 font-mono text-xs text-earthTaupe uppercase">
+                        <span><i class="fas fa-heart"></i> Passions & Discipline</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-earthLight">Centres d'Intérêt</h3>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="earth-card p-4 rounded-xl text-center space-y-2 border border-earthBorder">
+                        <i class="fas fa-dumbbell text-earthTaupe text-xl"></i>
+                        <h4 class="font-bold text-earthLight text-xs">Sport</h4>
+                        <p class="text-[10px] text-earthStone">Musculation & Suivi du volume</p>
+                    </div>
+
+                    <div class="earth-card p-4 rounded-xl text-center space-y-2 border border-earthBorder">
+                        <i class="fas fa-gamepad text-earthTaupe text-xl"></i>
+                        <h4 class="font-bold text-earthLight text-xs">Jeux Vidéo</h4>
+                        <p class="text-[10px] text-earthStone">Game Design & Unity</p>
+                    </div>
+
+                    <div class="earth-card p-4 rounded-xl text-center space-y-2 border border-earthBorder">
+                        <i class="fas fa-laptop-code text-earthTaupe text-xl"></i>
+                        <h4 class="font-bold text-earthLight text-xs">Codage & IA</h4>
+                        <p class="text-[10px] text-earthStone">Veille & Projets Perso</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CONTACT SECTION (ONLY DIRECT CONTACT CARDS - NO MESSAGE FORM) -->
         <section id="contact" class="space-y-10">
             <div class="text-center space-y-2 max-w-xl mx-auto">
                 <div class="inline-flex items-center space-x-2 font-mono text-xs text-earthTaupe uppercase tracking-widest">
-                    <span>// Prendre Contact</span>
+                    <span>// Prise de Contact Directe</span>
                 </div>
                 <h2 class="text-3xl font-bold text-earthLight tracking-tight">
-                    Discutons de vos <span class="gradient-heading">Projets</span>
+                    Me <span class="gradient-heading">Contacter</span>
                 </h2>
                 <p class="text-earthStone text-xs sm:text-sm">
-                    N'hésitez pas à me contacter pour toute opportunité, projet ou échange technique.
+                    Disponible immédiatement pour un entretien, une opportunité en CDI ou un projet d'ingénierie logicielle / IA.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-
-                <!-- Contact Info Cards -->
-                <div class="lg:col-span-5 space-y-3">
-                    
-                    <div class="earth-panel p-5 rounded-2xl flex items-center justify-between border border-earthBorder hover:border-earthTaupe transition-all">
-                        <div class="flex items-center space-x-3.5">
-                            <div class="w-10 h-10 rounded-xl bg-earthCard flex items-center justify-center text-earthTaupe text-lg">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-mono text-earthStone uppercase">EMAIL</span>
-                                <h4 class="font-bold text-earthLight text-xs sm:text-sm">yousifalgailani62@gmail.com</h4>
-                            </div>
-                        </div>
-                        <button onclick="copyToClipboard('yousifalgailani62@gmail.com', 'Email copié !')" class="p-2 rounded-lg bg-earthCard text-earthStone hover:text-earthLight text-xs">
-                            <i class="fas fa-copy"></i>
-                        </button>
+            <!-- Direct Contact Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                
+                <!-- Email Card -->
+                <div class="earth-panel p-6 rounded-2xl flex flex-col items-center text-center space-y-4 border border-earthBorder hover:border-earthTaupe transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-earthCard flex items-center justify-center text-earthTaupe text-xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope"></i>
                     </div>
-
-                    <div class="earth-panel p-5 rounded-2xl flex items-center justify-between border border-earthBorder hover:border-earthTaupe transition-all">
-                        <div class="flex items-center space-x-3.5">
-                            <div class="w-10 h-10 rounded-xl bg-earthCard flex items-center justify-center text-earthTaupe text-lg">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-mono text-earthStone uppercase">TÉLÉPHONE</span>
-                                <h4 class="font-bold text-earthLight text-xs sm:text-sm">+33 6 67 47 26 86</h4>
-                            </div>
-                        </div>
-                        <button onclick="copyToClipboard('+33667472686', 'Téléphone copié !')" class="p-2 rounded-lg bg-earthCard text-earthStone hover:text-earthLight text-xs">
-                            <i class="fas fa-copy"></i>
-                        </button>
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-mono text-earthStone uppercase tracking-wider">ADRESSE EMAIL</span>
+                        <h4 class="font-bold text-earthLight text-xs sm:text-sm break-all">yousifalgailani62@gmail.com</h4>
                     </div>
-
-                    <div class="earth-panel p-5 rounded-2xl flex items-center space-x-3.5 border border-earthBorder">
-                        <div class="w-10 h-10 rounded-xl bg-earthCard flex items-center justify-center text-earthTaupe text-lg">
-                            <i class="fas fa-location-dot"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-mono text-earthStone uppercase">LOCALISATION</span>
-                            <h4 class="font-bold text-earthLight text-xs sm:text-sm">Lens, 62300, France</h4>
-                        </div>
-                    </div>
-
+                    <button onclick="copyToClipboard('yousifalgailani62@gmail.com', 'Email copié dans le presse-papier !')" class="w-full py-2.5 rounded-xl bg-earthCard hover:bg-earthBorder text-earthLight font-mono text-xs transition-all border border-earthBorder flex items-center justify-center space-x-2">
+                        <i class="fas fa-copy text-earthTaupe"></i>
+                        <span>COPIER EMAIL</span>
+                    </button>
                 </div>
 
-                <!-- Form -->
-                <div class="lg:col-span-7">
-                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="earth-panel p-6 rounded-2xl space-y-4 border border-earthBorder">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="space-y-1.5">
-                                <label class="text-[10px] font-mono text-earthTaupe uppercase">NOM *</label>
-                                <input type="text" required placeholder="Votre nom" class="w-full px-3.5 py-2.5 rounded-xl bg-earthBg border border-earthBorder text-earthLight text-xs focus:outline-none focus:border-earthTaupe transition-all">
-                            </div>
-                            <div class="space-y-1.5">
-                                <label class="text-[10px] font-mono text-earthTaupe uppercase">EMAIL *</label>
-                                <input type="email" required placeholder="votre@email.com" class="w-full px-3.5 py-2.5 rounded-xl bg-earthBg border border-earthBorder text-earthLight text-xs focus:outline-none focus:border-earthTaupe transition-all">
-                            </div>
-                        </div>
+                <!-- Phone Card -->
+                <div class="earth-panel p-6 rounded-2xl flex flex-col items-center text-center space-y-4 border border-earthBorder hover:border-earthTaupe transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-earthCard flex items-center justify-center text-earthTaupe text-xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-mono text-earthStone uppercase tracking-wider">TÉLÉPHONE DIRECT</span>
+                        <h4 class="font-bold text-earthLight text-sm sm:text-base">+33 6 67 47 26 86</h4>
+                    </div>
+                    <button onclick="copyToClipboard('+33667472686', 'Numéro copié dans le presse-papier !')" class="w-full py-2.5 rounded-xl bg-earthCard hover:bg-earthBorder text-earthLight font-mono text-xs transition-all border border-earthBorder flex items-center justify-center space-x-2">
+                        <i class="fas fa-copy text-earthTaupe"></i>
+                        <span>COPIER NUMÉRO</span>
+                    </button>
+                </div>
 
-                        <div class="space-y-1.5">
-                            <label class="text-[10px] font-mono text-earthTaupe uppercase">MESSAGE *</label>
-                            <textarea required rows="4" placeholder="Bonjour Yousif..." class="w-full px-3.5 py-2.5 rounded-xl bg-earthBg border border-earthBorder text-earthLight text-xs focus:outline-none focus:border-earthTaupe transition-all resize-none"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full py-3 rounded-xl bg-earthBorder hover:bg-earthCardHover text-earthLight font-semibold text-xs tracking-wide transition-all border border-earthBorder shadow-earth-glow flex items-center justify-center space-x-2">
-                            <i class="fas fa-paper-plane text-xs"></i>
-                            <span>ENVOYER LE MESSAGE</span>
-                        </button>
-                    </form>
+                <!-- Location Card -->
+                <div class="earth-panel p-6 rounded-2xl flex flex-col items-center text-center space-y-4 border border-earthBorder hover:border-earthTaupe transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-earthCard flex items-center justify-center text-earthTaupe text-xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-mono text-earthStone uppercase tracking-wider">LOCALISATION</span>
+                        <h4 class="font-bold text-earthLight text-xs sm:text-sm">Lens, 62300, France</h4>
+                        <p class="text-[10px] text-earthStone">Région Lilloise & Hauts-de-France</p>
+                    </div>
+                    <a href="mailto:yousifalgailani62@gmail.com" class="w-full py-2.5 rounded-xl bg-earthBorder hover:bg-earthCardHover text-earthLight font-mono text-xs transition-all border border-earthBorder flex items-center justify-center space-x-2">
+                        <i class="fas fa-paper-plane text-earthTaupe"></i>
+                        <span>ENVOYER UN MAIL</span>
+                    </a>
                 </div>
 
             </div>
@@ -819,7 +891,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-earthStone">
             <div class="flex items-center space-x-2">
                 <span class="text-earthTaupe">&lt;YAG/&gt;</span>
-                <span>© <span id="currentYear"></span> Yousif Al Gailani.</span>
+                <span>© <span id="currentYear"></span> Yousif Al Gailani. Master IA Lille.</span>
             </div>
             <a href="#hero" class="text-earthTaupe hover:underline flex items-center space-x-1">
                 <span>Haut de page</span>
@@ -894,7 +966,7 @@
     <div id="resumeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
         <div class="bg-earthBg border border-earthBorder w-full max-w-4xl rounded-2xl p-6 sm:p-8 space-y-5 shadow-2xl max-h-[92vh] flex flex-col">
             
-            <!-- Modal Header with Direct Action Links -->
+            <!-- Modal Header -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-earthBorder pb-4 gap-3 shrink-0">
                 <div class="flex items-center space-x-3">
                     <i class="fas fa-file-pdf text-earthTaupe text-2xl"></i>
@@ -922,11 +994,11 @@
             <div class="overflow-y-auto pr-1 text-earthLight text-xs font-sans space-y-6">
                 
                 <!-- Direct PDF Iframe Preview -->
-                <div class="w-full h-[55vh] rounded-xl overflow-hidden border border-earthBorder bg-earthCard relative">
+                <div class="w-full h-[45vh] sm:h-[50vh] rounded-xl overflow-hidden border border-earthBorder bg-earthCard relative">
                     <iframe src="CV_Yousif_Al_Gailani.pdf" class="w-full h-full border-none" title="CV Yousif Al Gailani PDF">
                         <div class="p-6 text-center space-y-3">
                             <p class="text-earthStone">Votre navigateur ne prend pas en charge la prévisualisation PDF directe.</p>
-                            <a href="CV_Yousif_Al_Gailani.pdf" target="_blank" class="px-4 py-2 bg-earthBorder text-earthLight rounded-xl inline-block font-mono text-xs">Cliquer ici pour ouvrir CV_Yousif_Al_Gailani.pdf</a>
+                            <a href="CV_Yousif_Al_Gailani.pdf" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-earthBorder text-earthLight rounded-xl inline-block font-mono text-xs">Cliquer ici pour ouvrir CV_Yousif_Al_Gailani.pdf</a>
                         </div>
                     </iframe>
                 </div>
@@ -1014,7 +1086,7 @@
                             <div class="space-y-3">
                                 <div>
                                     <div class="flex justify-between items-baseline">
-                                        <h5 class="font-bold text-earthLight text-xs">Master Informatique - ML & IA</h5>
+                                        <h5 class="font-bold text-earthLight text-xs">Master Informatique - ML & IA (Diplôme Obtenu)</h5>
                                         <span class="font-mono text-[11px] text-earthTaupe font-semibold">2029-2031</span>
                                     </div>
                                     <p class="text-earthStone">Université de Lille</p>
@@ -1023,7 +1095,7 @@
 
                                 <div>
                                     <div class="flex justify-between items-baseline">
-                                        <h5 class="font-bold text-earthLight text-xs">Licence d'Informatique</h5>
+                                        <h5 class="font-bold text-earthLight text-xs">Licence d'Informatique (Diplôme Obtenu)</h5>
                                         <span class="font-mono text-[11px] text-earthTaupe font-semibold">2026-2029</span>
                                     </div>
                                     <p class="text-earthStone">Université d'Artois - Lens</p>
@@ -1034,7 +1106,7 @@
 
                         <!-- EXPÉRIENCE PROFESSIONNELLE -->
                         <div class="space-y-3">
-                            <h4 class="font-mono font-bold text-earthTaupe text-xs uppercase tracking-wider border-b border-earthBorder pb-1">EXPÉRIENCE PROFESSIONNELLE</h4>
+                            <h4 class="font-mono font-bold text-earthTaupe text-xs uppercase tracking-wider border-b border-earthBorder pb-1">EXPÉRIENCE PROFESSIONNELLE & PROJETS</h4>
                             
                             <div class="space-y-4">
                                 <div>
@@ -1086,12 +1158,12 @@
             });
         });
 
-        // Dynamic typing subtitles
+        // Dynamic typing subtitles for Post-Master graduate
         const typedStrings = [
-            "Étudiant en Informatique",
+            "Diplômé Master Machine Learning & IA",
+            "Ingénieur IA & Développeur Software",
             "Développeur Python (Expert)",
             "Développeur C / C++ / C#",
-            "Futur Ingénieur Machine Learning & IA",
             "Créateur de Jeux Vidéo Unity"
         ];
         let stringIndex = 0;
@@ -1257,43 +1329,43 @@
         const projectDetails = {
             sports: {
                 title: "Application de Suivi Sportif & Performance",
-                category: "LOGICIEL & ANALYSE DE DONNÉES",
+                category: "LOGICIEL & PYTHON EXPERT",
                 icon: "fas fa-dumbbell",
                 content: `
-                    <p>Développement d'un outil guidant régulièrement les performances sportives et physiques. Conçu pour analyser la charge d'entraînement, le volume hebdomadaire et la progression musculaire.</p>
+                    <p>Programmation d'un outil guidant régulièrement les performances physiques et sportives. Conçu en Python avec algorithmes d'analyse de la charge d'entraînement, du volume et de la progression au fil des semaines.</p>
                     <div class="bg-earthBg p-3 rounded-xl border border-earthBorder space-y-1.5 font-mono text-xs">
-                        <div class="text-earthTaupe font-bold">// FONCTIONNALITÉS</div>
-                        <div>• Enregistrement des charges et répétitions par exercice.</div>
-                        <div>• Liaison avec les réseaux de salles de sport françaises.</div>
-                        <div>• Suivi de la progression et de la surcharge progressive.</div>
+                        <div class="text-earthTaupe font-bold">// DÉTAILS TECHNIQUES</div>
+                        <div>• Suivi de la charge d'entraînement, du volume et de la progression.</div>
+                        <div>• Liaison aux différentes salles de sport commerciales françaises.</div>
+                        <div>• Visualisation claire des métriques de surcharge progressive.</div>
                     </div>
                 `
             },
             game: {
-                title: "Développement de Jeu Vidéo Mobile (Unity / C#)",
-                category: "JEUX VIDÉO",
+                title: "Développement Indépendant de Jeu Vidéo Mobile (Unity / C#)",
+                category: "JEUX VIDÉO & C#",
                 icon: "fas fa-gamepad",
                 content: `
-                    <p>Création autonome d'un jeu vidéo mobile sous Unity Engine. Programmation complète des mécaniques de jeu interactives sous C#.</p>
+                    <p>Conception et programmation de mécaniques de jeu interactives avec C# sous le moteur de jeu Unity Engine pour plateformes mobiles.</p>
                     <div class="bg-earthBg p-3 rounded-xl border border-earthBorder space-y-1.5 font-mono text-xs">
-                        <div class="text-earthTaupe font-bold">// ARCHITECTURE</div>
-                        <div>• Scripts C# modulaires et gestion de la physique.</div>
-                        <div>• Prise en charge des entrées tactiles et contrôles mobiles.</div>
-                        <div>• Optimisation des performances pour un framerate élevé.</div>
+                        <div class="text-earthTaupe font-bold">// DÉTAILS TECHNIQUES</div>
+                        <div>• Scripts C# modulaires pour la physique et les interactions.</div>
+                        <div>• Prise en charge fluide des contrôles tactiles.</div>
+                        <div>• Gestion rigoureuse de la mémoire et des performances mobiles.</div>
                     </div>
                 `
             },
             ecom: {
                 title: "E-Commerce & Recherche de Produits Jungle Scout",
-                category: "DATA & MARKETPLACE",
+                category: "DATA MINING & MARKETPLACE",
                 icon: "fas fa-shopping-cart",
                 content: `
-                    <p>Analyse de marché e-commerce axée sur le sourcing de produits gagnants via l'outil de data mining Jungle Scout et l'exploitation sur Amazon & Cdiscount.</p>
+                    <p>Analyse de marché scientifique et revente e-commerce. Sourcing de produits gagnants sur Amazon avec l'utilisation de l'outil Jungle Scout et revente sur Amazon et Cdiscount.</p>
                     <div class="bg-earthBg p-3 rounded-xl border border-earthBorder space-y-1.5 font-mono text-xs">
-                        <div class="text-earthTaupe font-bold">// STRATÉGIE</div>
-                        <div>• Sourcing scientifique de produits à fort potentiel.</div>
-                        <div>• Gestion des boutiques Amazon Seller & Cdiscount.</div>
-                        <div>• Affiliation et canaux de conversion sur TikTok Shop.</div>
+                        <div class="text-earthTaupe font-bold">// DÉTAILS TECHNIQUES</div>
+                        <div>• Recherche de produits gagnants sur Amazon via Jungle Scout.</div>
+                        <div>• Activité de revente sur les plateformes Amazon et Cdiscount.</div>
+                        <div>• Stratégies de contenu et affiliation TikTok Shop.</div>
                     </div>
                 `
             }
@@ -1304,56 +1376,56 @@
                 title: "Python Language",
                 tag: "LANGAGE DE PROGRAMMATION",
                 icon: "fab fa-python",
-                desc: "Python est le langage standard de l'Intelligence Artificielle et du Machine Learning. Yousif possède un niveau expert en algorithmique et manipulation de données Python.",
+                desc: "Python est le langage de référence pour l'Intelligence Artificielle, le Machine Learning et l'ingénierie logicielle. Yousif possède un niveau expert en Python.",
                 url: "https://www.python.org/"
             },
             cpp: {
                 title: "C / C++ Standard",
                 tag: "PROGRAMMATION SYSTÈME",
                 icon: "fas fa-code",
-                desc: "C et C++ sont utilisés pour la programmation bas niveau, la gestion de mémoire et les calculs haute performance.",
+                desc: "Langages de bas niveau utilisés pour la gestion de la mémoire, l'optimisation des ressources et le calcul haute performance.",
                 url: "https://isocpp.org/"
             },
             unity: {
                 title: "Unity Engine & C#",
                 tag: "MOTEUR DE JEU VIDÉO",
                 icon: "fas fa-gamepad",
-                desc: "Moteur vidéo 2D/3D temps réel permettant de développer des jeux mobiles immersifs sous C#.",
+                desc: "Moteur de jeu vidéo 2D/3D temps réel permettant de programmer des mécaniques interactives sous langage C#.",
                 url: "https://unity.com/fr"
             },
             junglescout: {
                 title: "Jungle Scout Analytics",
                 tag: "DATA MINING E-COMMERCE",
                 icon: "fas fa-chart-line",
-                desc: "Plateforme d'analyse de données pour identifier les tendances de marché et produits à forte demande sur Amazon.",
+                desc: "Outil d'analyse de données de marché permettant d'identifier les opportunités et produits gagnants sur Amazon.",
                 url: "https://www.junglescout.com/"
             },
             artois: {
-                title: "Université d'Artois (Lens)",
-                tag: "ENSEIGNEMENT SUPÉRIEUR",
+                title: "Université d'Artois - Lens",
+                tag: "ENSEIGNEMENT SUPÉRIEUR (LICENCE)",
                 icon: "fas fa-university",
-                desc: "Faculté des Sciences de Lens dispensant la Licence d'Informatique avec des bases solides en algorithmique et structures de données.",
+                desc: "Faculté des Sciences de Lens ayant dispensé la Licence d'Informatique avec des bases solides en algorithmique et programmation (C, Python).",
                 url: "https://www.univ-artois.fr/"
             },
             lille: {
                 title: "Université de Lille",
-                tag: "SPÉCIALISATION IA & ML",
+                tag: "MASTER ML & IA (DIPLÔME OBTENU)",
                 icon: "fas fa-graduation-cap",
-                desc: "Université d'excellence proposant le Master Informatique spécialisé en Machine Learning, Deep Learning et MLOps.",
+                desc: "Université d'excellence dispensant le Master Informatique parcours Intelligence Artificielle (Machine Learning, Deep Learning, MLOps, Transformers).",
                 url: "https://www.univ-lille.fr/"
             },
             amazon: {
                 title: "Amazon Seller Central",
-                tag: "MARKETPLACE",
+                tag: "MARKETPLACE E-COMMERCE",
                 icon: "fab fa-amazon",
-                desc: "Plateforme de gestion e-commerce pour la distribution de produits.",
+                desc: "Plateforme de distribution et de gestion e-commerce sur Amazon.",
                 url: "https://sell.amazon.fr/"
             },
             cdiscount: {
                 title: "Cdiscount Marketplace",
-                tag: "E-COMMERCE",
+                tag: "E-COMMERCE FR",
                 icon: "fas fa-shopping-bag",
-                desc: "Marketplace française majeure pour la vente en ligne de catalogue de produits.",
+                desc: "Plateforme de distribution e-commerce sur la marketplace Cdiscount.",
                 url: "https://www.cdiscount.com/"
             }
         };
@@ -1431,12 +1503,6 @@
                 toast.classList.remove('translate-y-0', 'opacity-100');
                 toast.classList.add('translate-y-20', 'opacity-0');
             }, 3000);
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            showToast("Message transmis avec succès !");
-            document.getElementById('contactForm').reset();
         }
     </script>
 </body>
