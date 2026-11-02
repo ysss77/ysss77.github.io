@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yousif Al Gailani - CV / Portfolio 3D</title>
+    <title>Yousif Al Gailani — Portfolio & CV</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,205 +13,233 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            blue: '#0284c7',
-                            dark: '#0f172a',
-                            card: '#1e293b'
+                        apple: {
+                            bg: '#000000',
+                            card: '#161617',
+                            cardLight: '#ffffff',
+                            text: '#f5f5f7',
+                            textSecondary: '#86868b',
+                            blue: '#0071e3',
+                            border: '#333336'
                         }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Three.js Library -->
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- AOS Scroll Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        .canvas-3d-container {
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .apple-glass {
+            background: rgba(22, 22, 23, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .canvas-container {
             width: 100%;
-            height: 220px;
+            height: 200px;
             position: relative;
-            cursor: pointer;
         }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .apple-card {
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease;
         }
-        .light .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+
+        .apple-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .apple-glass { background: none; border: none; }
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen font-sans transition-colors duration-300 light:bg-slate-50 light:text-slate-800">
+<body class="selection:bg-apple-blue selection:text-white">
 
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 glass-card px-6 py-4 flex justify-between items-center shadow-lg">
-        <div class="text-xl font-bold tracking-wider">
-            YOUSIF <span class="text-sky-400 font-extrabold drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]">AL GAILANI</span>
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 apple-glass border-b border-apple-border/50 px-6 py-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div class="text-lg font-semibold tracking-tight">
+                Yousif <span class="text-white font-bold">Al Gailani</span>
+            </div>
+            <div class="flex items-center gap-4 no-print">
+                <button onclick="window.print()" class="px-4 py-1.5 bg-apple-blue hover:bg-blue-600 text-white rounded-full text-xs font-medium transition-all duration-300">
+                    Imprimer PDF
+                </button>
+            </div>
         </div>
-        <div class="flex items-center gap-4">
-            <button id="theme-toggle" class="p-2 rounded-full bg-slate-800 text-yellow-400 hover:bg-slate-700 transition">
-                <i class="fa-solid fa-sun text-lg"></i>
-            </button>
-            <button onclick="window.print()" class="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-medium text-sm transition flex items-center gap-2">
-                <i class="fa-solid fa-print"></i> Imprimer PDF
-            </button>
-        </div>
-    </header>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-6 py-10 space-y-16">
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
 
         <!-- Hero Section -->
-        <section class="text-center space-y-4" data-aos="fade-down">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-                YOUSIF <span class="text-sky-400 drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]">AL GAILANI</span>
+        <section class="text-center space-y-6 pt-8 gsap-hero">
+            <p class="text-apple-blue text-sm font-semibold tracking-wide uppercase">Curriculum Vitae</p>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white">
+                Yousif <span class="text-slate-300">Al Gailani</span>
             </h1>
-            <p class="text-xl text-slate-400 font-medium">Étudiant en Informatique & Futur Ingénieur IA / ML</p>
-            
-            <div class="flex flex-wrap justify-center gap-6 pt-4 text-sm text-slate-300">
-                <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-sky-400"></i> Lens, 62300</span>
-                <a href="tel:+33667472686" class="flex items-center gap-2 hover:text-sky-400 transition"><i class="fa-solid fa-phone text-sky-400"></i> +33 6 67 47 26 86</a>
-                <a href="mailto:yousifalgailani62@gmail.com" class="flex items-center gap-2 hover:text-sky-400 transition"><i class="fa-solid fa-envelope text-sky-400"></i> yousifalgailani62@gmail.com</a>
+            <p class="text-xl md:text-2xl text-apple-textSecondary max-w-2xl mx-auto font-normal">
+                Étudiant en Informatique & Futur Ingénieur en Intelligence Artificielle.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-6 pt-4 text-sm text-apple-textSecondary">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-apple-blue"></i> Lens, France</span>
+                <a href="tel:+33667472686" class="flex items-center gap-2 hover:text-white transition-colors"><i class="fa-solid fa-phone text-apple-blue"></i> +33 6 67 47 26 86</a>
+                <a href="mailto:yousifalgailani62@gmail.com" class="flex items-center gap-2 hover:text-white transition-colors"><i class="fa-solid fa-envelope text-apple-blue"></i> yousifalgailani62@gmail.com</a>
             </div>
         </section>
 
-        <!-- Competences & Langues Grid -->
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Compétences -->
-            <section class="glass-card p-6 rounded-2xl shadow-xl" data-aos="fade-right">
-                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 border-b border-slate-700 pb-3">
-                    <i class="fa-solid fa-code text-sky-400"></i> Compétences Techniques
+        <!-- Compétences & Profil -->
+        <section class="grid md:grid-cols-2 gap-8 gsap-section">
+            <!-- Compétences Techniques -->
+            <div class="apple-glass apple-card p-8 rounded-3xl space-y-6">
+                <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-3">
+                    <i class="fa-solid fa-code text-apple-blue text-xl"></i> Compétences
                 </h2>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block text-lg">Python</span>
-                        <span class="text-xs text-slate-400">Expertise avancée, scripting, structures de données.</span>
+                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                        <span class="block text-white font-semibold mb-1">Python</span>
+                        <span class="text-xs text-apple-textSecondary">Niveau Expert & Scripting</span>
                     </div>
-                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block text-lg">Langage C & C++</span>
-                        <span class="text-xs text-slate-400">Programmation bas niveau, gestion mémoire, C# Unity.</span>
+                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                        <span class="block text-white font-semibold mb-1">C / C++</span>
+                        <span class="text-xs text-apple-textSecondary">Programmation Système</span>
                     </div>
-                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block text-lg">Résolution de Problèmes</span>
-                        <span class="text-xs text-slate-400">Analyse algorithmique et logique complexe.</span>
+                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                        <span class="block text-white font-semibold mb-1">Algorithmique</span>
+                        <span class="text-xs text-apple-textSecondary">Résolution de Problèmes</span>
                     </div>
-                    <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                        <span class="font-bold text-sky-400 block text-lg">Gestion de Projet</span>
-                        <span class="text-xs text-slate-400">Conception globale, déploiement et optimisation.</span>
+                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                        <span class="block text-white font-semibold mb-1">Gestion de Projet</span>
+                        <span class="text-xs text-apple-textSecondary">Organisation & Suivi</span>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Langues & Intérêts -->
-            <section class="glass-card p-6 rounded-2xl shadow-xl space-y-6" data-aos="fade-left">
+            <!-- Langues & Centres d'Intérêt -->
+            <div class="apple-glass apple-card p-8 rounded-3xl space-y-8">
                 <div>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-3 border-b border-slate-700 pb-3">
-                        <i class="fa-solid fa-language text-sky-400"></i> Langues
+                    <h2 class="text-2xl font-bold text-white tracking-tight mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-language text-apple-blue text-xl"></i> Langues
                     </h2>
-                    <div class="flex gap-4">
-                        <span class="px-4 py-2 bg-sky-950 text-sky-300 rounded-xl text-sm font-medium border border-sky-800">Anglais</span>
-                        <span class="px-4 py-2 bg-sky-950 text-sky-300 rounded-xl text-sm font-medium border border-sky-800">Espagnol</span>
-                        <span class="px-4 py-2 bg-sky-950 text-sky-300 rounded-xl text-sm font-medium border border-sky-800">Arabe</span>
+                    <div class="flex gap-3">
+                        <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-white">Anglais</span>
+                        <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-white">Espagnol</span>
+                        <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-white">Arabe</span>
                     </div>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-3 border-b border-slate-700 pb-3">
-                        <i class="fa-solid fa-icons text-sky-400"></i> Centres d'Intérêt
+                    <h2 class="text-2xl font-bold text-white tracking-tight mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-compass text-apple-blue text-xl"></i> Centres d'Intérêt
                     </h2>
-                    <div class="flex gap-6 text-slate-300">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-dumbbell text-sky-400"></i> Sport</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-gamepad text-sky-400"></i> Jeux Vidéo</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-laptop-code text-sky-400"></i> Codage</span>
+                    <div class="flex gap-6 text-apple-textSecondary text-sm">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-dumbbell text-apple-blue"></i> Sport</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-gamepad text-apple-blue"></i> Jeux Vidéo</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-terminal text-apple-blue"></i> Codage</span>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <!-- Projets & Expériences Section -->
-        <section class="space-y-8">
-            <h2 class="text-3xl font-bold border-b border-slate-700 pb-4 flex items-center gap-3" data-aos="fade-up">
-                <i class="fa-solid fa-briefcase text-sky-400"></i> Expérience Professionnelle & Projets
+        <!-- Expériences & Projets -->
+        <section class="space-y-8 gsap-section">
+            <h2 class="text-3xl font-bold tracking-tight text-white border-b border-apple-border/50 pb-4">
+                Expériences & Projets
             </h2>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Card 1: Suivi Sportif -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-sky-500/50 transition duration-300 shadow-xl" data-aos="zoom-in" data-aos-delay="100">
+                <!-- Project 1: Sport -->
+                <div class="apple-glass apple-card p-6 rounded-3xl flex flex-col justify-between space-y-4">
                     <div>
-                        <div id="canvas-dumbbell" class="canvas-3d-container"></div>
-                        <h3 class="text-xl font-bold text-sky-400 mb-2">App de Suivi Sportif</h3>
-                        <p class="text-sm text-slate-300 mb-3">Développement d'un outil complet de guidage et suivi régulier des performances sportives.</p>
-                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
-                            <li>Liaison aux réseaux de salles de sport françaises.</li>
-                            <li>Suivi précis de la charge d'entraînement et du volume.</li>
-                            <li>Analyse de progression au fil des semaines.</li>
+                        <div id="canvas-dumbbell" class="canvas-container"></div>
+                        <h3 class="text-xl font-bold text-white mt-2">Suivi Sportif</h3>
+                        <p class="text-sm text-apple-textSecondary mt-2">Application de guidage régulier et d'analyse des performances sportives.</p>
+                        <ul class="text-xs text-apple-textSecondary mt-4 space-y-2 list-disc list-inside">
+                            <li>Liaison aux réseaux de salles françaises.</li>
+                            <li>Suivi du volume et de la charge.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Card 2: Jeu Vidéo Mobile -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-sky-500/50 transition duration-300 shadow-xl" data-aos="zoom-in" data-aos-delay="200">
+                <!-- Project 2: Mobile Game -->
+                <div class="apple-glass apple-card p-6 rounded-3xl flex flex-col justify-between space-y-4">
                     <div>
-                        <div id="canvas-gamepad" class="canvas-3d-container"></div>
-                        <h3 class="text-xl font-bold text-sky-400 mb-2">Jeu Vidéo Mobile 3D</h3>
-                        <p class="text-sm text-slate-300 mb-3">Conception et développement indépendant d'un jeu vidéo interactif sur mobile.</p>
-                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
-                            <li>Programmation des mécaniques de jeu en C#.</li>
-                            <li>Moteur graphique Unity Engine.</li>
-                            <li>Optimisation des performances sur appareils mobiles.</li>
+                        <div id="canvas-gamepad" class="canvas-container"></div>
+                        <h3 class="text-xl font-bold text-white mt-2">Jeu Vidéo Mobile</h3>
+                        <p class="text-sm text-apple-textSecondary mt-2">Développement indépendant d'un jeu vidéo mobile interactif.</p>
+                        <ul class="text-xs text-apple-textSecondary mt-4 space-y-2 list-disc list-inside">
+                            <li>Mécaniques codées en C#.</li>
+                            <li>Développement sous Unity Engine.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Card 3: E-commerce -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-sky-500/50 transition duration-300 shadow-xl" data-aos="zoom-in" data-aos-delay="300">
+                <!-- Project 3: E-Commerce -->
+                <div class="apple-glass apple-card p-6 rounded-3xl flex flex-col justify-between space-y-4">
                     <div>
-                        <div id="canvas-box" class="canvas-3d-container"></div>
-                        <h3 class="text-xl font-bold text-sky-400 mb-2">E-Commerce & Produits</h3>
-                        <p class="text-sm text-slate-300 mb-3">Gestion complète d'activité de revente en ligne et analyse de marché.</p>
-                        <ul class="text-xs text-slate-400 space-y-2 list-disc list-inside">
-                            <li>Recherche de produits gagnants via Jungle Scout.</li>
-                            <li>Gestion des catalogues Amazon & Cdiscount.</li>
-                            <li>Stratégie de prix et gestion des stocks.</li>
+                        <div id="canvas-box" class="canvas-container"></div>
+                        <h3 class="text-xl font-bold text-white mt-2">E-Commerce</h3>
+                        <p class="text-sm text-apple-textSecondary mt-2">Analyse de marché et gestion d'activité commerciale en ligne.</p>
+                        <ul class="text-xs text-apple-textSecondary mt-4 space-y-2 list-disc list-inside">
+                            <li>Recherche via Jungle Scout.</li>
+                            <li>Revente Amazon & Cdiscount.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Formation Section -->
-        <section class="space-y-8" data-aos="fade-up">
-            <h2 class="text-3xl font-bold border-b border-slate-700 pb-4 flex items-center gap-3">
-                <i class="fa-solid fa-graduation-cap text-sky-400"></i> Formation
+        <!-- Formation -->
+        <section class="space-y-8 gsap-section">
+            <h2 class="text-3xl font-bold tracking-tight text-white border-b border-apple-border/50 pb-4">
+                Parcours Académique
             </h2>
 
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Master -->
-                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-4 items-center shadow-xl">
-                    <div id="canvas-brain" class="w-full md:w-48 h-40 flex-shrink-0"></div>
-                    <div>
-                        <span class="text-xs font-semibold text-sky-400 bg-sky-950 px-2 py-1 rounded">2029 - 2031</span>
-                        <h3 class="text-xl font-bold mt-2">Master Informatique - ML & IA</h3>
-                        <p class="text-sm text-slate-400 mb-2">Université de Lille</p>
-                        <p class="text-xs text-slate-300">Spécialisation poussée en Deep Learning, architecture Transformers, MLOps, apprentissage par renforcement et systèmes distribués.</p>
+                <div class="apple-glass apple-card p-8 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+                    <div id="canvas-brain" class="w-full md:w-40 h-36 flex-shrink-0"></div>
+                    <div class="space-y-2">
+                        <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider">2029 — 2031</span>
+                        <h3 class="text-xl font-bold text-white">Master Informatique - ML & IA</h3>
+                        <p class="text-sm text-apple-textSecondary">Université de Lille</p>
+                        <p class="text-xs text-apple-textSecondary pt-2">Specialisation en Deep Learning, Transformers, MLOps et apprentissage par renforcement.</p>
                     </div>
                 </div>
 
                 <!-- Licence -->
-                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-4 items-center shadow-xl">
-                    <div id="canvas-code" class="w-full md:w-48 h-40 flex-shrink-0"></div>
-                    <div>
-                        <span class="text-xs font-semibold text-sky-400 bg-sky-950 px-2 py-1 rounded">2026 - 2029</span>
-                        <h3 class="text-xl font-bold mt-2">Licence d'Informatique</h3>
-                        <p class="text-sm text-slate-400 mb-2">Université d'Artois - Lens</p>
-                        <p class="text-xs text-slate-300">Fondations théoriques et pratiques solides en algorithmique, programmation système (C) et développement haut niveau (Python).</p>
+                <div class="apple-glass apple-card p-8 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
+                    <div id="canvas-code" class="w-full md:w-40 h-36 flex-shrink-0"></div>
+                    <div class="space-y-2">
+                        <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider">2026 — 2029</span>
+                        <h3 class="text-xl font-bold text-white">Licence d'Informatique</h3>
+                        <p class="text-sm text-apple-textSecondary">Université d'Artois — Lens</p>
+                        <p class="text-xs text-apple-textSecondary pt-2">Fondations théoriques en algorithmique, structure de données, C et Python.</p>
                     </div>
                 </div>
             </div>
@@ -219,43 +248,58 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-8 text-xs text-slate-500 border-t border-slate-800">
-        © 2026 Yousif Al Gailani. Portfolio 3D interactif hébergé sur GitHub Pages.
+    <footer class="text-center py-12 text-xs text-apple-textSecondary border-t border-apple-border/50">
+        © 2026 Yousif Al Gailani. Designed with Apple Human Interface Guidelines.
     </footer>
 
-    <!-- Three.js 3D Interactive Models -->
+    <!-- Scripts GSAP & Three.js -->
     <script>
-        AOS.init({ duration: 800, once: true });
+        // GSAP Animations with Apple-like Smooth Transitions
+        gsap.registerPlugin(ScrollTrigger);
 
-        // Base setup for realistic reactive 3D models (no auto-spin, mouse reactive)
-        function setup3DModel(containerId, buildModelCallback) {
+        gsap.from(".gsap-hero", {
+            duration: 1.2,
+            y: 40,
+            opacity: 0,
+            ease: "power3.out"
+        });
+
+        gsap.utils.toArray(".gsap-section").forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 85%"
+                },
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power3.out"
+            });
+        });
+
+        // Three.js Interactive Setup
+        function initApple3DModel(containerId, buildCallback) {
             const container = document.getElementById(containerId);
             if (!container) return;
 
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            
+
             renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.shadowMap.enabled = true;
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             container.appendChild(renderer.domElement);
 
-            // Lighting setup
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
             scene.add(ambientLight);
 
-            const dirLight = new THREE.DirectionalLight(0x38bdf8, 2);
-            dirLight.position.set(5, 8, 5);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+            dirLight.position.set(5, 10, 7);
             scene.add(dirLight);
 
-            const pointLight = new THREE.PointLight(0x0284c7, 1.5, 10);
-            pointLight.position.set(-3, -2, 3);
-            scene.add(pointLight);
-
-            const modelGroup = buildModelCallback(scene);
+            const group = buildCallback(scene);
             camera.position.z = 5.5;
 
-            // Target rotation for smooth reactivity
             let targetRotX = 0;
             let targetRotY = 0;
 
@@ -263,9 +307,8 @@
                 const rect = container.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
                 const y = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
-
-                targetRotY = x * 0.6;
-                targetRotX = -y * 0.4;
+                targetRotY = x * 0.4;
+                targetRotX = -y * 0.3;
             });
 
             container.addEventListener('mouseleave', () => {
@@ -273,138 +316,75 @@
                 targetRotY = 0;
             });
 
-            function render() {
-                requestAnimationFrame(render);
-                // Smooth interpolation (lerp)
-                modelGroup.rotation.x += (targetRotX - modelGroup.rotation.x) * 0.08;
-                modelGroup.rotation.y += (targetRotY - modelGroup.rotation.y) * 0.08;
+            function animate() {
+                requestAnimationFrame(animate);
+                group.rotation.x += (targetRotX - group.rotation.x) * 0.05;
+                group.rotation.y += (targetRotY - group.rotation.y) * 0.05;
                 renderer.render(scene, camera);
             }
-            render();
+            animate();
         }
 
-        // 1. Detailed Dumbbell (Gym / Sport)
-        setup3DModel('canvas-dumbbell', () => {
+        // Dumbbell
+        initApple3DModel('canvas-dumbbell', () => {
             const group = new THREE.Group();
-            const metalMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.9, roughness: 0.2 });
-            const plateMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.5, roughness: 0.4 });
-            const ringMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.8, roughness: 0.2 });
-
-            // Knurled Bar
-            const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 32), metalMat);
+            const mat = new THREE.MeshStandardMaterial({ color: 0x86868b, metalness: 0.8, roughness: 0.2 });
+            const plateMat = new THREE.MeshStandardMaterial({ color: 0x333336, metalness: 0.5, roughness: 0.5 });
+            
+            const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.2, 32), mat);
             bar.rotation.z = Math.PI / 2;
             group.add(bar);
 
-            // Plates on both sides
-            [-0.7, -0.82, 0.7, 0.82].forEach((x, idx) => {
-                const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.65, 0.65, 0.1, 32), plateMat);
+            [-0.7, 0.7].forEach(x => {
+                const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 0.15, 32), plateMat);
                 plate.rotation.z = Math.PI / 2;
                 plate.position.x = x;
                 group.add(plate);
-
-                const ring = new THREE.Mesh(new THREE.TorusGeometry(0.66, 0.02, 16, 32), ringMat);
-                ring.rotation.y = Math.PI / 2;
-                ring.position.x = x;
-                group.add(ring);
             });
-
-            // Fasteners
-            [-0.92, 0.92].forEach(x => {
-                const lock = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.08, 16), ringMat);
-                lock.rotation.z = Math.PI / 2;
-                lock.position.x = x;
-                group.add(lock);
-            });
-
             return group;
         });
 
-        // 2. Pro Game Controller (Gaming / Unity)
-        setup3DModel('canvas-gamepad', () => {
+        // Controller
+        initApple3DModel('canvas-gamepad', () => {
             const group = new THREE.Group();
-            const bodyMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.3 });
-            const btnMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.5 });
-            const accentMat = new THREE.MeshStandardMaterial({ color: 0x0284c7 });
+            const mat = new THREE.MeshStandardMaterial({ color: 0x161617, roughness: 0.3 });
+            const btnMat = new THREE.MeshStandardMaterial({ color: 0x0071e3 });
 
-            // Main Body
-            const body = new THREE.Mesh(new THREE.BoxGeometry(2.2, 1.1, 0.4), bodyMat);
+            const body = new THREE.Mesh(new THREE.BoxGeometry(2, 1, 0.3), mat);
             group.add(body);
 
-            // Joysticks
-            [-0.6, 0.4].forEach((x, i) => {
-                const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.1, 0.3, 16), accentMat);
-                stick.position.set(x, i === 0 ? 0.1 : -0.2, 0.25);
-                group.add(stick);
-            });
-
-            // Action Buttons
-            const btn1 = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.1, 16), btnMat);
-            btn1.position.set(0.6, 0.2, 0.22);
-            group.add(btn1);
+            const btn = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.1, 16), btnMat);
+            btn.position.set(0.5, 0.1, 0.18);
+            group.add(btn);
 
             return group;
         });
 
-        // 3. Sealed Parcel / Box (E-Commerce)
-        setup3DModel('canvas-box', () => {
+        // Box
+        initApple3DModel('canvas-box', () => {
             const group = new THREE.Group();
-            const cardboardMat = new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.9 });
-            const tapeMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.3 });
-
-            const box = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.2, 1.2), cardboardMat);
+            const mat = new THREE.MeshStandardMaterial({ color: 0x86868b, roughness: 0.6 });
+            const box = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.2, 1.2), mat);
             group.add(box);
-
-            const tape = new THREE.Mesh(new THREE.BoxGeometry(1.62, 1.22, 0.2), tapeMat);
-            group.add(tape);
-
             return group;
         });
 
-        // 4. Neural Network / AI Brain (Master)
-        setup3DModel('canvas-brain', () => {
+        // Brain
+        initApple3DModel('canvas-brain', () => {
             const group = new THREE.Group();
-            const coreMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, wireframe: true });
-            const nodeMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.2 });
-
-            const sphere = new THREE.Mesh(new THREE.IcosahedronGeometry(1.1, 2), coreMat);
+            const mat = new THREE.MeshStandardMaterial({ color: 0x0071e3, wireframe: true });
+            const sphere = new THREE.Mesh(new THREE.IcosahedronGeometry(1.2, 2), mat);
             group.add(sphere);
-
-            for (let i = 0; i < 12; i++) {
-                const node = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8), nodeMat);
-                node.position.set(
-                    (Math.random() - 0.5) * 2,
-                    (Math.random() - 0.5) * 2,
-                    (Math.random() - 0.5) * 2
-                );
-                group.add(node);
-            }
-
             return group;
         });
 
-        // 5. Curved Code Screen (Licence)
-        setup3DModel('canvas-code', () => {
+        // Code
+        initApple3DModel('canvas-code', () => {
             const group = new THREE.Group();
-            const screenMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.2 });
-            const lineMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8 });
-
-            const screen = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.2, 0.1), screenMat);
+            const mat = new THREE.MeshStandardMaterial({ color: 0x333336, roughness: 0.3 });
+            const screen = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.2, 0.1), mat);
             group.add(screen);
-
-            for (let i = 0; i < 4; i++) {
-                const line = new THREE.Mesh(new THREE.BoxGeometry(1.2 - i * 0.2, 0.08, 0.02), lineMat);
-                line.position.set(-0.2 + (i * 0.05), 0.3 - (i * 0.2), 0.06);
-                group.add(line);
-            }
-
             return group;
-        });
-
-        // Theme Toggle Logic
-        const toggleBtn = document.getElementById('theme-toggle');
-        toggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            document.documentElement.classList.toggle('light');
         });
     </script>
 </body>
