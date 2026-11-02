@@ -213,7 +213,7 @@
 
                     <!-- Intro Text -->
                     <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
-                        Étudiant en <strong class="text-slate-200">Licence d'Informatique</strong> à l'Université d'Artois (Lens), spécialisé en développement <strong class="text-neon-cyan">Python (Expert)</strong>, <strong class="text-slate-200">C & C++</strong> et <strong class="text-slate-200">C# Unity</strong>. Futur étudiant en <strong class="text-neon-purple">Master ML & IA</strong> à l'Université de Lille pour concevoir des modèles d'intelligence artificielle de pointe.
+                        Étudiant en <button onclick="openSourceModal('artois')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-200 hover:border-neon-cyan hover:text-neon-cyan transition-all text-xs font-mono"><strong class="text-slate-200">Licence d'Informatique</strong> <i class="fas fa-info-circle text-[10px]"></i></button> à l'Université d'Artois (Lens), spécialisé en développement <button onclick="openSourceModal('python')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan hover:bg-neon-cyan/20 transition-all text-xs font-mono"><strong class="text-neon-cyan">Python (Expert)</strong> <i class="fas fa-info-circle text-[10px]"></i></button>, <button onclick="openSourceModal('cpp')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-200 hover:border-neon-purple hover:text-neon-purple transition-all text-xs font-mono"><strong class="text-slate-200">C & C++</strong> <i class="fas fa-info-circle text-[10px]"></i></button> et <button onclick="openSourceModal('unity')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-200 hover:border-emerald-400 hover:text-emerald-400 transition-all text-xs font-mono"><strong class="text-slate-200">C# Unity</strong> <i class="fas fa-info-circle text-[10px]"></i></button>. Futur étudiant en <button onclick="openSourceModal('lille')" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-neon-purple/10 border border-neon-purple/30 text-neon-purple hover:bg-neon-purple/20 transition-all text-xs font-mono"><strong class="text-neon-purple">Master ML & IA</strong> <i class="fas fa-info-circle text-[10px]"></i></button> à l'Université de Lille pour concevoir des modèles d'intelligence artificielle de pointe.
                     </p>
 
                     <!-- Contact & Location Badges -->
@@ -310,12 +310,24 @@
                     <div class="lg:col-span-8 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
                         <p>
                             Passionné par la programmation informatique et la résolution de problèmes complexes, je suis actuellement en <strong>Licence d'Informatique à la Faculté des Sciences de l'Université d'Artois (Lens)</strong>.
+                            <button onclick="openSourceModal('artois')" class="ml-2 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-neon-cyan text-xs font-mono transition-all inline-flex items-center space-x-1">
+                                <i class="fas fa-university text-[10px]"></i>
+                                <span>Source Univ. Artois</span>
+                            </button>
                         </p>
                         <p>
                             Mon parcours est orienté vers l'excellence technique : je maîtrise <strong>Python à niveau expert</strong>, ainsi que les langages de bas et haut niveau tels que le <strong>C, C++ et C#</strong>. Mon ambition académique est de poursuivre en <strong>Master Machine Learning & Intelligence Artificielle à l'Université de Lille</strong> afin d'approfondir le Deep Learning, les modèles Transformers, le Reinforcement Learning et l'MLOps.
+                            <button onclick="openSourceModal('lille')" class="ml-2 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-neon-purple text-xs font-mono transition-all inline-flex items-center space-x-1">
+                                <i class="fas fa-graduation-cap text-[10px]"></i>
+                                <span>Source Univ. Lille</span>
+                            </button>
                         </p>
                         <p>
                             En parallèle de mes études, j'allie rigueur algorithmique, esprit d'initiative avec la création d'applications de suivi sportif, le développement indépendant de jeux vidéo sur <strong>Unity Engine</strong> et l'analyse de données e-commerce (Jungle Scout, Amazon & Cdiscount).
+                            <button onclick="openSourceModal('junglescout')" class="ml-2 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-cyber-pink text-xs font-mono transition-all inline-flex items-center space-x-1">
+                                <i class="fas fa-chart-line text-[10px]"></i>
+                                <span>Source Jungle Scout</span>
+                            </button>
                         </p>
                     </div>
 
@@ -373,7 +385,9 @@
                                 <span class="text-xs font-mono text-neon-cyan">NIVEAU EXPERT</span>
                             </div>
                         </div>
-                        <span class="text-2xl font-extrabold font-mono text-slate-200">95%</span>
+                        <button onclick="openSourceModal('python')" class="p-2 rounded-lg bg-slate-800 hover:bg-neon-cyan/20 text-slate-400 hover:text-neon-cyan transition-all text-xs font-mono" title="Voir la source et l'explication">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
                         Conception d'algorithmes, traitement de données, scripts automatisés, bases pour le Machine Learning et architecture logicielle propre.
@@ -395,7 +409,9 @@
                                 <span class="text-xs font-mono text-neon-purple">AVANCÉ & SYSTÈME</span>
                             </div>
                         </div>
-                        <span class="text-2xl font-extrabold font-mono text-slate-200">88%</span>
+                        <button onclick="openSourceModal('cpp')" class="p-2 rounded-lg bg-slate-800 hover:bg-neon-purple/20 text-slate-400 hover:text-neon-purple transition-all text-xs font-mono" title="Voir la source et l'explication">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
                         Gestion mémoire, structures de données bas niveau, pointeurs, optimisation de vitesse de calcul et rigueur algorithmique.
@@ -417,7 +433,9 @@
                                 <span class="text-xs font-mono text-emerald-400">JEUX VIDÉO MOBILE</span>
                             </div>
                         </div>
-                        <span class="text-2xl font-extrabold font-mono text-slate-200">85%</span>
+                        <button onclick="openSourceModal('unity')" class="p-2 rounded-lg bg-slate-800 hover:bg-emerald-500/20 text-slate-400 hover:text-emerald-400 transition-all text-xs font-mono" title="Voir la source et l'explication">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
                         Programmation de mécaniques de jeu interactives, gestion de la physique, entrées tactiles et optimisation pour mobiles.
@@ -483,7 +501,9 @@
                                 <span class="text-xs font-mono text-cyber-pink">AMAZON & CDISCOUNT</span>
                             </div>
                         </div>
-                        <span class="text-2xl font-extrabold font-mono text-slate-200">84%</span>
+                        <button onclick="openSourceModal('junglescout')" class="p-2 rounded-lg bg-slate-800 hover:bg-cyber-pink/20 text-slate-400 hover:text-cyber-pink transition-all text-xs font-mono" title="Voir la source et l'explication">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
                         Recherche de produits gagnants via Jungle Scout, revente automatisée, calcul de marge et affiliation TikTok Shop.
@@ -652,10 +672,22 @@
 
                     <div class="p-6 pt-0 space-y-4">
                         <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-slate-300">
-                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Jungle Scout</span>
-                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Amazon Seller</span>
-                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">Cdiscount</span>
-                            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">TikTok Shop</span>
+                            <button onclick="openSourceModal('junglescout')" class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 hover:border-cyber-pink text-slate-300 hover:text-cyber-pink transition-all flex items-center space-x-1">
+                                <span>Jungle Scout</span>
+                                <i class="fas fa-external-link-alt text-[8px]"></i>
+                            </button>
+                            <button onclick="openSourceModal('amazon')" class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-300 hover:text-amber-400 transition-all flex items-center space-x-1">
+                                <span>Amazon Seller</span>
+                                <i class="fas fa-external-link-alt text-[8px]"></i>
+                            </button>
+                            <button onclick="openSourceModal('cdiscount')" class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 hover:border-blue-400 text-slate-300 hover:text-blue-400 transition-all flex items-center space-x-1">
+                                <span>Cdiscount</span>
+                                <i class="fas fa-external-link-alt text-[8px]"></i>
+                            </button>
+                            <button onclick="openSourceModal('tiktokshop')" class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 hover:border-pink-400 text-slate-300 hover:text-pink-400 transition-all flex items-center space-x-1">
+                                <span>TikTok Shop</span>
+                                <i class="fas fa-external-link-alt text-[8px]"></i>
+                            </button>
                         </div>
                         
                         <button onclick="openProjectModal('ecom')" class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-cyber-pink/10 text-slate-200 hover:text-cyber-pink border border-slate-700 hover:border-cyber-pink/40 text-xs font-mono font-semibold transition-all flex items-center justify-center space-x-2">
@@ -696,7 +728,13 @@
                             <div>
                                 <span class="text-xs font-mono text-neon-cyan font-bold tracking-wider">OBJECTIF MASTER (SPÉCIALISATION)</span>
                                 <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">Master Informatique - Machine Learning & IA</h3>
-                                <p class="text-slate-300 font-medium text-sm">Université de Lille</p>
+                                <div class="flex items-center space-x-2">
+                                    <p class="text-slate-300 font-medium text-sm">Université de Lille</p>
+                                    <button onclick="openSourceModal('lille')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-neon-purple/20 text-neon-purple border border-slate-700 text-[10px] font-mono transition-all flex items-center space-x-1">
+                                        <span>Source</span>
+                                        <i class="fas fa-external-link-alt text-[8px]"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="px-3 py-1.5 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan font-mono text-xs font-bold w-fit">
                                 2029 — 2031
@@ -747,7 +785,13 @@
                             <div>
                                 <span class="text-xs font-mono text-neon-purple font-bold tracking-wider">FORMATION EN COURS</span>
                                 <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">Licence d'Informatique</h3>
-                                <p class="text-slate-300 font-medium text-sm">Université d'Artois — Faculté des Sciences, Lens</p>
+                                <div class="flex items-center space-x-2">
+                                    <p class="text-slate-300 font-medium text-sm">Université d'Artois — Faculté des Sciences, Lens</p>
+                                    <button onclick="openSourceModal('artois')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-neon-cyan/20 text-neon-cyan border border-slate-700 text-[10px] font-mono transition-all flex items-center space-x-1">
+                                        <span>Source</span>
+                                        <i class="fas fa-external-link-alt text-[8px]"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="px-3 py-1.5 rounded-xl bg-neon-purple/10 border border-neon-purple/30 text-neon-purple font-mono text-xs font-bold w-fit">
                                 2026 — 2029
@@ -1010,9 +1054,43 @@
         </div>
     </div>
 
+    <!-- MODAL SOURCE & EXPLICATION (NOUVEAU) -->
+    <div id="sourceModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-6 sm:p-8 border border-slate-700 space-y-5 shadow-2xl transform scale-95 transition-transform duration-300" id="sourceModalContainer">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <div id="sourceModalIcon" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-xl text-neon-cyan">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div>
+                        <h3 id="sourceModalTitle" class="text-lg font-bold text-white">Source & Explication</h3>
+                        <span id="sourceModalTag" class="text-[10px] font-mono text-neon-cyan tracking-wider uppercase">OUTIL & RÉFÉRENCE</span>
+                    </div>
+                </div>
+                <button onclick="closeSourceModal()" class="text-slate-400 hover:text-white p-2 text-xl focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3">
+                <p id="sourceModalDesc" class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    Description explicative de la technologie ou de l'institution.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-800">
+                <span class="text-[10px] font-mono text-slate-500">Lien Officiel & Vérifié</span>
+                <a id="sourceModalLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-purple text-obsidian font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center space-x-2">
+                    <span>VISITER LE SITE OFFICIEL</span>
+                    <i class="fas fa-external-link-alt text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL 2: CV INTERACTIF & IMPRESSION -->
     <div id="resumeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-3xl rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] flex flex-col">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-4xl rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] flex flex-col">
             <div class="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div class="flex items-center space-x-3">
                     <i class="fas fa-file-pdf text-neon-cyan text-2xl"></i>
@@ -1022,111 +1100,147 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30 text-xs font-mono hover:bg-neon-cyan hover:text-obsidian transition-all">
-                        <i class="fas fa-print mr-1"></i> Imprimer / Télécharger PDF
+                    <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30 text-xs font-mono hover:bg-neon-cyan hover:text-obsidian transition-all flex items-center space-x-1.5">
+                        <i class="fas fa-print"></i>
+                        <span>Imprimer / Télécharger PDF</span>
                     </button>
-                    <button onclick="toggleResumeModal()" class="text-slate-400 hover:text-white p-2 text-xl">
+                    <button onclick="toggleResumeModal()" class="text-slate-400 hover:text-white p-2 text-xl focus:outline-none">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- CV Preview -->
-            <div class="overflow-y-auto space-y-6 text-slate-200 text-sm pr-3 font-sans">
-                <!-- Header CV -->
-                <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
-                    <div>
-                        <h1 class="text-2xl font-black text-white">YOUSIF AL GAILANI</h1>
-                        <p class="text-neon-cyan font-mono text-xs">Licence Informatique — Spécialisation IA & Python</p>
-                    </div>
-                    <div class="text-xs text-slate-400 font-mono space-y-1">
-                        <div>Lens, 62300, France</div>
-                        <div>+33 6 67 47 26 86</div>
-                        <div>yousifalgailani62@gmail.com</div>
-                    </div>
-                </div>
-
-                <!-- Compétences -->
-                <div class="space-y-2">
-                    <h2 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider">COMPÉTENCES</h2>
-                    <div class="grid grid-cols-2 gap-2 text-xs">
-                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Python (Expert)</div>
-                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Langages C, C++ & C#</div>
-                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Résolution de problèmes & Algorithmes</div>
-                        <div class="bg-slate-800/60 p-2 rounded border border-slate-700/50">• Gestion de projet & Jungle Scout</div>
-                    </div>
-                </div>
-
-                <!-- Expérience & Projets -->
-                <div class="space-y-3">
-                    <h2 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider">EXPÉRIENCE PROFESSIONNELLE & PROJETS</h2>
+            <!-- CV Preview Layout matching PDF structure -->
+            <div class="overflow-y-auto pr-3 space-y-6 text-slate-200 text-sm font-sans">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 bg-slate-950/80 p-6 sm:p-8 rounded-xl border border-slate-800">
                     
-                    <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-800 space-y-1">
-                        <h3 class="font-bold text-white text-sm">Développement d'une Application de Suivi Sportif</h3>
-                        <p class="text-xs text-slate-300">• Programmation d'un outil guidant régulièrement les performances physiques et sportives.</p>
-                        <p class="text-xs text-slate-300">• Liaison aux différentes salles de sport commerciales françaises pour un meilleur suivi.</p>
-                        <p class="text-xs text-slate-300">• Suivi de la charge d'entraînement, du volume et de la progression au fil des semaines.</p>
-                    </div>
-
-                    <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-800 space-y-1">
-                        <h3 class="font-bold text-white text-sm">Développement Indépendant de Jeu Vidéo Mobile</h3>
-                        <p class="text-xs text-slate-300">• Programmation de mécaniques de jeu interactives avec C# sous Unity Engine.</p>
-                    </div>
-
-                    <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-800 space-y-1">
-                        <h3 class="font-bold text-white text-sm">E-commerce & Recherche de Produits</h3>
-                        <p class="text-xs text-slate-300">• Recherche de produits gagnants sur Amazon avec l'utilisation de l'outil Jungle Scout.</p>
-                        <p class="text-xs text-slate-300">• Activité de revente sur les plateformes Amazon et Cdiscount.</p>
-                    </div>
-                </div>
-
-                <!-- Formation -->
-                <div class="space-y-3">
-                    <h2 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider">FORMATION</h2>
-                    
-                    <div class="flex justify-between items-start text-xs border-l-2 border-neon-cyan pl-3">
-                        <div>
-                            <div class="font-bold text-white">Master Informatique - Machine Learning & IA (Projet)</div>
-                            <div class="text-slate-400">Université de Lille</div>
-                            <p class="text-[11px] text-slate-300 mt-1">Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.</p>
+                    <!-- Left Sidebar Column -->
+                    <div class="md:col-span-4 space-y-6 border-b md:border-b-0 md:border-r border-slate-800 pb-6 md:pb-0 md:pr-6">
+                        <!-- Profile Photo -->
+                        <div class="flex flex-col items-center text-center space-y-3">
+                            <div class="w-28 h-28 rounded-2xl overflow-hidden border-2 border-neon-cyan shadow-cyan-glow bg-slate-800 flex items-center justify-center relative group">
+                                <svg class="w-20 h-20 text-slate-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                                <div class="absolute inset-0 bg-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            </div>
+                            <span class="text-[10px] font-mono text-neon-cyan uppercase tracking-wider">Photo de profil</span>
                         </div>
-                        <div class="font-mono text-neon-cyan text-[11px]">2029 - 2031</div>
-                    </div>
 
-                    <div class="flex justify-between items-start text-xs border-l-2 border-neon-purple pl-3">
-                        <div>
-                            <div class="font-bold text-white">Licence d'Informatique</div>
-                            <div class="text-slate-400">Université d'Artois — Faculté des Sciences, Lens</div>
-                            <p class="text-[11px] text-slate-300 mt-1">Fondations solides en algorithmique et programmation (C, Python, structures de données).</p>
+                        <!-- Coordonnées -->
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider border-b border-slate-800 pb-1">COORDONNÉES</h4>
+                            <div class="text-xs space-y-1.5 text-slate-300">
+                                <p class="flex items-center space-x-2">
+                                    <i class="fas fa-phone text-neon-cyan w-4"></i>
+                                    <span>+33667472686</span>
+                                </p>
+                                <p class="flex items-center space-x-2">
+                                    <i class="fas fa-envelope text-neon-purple w-4"></i>
+                                    <span class="break-all">yousifalgailani62@gmail.com</span>
+                                </p>
+                                <p class="flex items-center space-x-2">
+                                    <i class="fas fa-location-dot text-emerald-400 w-4"></i>
+                                    <span>Lens, 62300</span>
+                                </p>
+                            </div>
                         </div>
-                        <div class="font-mono text-neon-purple text-[11px]">2026 - 2029</div>
-                    </div>
-                </div>
 
-                <!-- Langues & Interets -->
-                <div class="grid grid-cols-2 gap-4 text-xs pt-2">
-                    <div>
-                        <h2 class="font-mono font-bold text-neon-cyan uppercase mb-1">LANGUES</h2>
-                        <ul class="space-y-1 text-slate-300">
-                            <li>• Français (Courant / Natif)</li>
-                            <li>• Anglais (Courant)</li>
-                            <li>• Arabe (Langue maternelle)</li>
-                            <li>• Espagnol (Notions)</li>
-                        </ul>
+                        <!-- Langues -->
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider border-b border-slate-800 pb-1">LANGUES</h4>
+                            <ul class="text-xs space-y-1 text-slate-300">
+                                <li>• Anglais</li>
+                                <li>• Espagnol</li>
+                                <li>• Arabe</li>
+                            </ul>
+                        </div>
+
+                        <!-- Compétences -->
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider border-b border-slate-800 pb-1">COMPÉTENCES</h4>
+                            <ul class="text-xs space-y-1 text-slate-300">
+                                <li>• Python (Expert)</li>
+                                <li>• Langage C et C++</li>
+                                <li>• Résolution de problème</li>
+                                <li>• Gestion de Projet</li>
+                            </ul>
+                        </div>
+
+                        <!-- Centres d'intérêt -->
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider border-b border-slate-800 pb-1">CENTRES D'INTÉRÊT</h4>
+                            <ul class="text-xs space-y-1 text-slate-300">
+                                <li>• Sport</li>
+                                <li>• Jeux Vidéos</li>
+                                <li>• Codage</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div>
-                        <h2 class="font-mono font-bold text-neon-purple uppercase mb-1">CENTRES D'INTÉRÊT</h2>
-                        <ul class="space-y-1 text-slate-300">
-                            <li>• Sport & Musculation</li>
-                            <li>• Jeux Vidéo (Switch, Course)</li>
-                            <li>• Codage & Recherche IA</li>
-                        </ul>
+
+                    <!-- Right Main Content Column -->
+                    <div class="md:col-span-8 space-y-6">
+                        <!-- Name Header -->
+                        <div class="border-b border-slate-800 pb-4">
+                            <h1 class="text-3xl font-black tracking-tight text-white uppercase">YOUSIF<br><span class="text-neon-cyan">AL GAILANI</span></h1>
+                        </div>
+
+                        <!-- Formation -->
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider border-b border-slate-800 pb-1">FORMATION</h4>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between items-baseline">
+                                        <h5 class="font-bold text-white text-sm">Master Informatique - ML & IA</h5>
+                                        <span class="text-xs font-mono text-neon-cyan font-semibold">2029-2031</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400">Université de Lille</p>
+                                    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.</p>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between items-baseline">
+                                        <h5 class="font-bold text-white text-sm">Licence d'Informatique</h5>
+                                        <span class="text-xs font-mono text-neon-purple font-semibold">2026-2029</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400">Université d'Artois - Lens</p>
+                                    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Fondations solides en algorithmique, programmation (C, Python)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Expérience Professionnelle -->
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-mono font-bold text-neon-cyan uppercase tracking-wider border-b border-slate-800 pb-1">EXPÉRIENCE PROFESSIONNELLE</h4>
+                            
+                            <div class="space-y-4 text-xs">
+                                <div class="space-y-1">
+                                    <h5 class="font-bold text-white text-sm">Développement indépendant de jeu vidéo mobile</h5>
+                                    <p class="text-slate-300 leading-relaxed">• Programmation de mécaniques de jeu interactives avec C# sous Unity Engine</p>
+                                </div>
+
+                                <div class="space-y-1">
+                                    <h5 class="font-bold text-white text-sm">E-commerce & Recherche de Produits</h5>
+                                    <p class="text-slate-300 leading-relaxed">• Recherche de produits gagnants sur Amazon, avec l'utilisation de l'outil Jungle Scout</p>
+                                    <p class="text-slate-300 leading-relaxed">• Activité de revente sur les plateformes Amazon et Cdiscount</p>
+                                </div>
+
+                                <div class="space-y-1">
+                                    <h5 class="font-bold text-white text-sm">Développement d'une Application de Suivi Sportif</h5>
+                                    <p class="text-slate-300 leading-relaxed">• Programmation d'un outil guidant régulièrement les performances sportives</p>
+                                    <p class="text-slate-300 leading-relaxed">• Liaison aux différentes salles de sport commerciales françaises pour un meilleur suivi</p>
+                                    <p class="text-slate-300 leading-relaxed">• Suivi de la charge d'entraînement, du volume et de la progression au fil des semaines.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
@@ -1359,7 +1473,13 @@
                             <div>• Interconnexion Réseaux : Projet d'intégration avec les réseaux de salles de sport françaises.</div>
                             <div>• Analytics & Courbes : Visualisation du volume d'entraînement et de l'évolution de la masse corporelle.</div>
                         </div>
-                        <p class="text-xs text-slate-400">Développé avec Python et des modules d'analyse de données pour structurer le suivi sportif.</p>
+                        <div class="flex items-center space-x-2 pt-2">
+                            <span class="text-xs text-slate-400">Technologie :</span>
+                            <button onclick="openSourceModal('python')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-neon-cyan/20 text-neon-cyan border border-slate-700 text-xs font-mono flex items-center space-x-1">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </button>
+                        </div>
                     </div>
                 `
             },
@@ -1377,7 +1497,16 @@
                             <div>• Optimisation Mobile : Réduction du Garbage Collector pour garantir un framerate stable.</div>
                             <div>• Ergonomie Tactile : Prise en charge des gestures et entrées utilisateur réactives.</div>
                         </div>
-                        <p class="text-xs text-slate-400">Projet démontrant la maîtrise de C# et de la programmation orientée objet dans un contexte temps réel.</p>
+                        <div class="flex items-center space-x-2 pt-2">
+                            <span class="text-xs text-slate-400">Sources :</span>
+                            <button onclick="openSourceModal('unity')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 text-xs font-mono flex items-center space-x-1">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Unity Engine</span>
+                            </button>
+                            <button onclick="openSourceModal('cpp')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-neon-purple/20 text-neon-purple border border-slate-700 text-xs font-mono flex items-center space-x-1">
+                                <span>C#</span>
+                            </button>
+                        </div>
                     </div>
                 `
             },
@@ -1395,11 +1524,119 @@
                             <div>• Revente Multi-Plateforme : Gestion automatisée des fiches articles sur Amazon & Cdiscount.</div>
                             <div>• Affiliation & Contenu : Exploitation des canaux TikTok Shop pour l'acquisition de trafic.</div>
                         </div>
-                        <p class="text-xs text-slate-400">Démontre une capacité d'analyse de données marché et un esprit d'entreprise concret.</p>
+                        <div class="flex flex-wrap items-center gap-2 pt-2">
+                            <span class="text-xs text-slate-400">Sources officielles :</span>
+                            <button onclick="openSourceModal('junglescout')" class="px-2 py-1 rounded bg-slate-800 text-cyber-pink border border-slate-700 text-xs font-mono">Jungle Scout</button>
+                            <button onclick="openSourceModal('amazon')" class="px-2 py-1 rounded bg-slate-800 text-amber-400 border border-slate-700 text-xs font-mono">Amazon</button>
+                            <button onclick="openSourceModal('cdiscount')" class="px-2 py-1 rounded bg-slate-800 text-blue-400 border border-slate-700 text-xs font-mono">Cdiscount</button>
+                            <button onclick="openSourceModal('tiktokshop')" class="px-2 py-1 rounded bg-slate-800 text-pink-400 border border-slate-700 text-xs font-mono">TikTok Shop</button>
+                        </div>
                     </div>
                 `
             }
         };
+
+        // SOURCES & EXPLANATIONS DICTIONARY
+        const sourceData = {
+            python: {
+                title: "Python Language",
+                tag: "LANGAGE DE PROGRAMMATION",
+                icon: "fab fa-python",
+                color: "text-neon-cyan",
+                desc: "Python est un langage de programmation interprété haut niveau, polyvalent et extrêmement populaire. Il est le standard incontournable pour l'Intelligence Artificielle, le Machine Learning, l'analyse de données et le développement logiciel propre.",
+                url: "https://www.python.org/"
+            },
+            cpp: {
+                title: "C / C++ Standard",
+                tag: "PROGRAMMATION SYSTÈME & HIGH-PERFORMANCE",
+                icon: "fas fa-code",
+                color: "text-neon-purple",
+                desc: "C et C++ sont des langages compilés réputés pour leur vitesse d'exécution maximale, leur gestion directe de la mémoire (pointeurs) et leur omniprésence dans la programmation système, les systèmes embarqués et les moteurs de jeux.",
+                url: "https://isocpp.org/"
+            },
+            unity: {
+                title: "Unity Engine & C#",
+                tag: "MOTEUR DE JEU VIDÉO & 3D",
+                icon: "fas fa-gamepad",
+                color: "text-emerald-400",
+                desc: "Unity est l'un des moteurs de création vidéo 2D/3D temps réel les plus utilisés au monde. Combiné avec C#, il permet de programmer des mécaniques de jeu interactives, la physique et des graphismes immersifs pour appareils mobiles et consoles.",
+                url: "https://unity.com/fr"
+            },
+            junglescout: {
+                title: "Jungle Scout Analytics",
+                tag: "DATA MINING & E-COMMERCE",
+                icon: "fas fa-chart-line",
+                color: "text-cyber-pink",
+                desc: "Jungle Scout est la plateforme technologique leader pour la recherche de produits e-commerce sur Amazon. Elle exploite la Data Analytics pour évaluer le volume de ventes, les tendances de recherche, la marge et la concurrence d'une niche.",
+                url: "https://www.junglescout.com/"
+            },
+            artois: {
+                title: "Université d'Artois (Lens)",
+                tag: "ÉTABLISSEMENT D'ENSEIGNEMENT SUPÉRIEUR",
+                icon: "fas fa-university",
+                color: "text-neon-cyan",
+                desc: "L'Université d'Artois est une université publique française implantée dans les Hauts-de-France. Sa Faculté des Sciences à Lens délivre une formation d'excellence en Licence d'Informatique (algorithmique, structures de données, C, Python).",
+                url: "https://www.univ-artois.fr/"
+            },
+            lille: {
+                title: "Université de Lille",
+                tag: "POLE D'EXCELLENCE IA & MACHINE LEARNING",
+                icon: "fas fa-graduation-cap",
+                color: "text-neon-purple",
+                desc: "L'Université de Lille est l'une des plus grandes universités de recherche de France. Son Master en Informatique offre une spécialisation avancée en Machine Learning, Deep Learning, MLOps, Transformers et apprentissage par renforcement.",
+                url: "https://www.univ-lille.fr/"
+            },
+            amazon: {
+                title: "Amazon Seller Central",
+                tag: "MARKETPLACE MONDIALE",
+                icon: "fab fa-amazon",
+                color: "text-amber-400",
+                desc: "Amazon est la plateforme e-commerce mondiale de référence. Amazon Seller Central permet de piloter la vente de catalogues de produits, la gestion de stocks et le fulfillment logistique.",
+                url: "https://sell.amazon.fr/"
+            },
+            cdiscount: {
+                title: "Cdiscount Marketplace",
+                tag: "E-COMMERCE FRANÇAIS",
+                icon: "fas fa-shopping-bag",
+                color: "text-blue-400",
+                desc: "Cdiscount est l'un des leaders majeurs du e-commerce en France. Sa marketplace permet de distribuer des produits auprès de plusieurs millions de clients actifs sur le territoire national.",
+                url: "https://www.cdiscount.com/"
+            },
+            tiktokshop: {
+                title: "TikTok Shop",
+                tag: "SOCIAL E-COMMERCE",
+                icon: "fab fa-tiktok",
+                color: "text-pink-400",
+                desc: "TikTok Shop est la plateforme d'achat intégrée à l'application TikTok, permettant le marketing d'affiliation, la présentation de produits en courtes vidéos et l'achat instantané.",
+                url: "https://shop.tiktok.com/"
+            }
+        };
+
+        function openSourceModal(key) {
+            const data = sourceData[key];
+            if (!data) return;
+
+            document.getElementById('sourceModalTitle').textContent = data.title;
+            document.getElementById('sourceModalTag').textContent = data.tag;
+            document.getElementById('sourceModalDesc').textContent = data.desc;
+            document.getElementById('sourceModalLink').href = data.url;
+            
+            const iconBox = document.getElementById('sourceModalIcon');
+            iconBox.className = `w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-xl ${data.color}`;
+            iconBox.innerHTML = `<i class="${data.icon}"></i>`;
+
+            const modal = document.getElementById('sourceModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('sourceModalContainer').classList.remove('scale-95');
+            document.getElementById('sourceModalContainer').classList.add('scale-100');
+        }
+
+        function closeSourceModal() {
+            const modal = document.getElementById('sourceModal');
+            document.getElementById('sourceModalContainer').classList.remove('scale-100');
+            document.getElementById('sourceModalContainer').classList.add('scale-95');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
 
         function openProjectModal(key) {
             const data = projectDetails[key];
