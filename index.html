@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yousif Al Gailani - Développeur & Étudiant en Informatique</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .print-full-width { width: 100% !important; max-width: 100% !important; }
+            .shadow-lg, .shadow-md, .shadow-xl { box-shadow: none !important; }
+            .border { border-color: #e5e7eb !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 transition-colors duration-300 min-h-screen selection:bg-brand-500 selection:text-white">
+
+    <!-- Sticky Navigation / Utility Bar -->
+    <header class="no-print sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 dark:bg-slate-900/80 border-b border-slate-800 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="font-bold text-xl tracking-tight text-brand-500 flex items-center gap-2">
+                <i class="fa-solid fa-code"></i>
+                <span>Yousif<span class="text-white">.dev</span></span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-brand-500 transition-colors">À propos</a>
+                <a href="#skills" class="hover:text-brand-500 transition-colors">Compétences</a>
+                <a href="#projects" class="hover:text-brand-500 transition-colors">Expériences & Projets</a>
+                <a href="#education" class="hover:text-brand-500 transition-colors">Formation</a>
+                <a href="#interests" class="hover:text-brand-500 transition-colors">Intérêts</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700" title="Changer le thème">
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                    <i class="fa-solid fa-moon block dark:hidden text-slate-700"></i>
+                </button>
+                
+                <button onclick="window.print()" class="px-4 py-2 text-sm font-semibold rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition-all shadow-lg shadow-brand-600/30 flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="hidden sm:inline">Imprimer / PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-br from-slate-800/80 via-slate-900 to-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden">
+            <!-- Background Glow Decor -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
+                
+                <div class="flex-1 text-center lg:text-left space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        Recherche d'opportunités & Projets
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+                        Yousif <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-400">Al Gailani</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-300 font-medium">
+                        Étudiant en Informatique & Développeur
+                    </p>
+
+                    <!-- Contact Details Badges -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2 text-sm text-slate-300">
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60">
+                            <i class="fa-solid fa-location-dot text-brand-400"></i> Lens, 62300, France
+                        </span>
+                        <a href="tel:+33667472686" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 hover:border-brand-500 transition-colors">
+                            <i class="fa-solid fa-phone text-brand-400"></i> +33 6 67 47 26 86
+                        </a>
+                        <a href="mailto:yousifalgailani62@gmail.com" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 hover:border-brand-500 transition-colors">
+                            <i class="fa-solid fa-envelope text-brand-400"></i> yousifalgailani62@gmail.com
+                        </a>
+                    </div>
+
+                    <!-- Tech Tags -->
+                    <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-2">
+                        <span class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-800 text-brand-300 border border-slate-700">Python Expert</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-800 text-cyan-300 border border-slate-700">Langage C & C++</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-800 text-emerald-300 border border-slate-700">Unity & C#</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-800 text-amber-300 border border-slate-700">Machine Learning & IA</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-800 text-purple-300 border border-slate-700">E-Commerce</span>
+                    </div>
+                </div>
+
+                <!-- Avatar/Profile Card -->
+                <div class="relative group">
+                    <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl bg-gradient-to-br from-brand-500 to-purple-600 p-1 shadow-xl">
+                        <div class="w-full h-full bg-slate-900 rounded-[14px] flex flex-col items-center justify-center p-4 text-center">
+                            <i class="fa-solid fa-laptop-code text-5xl text-brand-400 mb-2"></i>
+                            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Dev & ML</span>
+                            <span class="text-sm font-semibold text-white">Full-Stack Ambition</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 1: À propos / Profil -->
+        <section id="about" class="scroll-mt-20">
+            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="p-2.5 rounded-xl bg-brand-500/10 text-brand-400">
+                        <i class="fa-solid fa-user-gear text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">À propos & Profil</h2>
+                </div>
+                <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+                    Passionné par la programmation système, l'intelligence artificielle et l'entrepreneuriat technologique, je combine un solide socle académique en informatique avec des projets concrets et indépendants. Mon parcours scientifique s'oriente vers la maîtrise du <strong class="text-brand-400">Machine Learning & du Deep Learning</strong>, avec une réelle appétence pour la résolution de problèmes complexes, le développement d'applications performantes et le développement de jeux vidéo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Compétences & Langues -->
+        <section id="skills" class="scroll-mt-20 space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-brand-500/10 text-brand-400">
+                    <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">Compétences & Langues</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Competences Techniques -->
+                <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 space-y-5">
+                    <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-code text-brand-400"></i> Compétences Techniques
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Python -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium text-slate-200">Python</span>
+                                <span class="text-brand-400 font-semibold">Expert</span>
+                            </div>
+                            <div class="w-full bg-slate-700/60 rounded-full h-2.5">
+                                <div class="bg-brand-500 h-2.5 rounded-full w-[95%]"></div>
+                            </div>
+                        </div>
+
+                        <!-- C / C++ -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium text-slate-200">Langages C & C++</span>
+                                <span class="text-slate-400 font-semibold">Avancé</span>
+                            </div>
+                            <div class="w-full bg-slate-700/60 rounded-full h-2.5">
+                                <div class="bg-cyan-500 h-2.5 rounded-full w-[85%]"></div>
+                            </div>
+                        </div>
+
+                        <!-- C# & Unity -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium text-slate-200">C# / Unity Engine</span>
+                                <span class="text-slate-400 font-semibold">Intermédiaire / Avancé</span>
+                            </div>
+                            <div class="w-full bg-slate-700/60 rounded-full h-2.5">
+                                <div class="bg-emerald-500 h-2.5 rounded-full w-[78%]"></div>
+                            </div>
+                        </div>
+
+                        <!-- Resolution de problemes & Gestion -->
+                        <div class="pt-2 flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-medium text-slate-300">
+                                <i class="fa-solid fa-puzzle-piece text-brand-400 mr-1"></i> Résolution de problèmes
+                            </span>
+                            <span class="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-medium text-slate-300">
+                                <i class="fa-solid fa-tasks text-brand-400 mr-1"></i> Gestion de projet
+                            </span>
+                            <span class="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-medium text-slate-300">
+                                <i class="fa-solid fa-chart-line text-brand-400 mr-1"></i> Algorithmique
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Langues -->
+                <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 space-y-5 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+                            <i class="fa-solid fa-language text-brand-400"></i> Langues
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/70 text-center">
+                                <div class="text-2xl mb-1">🇫🇷</div>
+                                <div class="font-semibold text-white text-sm">Français</div>
+                                <div class="text-xs text-slate-400">Bilingue / Natif</div>
+                            </div>
+                            
+                            <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/70 text-center">
+                                <div class="text-2xl mb-1">🇬🇧</div>
+                                <div class="font-semibold text-white text-sm">Anglais</div>
+                                <div class="text-xs text-slate-400">Courant</div>
+                            </div>
+                            
+                            <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/70 text-center">
+                                <div class="text-2xl mb-1">🇪🇸</div>
+                                <div class="font-semibold text-white text-sm">Espagnol</div>
+                                <div class="text-xs text-slate-400">Intermédiaire</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-4 rounded-xl bg-slate-800/80 border border-slate-700/70 text-center">
+                            <div class="font-semibold text-white text-sm">🇸🇦 Arabe</div>
+                            <div class="text-xs text-slate-400">Langue maternelle / Bilingue</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Expériences & Projets -->
+        <section id="projects" class="scroll-mt-20 space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-brand-500/10 text-brand-400">
+                    <i class="fa-solid fa-briefcase text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">Expériences Professionnelles & Projets</h2>
+            </div>
+
+            <div class="space-y-6">
+
+                <!-- Projet 1 -->
+                <div class="group bg-slate-800/40 hover:bg-slate-800/70 border border-slate-800 hover:border-brand-500/50 rounded-2xl p-6 transition-all duration-300">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-dumbbell text-brand-500"></i>
+                            Application de Suivi Sportif
+                        </h3>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20 w-max">
+                            Projet Full-Stack & Données
+                        </span>
+                    </div>
+                    <ul class="space-y-2 text-slate-300 text-sm sm:text-base list-disc list-inside">
+                        <li>Programmation d'un outil guidant régulièrement les performances sportives individuelles.</li>
+                        <li>Liaison aux différentes salles de sport commerciales françaises pour un suivi automatisé et contextualisé.</li>
+                        <li>Calcul et suivi de la charge d'entraînement, du volume de travail et des courbes de progression au fil des semaines.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Python</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Analyse de données</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Algorithmique</span>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="group bg-slate-800/40 hover:bg-slate-800/70 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-gamepad text-emerald-500"></i>
+                            Développement Indépendant de Jeu Vidéo Mobile
+                        </h3>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 w-max">
+                            Game Dev & C#
+                        </span>
+                    </div>
+                    <ul class="space-y-2 text-slate-300 text-sm sm:text-base list-disc list-inside">
+                        <li>Conception et programmation intégrale de mécaniques de jeu interactives et fluides.</li>
+                        <li>Développement du code applicatif sous <strong class="text-white">Unity Engine</strong> en langage <strong class="text-white">C#</strong>.</li>
+                        <li>Optimisation des performances graphiques et de la réactivité pour appareils mobiles.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Unity 3D/2D</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">C#</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Game Design</span>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="group bg-slate-800/40 hover:bg-slate-800/70 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-6 transition-all duration-300">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-cart-shopping text-amber-500"></i>
+                            E-commerce & Recherche de Produits
+                        </h3>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 w-max">
+                            Entrepreneuriat
+                        </span>
+                    </div>
+                    <ul class="space-y-2 text-slate-300 text-sm sm:text-base list-disc list-inside">
+                        <li>Recherche et analyse de produits à haut potentiel (produits gagnants) avec l'outil <strong class="text-white">Jungle Scout</strong>.</li>
+                        <li>Gestion et déploiement de l'activité de revente sur les places de marché majeures : <strong class="text-white">Amazon</strong> et <strong class="text-white">Cdiscount</strong>.</li>
+                        <li>Analyse de marché, stratégies de pricing et gestion des flux de ventes.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Jungle Scout</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Amazon Seller</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Cdiscount</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 4: Formation / Parcours Académique -->
+        <section id="education" class="scroll-mt-20 space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-brand-500/10 text-brand-400">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">Formation Académique</h2>
+            </div>
+
+            <div class="relative border-l-2 border-slate-800 ml-4 pl-6 space-y-8">
+
+                <!-- Master -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-500 border-4 border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <h3 class="text-lg font-bold text-white">Master Informatique - ML & IA</h3>
+                            <span class="text-sm font-semibold text-brand-400 bg-brand-500/10 px-3 py-1 rounded-full w-max">2029 - 2031</span>
+                        </div>
+                        <p class="text-slate-400 font-medium mb-3">Université de Lille</p>
+                        <p class="text-slate-300 text-sm sm:text-base">
+                            Spécialisation avancée en <strong class="text-brand-300">Deep Learning</strong>, architectures <strong class="text-brand-300">Transformers</strong>, <strong class="text-brand-300">MLOps</strong>, apprentissage par renforcement et modèles distribués.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Licence -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-600 border-4 border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <h3 class="text-lg font-bold text-white">Licence d'Informatique</h3>
+                            <span class="text-sm font-semibold text-slate-300 bg-slate-800 px-3 py-1 rounded-full w-max">2026 - 2029</span>
+                        </div>
+                        <p class="text-slate-400 font-medium mb-3">Université d'Artois - Lens</p>
+                        <p class="text-slate-300 text-sm sm:text-base">
+                            Fondations solides et théoriques en algorithmique avancée, structures de données et programmation modulaire (<strong class="text-white">C, Python</strong>).
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 5: Centres d'intérêt -->
+        <section id="interests" class="scroll-mt-20">
+            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2.5 rounded-xl bg-brand-500/10 text-brand-400">
+                        <i class="fa-solid fa-heart text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">Centres d'intérêt</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center gap-4">
+                        <div class="p-3 rounded-lg bg-brand-500/20 text-brand-400 text-2xl">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Sport</h4>
+                            <p class="text-xs text-slate-400">Conditionnement & Suivi de performance</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center gap-4">
+                        <div class="p-3 rounded-lg bg-purple-500/20 text-purple-400 text-2xl">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Jeux Vidéo</h4>
+                            <p class="text-xs text-slate-400">Joueur & Game Dev indie</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center gap-4">
+                        <div class="p-3 rounded-lg bg-emerald-500/20 text-emerald-400 text-2xl">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Codage</h4>
+                            <p class="text-xs text-slate-400">Projets personnels & Veille IA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="no-print border-t border-slate-800 mt-16 py-8 text-center text-slate-500 text-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>© <span id="year"></span> Yousif Al Gailani. Conçu pour hébergement sur GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- Script for interactive elements & Dark/Light mode -->
+    <script>
+        // Set dynamic current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark / Light theme toggle logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                // Adjust body light bg
+                document.body.classList.remove('bg-slate-900', 'text-slate-100');
+                document.body.classList.add('bg-slate-50', 'text-slate-900');
+            } else {
+                htmlElement.classList.add('dark');
+                document.body.classList.remove('bg-slate-50', 'text-slate-900');
+                document.body.classList.add('bg-slate-900', 'text-slate-100');
+            }
+        });
+    </script>
+</body>
+</html>
