@@ -1,339 +1,524 @@
 <!DOCTYPE html>
-<html lang="fr" class="antialiased">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yousif Al Gailani - Portfolio</title>
+    <title>Yousif Al Gailani | Portfolio</title>
+    <meta name="description" content="Portfolio de Yousif Al Gailani, Étudiant en Informatique spécialisé en ML & IA.">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        apple: {
-                            black: '#000000',
-                            dark: '#1d1d1f',
-                            card: '#161617',
-                            gray: '#86868b',
-                            light: '#f5f5f7',
-                            blue: '#2997ff',
-                            border: '#424245'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'Helvetica', 'Arial', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- FontAwesome for Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- GSAP for Smooth Apple-like Animations -->
+    <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
+        /* ================= VARIABLES & THEMES ================= */
+        :root {
+            --bg-color: #fbfbfd;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-color: #0066cc;
+            --accent-hover: #0071e3;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            --nav-bg: rgba(251, 251, 253, 0.8);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #000000;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --accent-color: #2997ff;
+            --accent-hover: #42a2ff;
+            --card-bg: rgba(28, 28, 30, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            --nav-bg: rgba(0, 0, 0, 0.8);
+        }
+
+        /* ================= BASE & TYPOGRAPHY ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #000000;
-            color: #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
 
-        /* Apple Frosted Glass Effect */
-        .glass-nav {
-            background: rgba(29, 29, 31, 0.72);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
 
-        .glass-card {
-            background: rgba(22, 22, 23, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: border-color 0.3s ease;
+        a:hover {
+            color: var(--accent-hover);
         }
 
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* Premium 3D Interactive Card */
-        .perspective-container {
-            perspective: 1200px;
+        section {
+            padding: 100px 0;
         }
 
-        .interactive-card {
-            transition: transform 0.1s ease-out;
-            transform-style: preserve-3d;
-            will-change: transform;
-        }
-
-        .interactive-icon {
-            transform: translateZ(30px);
-            transition: transform 0.3s ease;
-        }
-
-        .interactive-card:hover .interactive-icon {
-            transform: translateZ(50px) scale(1.1);
-        }
-
-        /* Typography optimizations */
         h1, h2, h3 {
-            letter-spacing: -0.015em;
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
 
-        p {
-            letter-spacing: 0.011em;
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 48px;
+            text-align: center;
         }
 
-        /* Hide elements before GSAP reveals them */
-        .reveal-up {
-            opacity: 0;
-            visibility: hidden;
+        .text-muted {
+            color: var(--text-secondary);
         }
 
+        /* ================= NAVIGATION ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            opacity: 1;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* ================= HERO ================= */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        #hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.04em;
+        }
+
+        #hero .title {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .placeholder {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: #d97706;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 980px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            background-color: var(--text-secondary);
+            color: var(--bg-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            margin-left: 12px;
+        }
+
+        /* ================= ABOUT & EDUCATION ================= */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* ================= PROJECTS (TILT CARDS) ================= */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease;
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            transform: translateZ(30px);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            transform: translateZ(20px);
+        }
+
+        .project-card ul {
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transform: translateZ(20px);
+            margin-bottom: 16px;
+        }
+
+        /* ================= SKILLS & OTHERS ================= */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 980px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplification pour mobile */
+            .grid-2 { grid-template-columns: 1fr; }
+            #hero h1 { font-size: 2.5rem; }
+        }
+
+        /* ================= PRINT STYLES ================= */
         @media print {
             body { background: white; color: black; }
-            .no-print { display: none; }
-            .glass-nav, .glass-card { background: none; border: none; }
+            nav, .theme-toggle, .btn { display: none; }
+            section { padding: 20px 0; page-break-inside: avoid; }
+            .project-card, .timeline-item { box-shadow: none; border: 1px solid #ccc; }
         }
     </style>
 </head>
-<body class="selection:bg-apple-blue selection:text-white">
+<body>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="text-xl font-semibold tracking-tight">
-                Yousif <span class="text-apple-light font-bold">Al Gailani</span>
-            </div>
-            <button onclick="window.print()" class="no-print bg-apple-light text-apple-black px-4 py-1.5 rounded-full text-sm font-medium hover:scale-105 transition-transform duration-300">
-                Exporter PDF
-            </button>
+    <nav>
+        <div class="nav-container">
+            <div style="font-weight: 600;">Y.A.</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#education">Formation</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#skills">Compétences</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">🌓</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <main class="pt-32 pb-16 px-6 max-w-6xl mx-auto space-y-32">
-        
-        <header class="text-center space-y-6 pt-12 reveal-up hero-element">
-            <h1 class="text-5xl md:text-7xl font-bold text-apple-light max-w-4xl mx-auto leading-tight">
-                Étudiant en Informatique & <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-apple-blue to-purple-400">Futur Ingénieur IA.</span>
-            </h1>
-            <p class="text-xl text-apple-gray max-w-2xl mx-auto font-medium">
-                Spécialisé en développement Python, C/C++ et gestion de projets innovants.
-            </p>
-            <div class="flex flex-wrap justify-center gap-6 pt-8 text-sm text-apple-gray font-medium">
-                <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i> Lens, 62300</span>
-                <a href="tel:+33667472686" class="flex items-center gap-2 hover:text-apple-light transition"><i class="fa-solid fa-phone"></i> +33 6 67 47 26 86</a>
-                <a href="mailto:yousifalgailani62@gmail.com" class="flex items-center gap-2 hover:text-apple-light transition"><i class="fa-solid fa-envelope"></i> yousifalgailani62@gmail.com</a>
-            </div>
-        </header>
+    <header id="hero" class="container gs-reveal">
+        <h1>Yousif Al Gailani</h1>
+        <p class="title">Étudiant en Informatique – ML & IA</p>
+        <p class="placeholder">[À COMPLÉTER : Courte accroche de 1-2 phrases (ex: Passionné par l'intelligence artificielle, je conçois des solutions innovantes...)]</p>
+        <div>
+            <a href="CV_Yousif_Al_Gailani.pdf" target="_blank" class="btn btn-primary">Télécharger le CV</a>
+            <a href="#contact" class="btn btn-secondary">Me contacter</a>
+        </div>
+    </header>
 
-        <!-- Projets / Expérience -->
-        <section class="space-y-12 reveal-up scroll-section">
-            <div class="text-center space-y-2">
-                <h2 class="text-3xl md:text-4xl font-bold">Expérience & Projets</h2>
-                <p class="text-apple-gray">Conception, développement et analyse.</p>
+    <!-- À Propos -->
+    <section id="about" class="container gs-reveal">
+        <h2>À propos</h2>
+        <div class="timeline-item text-center">
+            <p class="placeholder">[À COMPLÉTER : Présentation courte de 3-4 lignes détaillant votre parcours précis, vos objectifs et vos ambitions professionnelles.]</p>
+        </div>
+    </section>
+
+    <!-- Formation -->
+    <section id="education" class="container gs-reveal">
+        <h2>Formation</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">2029 - 2031 (Objectif)</span>
+                <h3>Master Informatique - ML & IA</h3>
+                <p class="text-muted">Université de Lille</p>
+                <p>Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.</p>
             </div>
+            <div class="timeline-item">
+                <span class="timeline-date">2026 - 2029</span>
+                <h3>Licence d'Informatique</h3>
+                <p class="text-muted">Université d'Artois - Lens</p>
+                <p>Fondations solides en algorithmique et programmation (C, Python).</p>
+            </div>
+            <div class="placeholder" style="display: block; text-align: center;">[À COMPLÉTER : Baccalauréat ou autres diplômes antérieurs si souhaité]</div>
+        </div>
+    </section>
+
+    <!-- Projets & Expériences -->
+    <section id="projects" class="container gs-reveal">
+        <h2>Expériences & Projets</h2>
+        <div class="projects-grid">
             
-            <div class="grid md:grid-cols-3 gap-6 perspective-container">
-                <!-- Projet 1 -->
-                <div class="glass-card interactive-card rounded-3xl p-8 h-full flex flex-col items-center text-center space-y-6">
-                    <div class="w-20 h-20 rounded-full bg-apple-dark flex items-center justify-center interactive-icon shadow-2xl border border-white/5">
-                        <i class="fa-solid fa-heart-pulse text-3xl text-apple-blue"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-3">Application de Suivi Sportif</h3>
-                        <p class="text-sm text-apple-gray mb-4">Outil guidant les performances sportives avec liaison aux salles de sport françaises.</p>
-                        <ul class="text-xs text-apple-gray text-left space-y-2">
-                            <li><i class="fa-solid fa-check text-apple-blue mr-2"></i> Suivi de la charge d'entraînement.</li>
-                            <li><i class="fa-solid fa-check text-apple-blue mr-2"></i> Analyse du volume et progression.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Projet 2 -->
-                <div class="glass-card interactive-card rounded-3xl p-8 h-full flex flex-col items-center text-center space-y-6">
-                    <div class="w-20 h-20 rounded-full bg-apple-dark flex items-center justify-center interactive-icon shadow-2xl border border-white/5">
-                        <i class="fa-brands fa-unity text-3xl text-apple-blue"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-3">Jeu Vidéo Mobile 3D</h3>
-                        <p class="text-sm text-apple-gray mb-4">Développement indépendant d'un jeu avec mécaniques interactives complexes.</p>
-                        <ul class="text-xs text-apple-gray text-left space-y-2">
-                            <li><i class="fa-solid fa-check text-apple-blue mr-2"></i> Programmation en C#.</li>
-                            <li><i class="fa-solid fa-check text-apple-blue mr-2"></i> Moteur graphique Unity Engine.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Projet 3 -->
-                <div class="glass-card interactive-card rounded-3xl p-8 h-full flex flex-col items-center text-center space-y-6">
-                    <div class="w-20 h-20 rounded-full bg-apple-dark flex items-center justify-center interactive-icon shadow-2xl border border-white/5">
-                        <i class="fa-brands fa-amazon text-3xl text-apple-blue"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-3">E-commerce & Analyse</h3>
-                        <p class="text-sm text-apple-gray mb-4">Activité de revente sur plateformes avec recherche analytique de produits.</p>
-                        <ul class="text-xs text-apple-gray text-left space-y-2">
-                            <li><i class="fa-solid fa-check text-apple-blue mr-2"></i> Utilisation de Jungle Scout.</li>
-                            <li><i class="fa-solid fa-check text-apple-blue mr-2"></i> Gestion Amazon & Cdiscount.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Formation & Compétences -->
-        <section class="grid md:grid-cols-2 gap-8 reveal-up scroll-section">
-            
-            <!-- Formation -->
-            <div class="glass-card rounded-3xl p-10 space-y-8">
-                <h2 class="text-2xl font-bold flex items-center gap-3">
-                    <i class="fa-solid fa-graduation-cap text-apple-blue"></i> Formation
-                </h2>
-                
-                <div class="relative pl-6 border-l border-apple-border space-y-8">
-                    <div class="relative">
-                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-apple-blue shadow-[0_0_10px_rgba(41,151,255,0.5)]"></div>
-                        <span class="text-xs font-bold text-apple-blue uppercase tracking-widest">2029 — 2031</span>
-                        <h3 class="text-lg font-bold mt-1">Master Informatique - ML & IA</h3>
-                        <p class="text-sm text-apple-gray font-medium">Université de Lille</p>
-                        <p class="text-sm text-apple-gray mt-2">Spécialisation en Deep Learning, Transformers, MLOps, apprentissage par renforcement et modèles distribués.</p>
-                    </div>
-
-                    <div class="relative">
-                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-apple-dark border-2 border-apple-gray"></div>
-                        <span class="text-xs font-bold text-apple-gray uppercase tracking-widest">2026 — 2029</span>
-                        <h3 class="text-lg font-bold mt-1">Licence d'Informatique</h3>
-                        <p class="text-sm text-apple-gray font-medium">Université d'Artois - Lens</p>
-                        <p class="text-sm text-apple-gray mt-2">Fondations solides en algorithmique et programmation (C, Python).</p>
-                    </div>
-                </div>
+            <div class="project-card tilt-card">
+                <h3>Application de Suivi Sportif</h3>
+                <p>Programmation d'un outil guidant régulièrement les performances sportives.</p>
+                <ul>
+                    <li>Liaison aux différentes salles de sport commerciales françaises pour un meilleur suivi.</li>
+                    <li>Suivi de la charge d'entraînement, du volume et de la progression au fil des semaines.</li>
+                </ul>
+                <span class="placeholder">[À COMPLÉTER : Lien GitHub ou Démo]</span>
             </div>
 
-            <!-- Compétences & Profil -->
-            <div class="space-y-8">
-                <div class="glass-card rounded-3xl p-10">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-microchip text-apple-blue"></i> Compétences Techniques
-                    </h2>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="font-bold">Python</span>
-                                <span class="text-apple-blue">Expert</span>
-                            </div>
-                            <div class="w-full bg-apple-dark rounded-full h-1.5"><div class="bg-apple-blue h-1.5 rounded-full w-full"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="font-bold">Langage C & C++</span>
-                            </div>
-                            <div class="w-full bg-apple-dark rounded-full h-1.5"><div class="bg-apple-blue h-1.5 rounded-full w-3/4"></div></div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-apple-border">
-                            <div>
-                                <span class="block font-bold text-sm text-white">Résolution de problèmes</span>
-                                <span class="text-xs text-apple-gray">Algorithmique</span>
-                            </div>
-                            <div>
-                                <span class="block font-bold text-sm text-white">Gestion de projet</span>
-                                <span class="text-xs text-apple-gray">Organisation & Suivi</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="glass-card rounded-3xl p-6">
-                        <h3 class="font-bold text-sm text-apple-gray mb-3 uppercase tracking-wider">Langues</h3>
-                        <ul class="space-y-2 text-sm font-medium">
-                            <li>Anglais</li>
-                            <li>Espagnol</li>
-                            <li>Arabe</li>
-                        </ul>
-                    </div>
-                    <div class="glass-card rounded-3xl p-6">
-                        <h3 class="font-bold text-sm text-apple-gray mb-3 uppercase tracking-wider">Intérêts</h3>
-                        <ul class="space-y-2 text-sm font-medium text-apple-blue">
-                            <li><i class="fa-solid fa-dumbbell w-5"></i> Sport</li>
-                            <li><i class="fa-solid fa-gamepad w-5"></i> Jeux Vidéo</li>
-                            <li><i class="fa-solid fa-code w-5"></i> Codage</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="project-card tilt-card">
+                <h3>Jeu Vidéo Mobile Indépendant</h3>
+                <p>Programmation de mécaniques de jeu interactives.</p>
+                <ul>
+                    <li>Développement réalisé avec C# sous Unity Engine.</li>
+                </ul>
+                <span class="placeholder">[À COMPLÉTER : Lien Play Store / App Store ou GitHub]</span>
             </div>
-        </section>
 
-    </main>
+            <div class="project-card tilt-card">
+                <h3>E-commerce & Recherche de Produits</h3>
+                <p>Activité entrepreneuriale de revente sur les plateformes Amazon et Cdiscount.</p>
+                <ul>
+                    <li>Recherche de produits gagnants sur Amazon avec l'utilisation de l'outil Jungle Scout.</li>
+                </ul>
+            </div>
 
-    <footer class="border-t border-apple-border mt-16 py-8 text-center text-xs text-apple-gray">
-        © 2026 Yousif Al Gailani. Conçu avec précision.
+        </div>
+    </section>
+
+    <!-- Compétences & Autres -->
+    <section id="skills" class="container gs-reveal">
+        <h2>Compétences</h2>
+        <div class="skills-container">
+            <div class="skill-tag">Python (Expert)</div>
+            <div class="skill-tag">Langage C & C++</div>
+            <div class="skill-tag">C# (Unity)</div>
+            <div class="skill-tag">Résolution de problèmes</div>
+            <div class="skill-tag">Gestion de projet</div>
+        </div>
+
+        <div class="grid-2">
+            <div class="timeline-item text-center">
+                <h3>Langues</h3>
+                <ul style="list-style:none; margin-top:16px; color:var(--text-secondary);">
+                    <li>Anglais <span class="placeholder">[À COMPLÉTER : Niveau]</span></li>
+                    <li>Espagnol <span class="placeholder">[À COMPLÉTER : Niveau]</span></li>
+                    <li>Arabe <span class="placeholder">[À COMPLÉTER : Niveau]</span></li>
+                </ul>
+            </div>
+            <div class="timeline-item text-center">
+                <h3>Centres d'intérêt</h3>
+                <ul style="list-style:none; margin-top:16px; color:var(--text-secondary);">
+                    <li>Sport</li>
+                    <li>Jeux Vidéo</li>
+                    <li>Codage</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container gs-reveal">
+        <h2>Contact</h2>
+        <div class="timeline-item text-center">
+            <p><strong>Ville :</strong> Lens, 62300</p>
+            <p><strong>Téléphone :</strong> <a href="tel:+33667472686">+33 6 67 47 26 86</a></p>
+            <p><strong>Email :</strong> <a href="mailto:yousifalgailani62@gmail.com">yousifalgailani62@gmail.com</a></p>
+            <div style="margin-top: 24px;">
+                <span class="placeholder">[À COMPLÉTER : Lien LinkedIn]</span>
+                <span class="placeholder">[À COMPLÉTER : Lien GitHub]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© <span id="year"></span> Yousif Al Gailani. Tous droits réservés.</p>
     </footer>
 
-    <!-- Scripts pour Animations et 3D -->
     <script>
-        // 1. GSAP Scroll Animations (Apple Style Reveal)
-        gsap.registerPlugin(ScrollTrigger);
+        // 1. Année automatique pour le footer
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Hero Animation
-        gsap.fromTo(".hero-element", 
-            { y: 40, opacity: 0, visibility: 'hidden' }, 
-            { y: 0, opacity: 1, visibility: 'visible', duration: 1.2, ease: "power3.out", delay: 0.2 }
-        );
+        // 2. Gestion du Thème (Dark/Light mode) avec prefers-color-scheme
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        function setTheme(isDark) {
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        }
 
-        // Scroll Sections Animation
-        gsap.utils.toArray(".scroll-section").forEach(section => {
-            gsap.fromTo(section, 
-                { y: 60, opacity: 0, visibility: 'hidden' },
-                {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 80%",
-                        toggleActions: "play none none none"
-                    },
-                    y: 0,
-                    opacity: 1,
-                    visibility: 'visible',
-                    duration: 1,
-                    ease: "power3.out"
-                }
-            );
+        // Init theme
+        let isDarkMode = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark.matches);
+        setTheme(isDarkMode);
+
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            setTheme(isDarkMode);
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
-        // 2. Interactive 3D Cards Logic (Subtle Apple TV-like effect)
-        const cards = document.querySelectorAll('.interactive-card');
-
-        cards.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+        // 3. Effet Tilt 3D pour les cartes (désactivé si prefers-reduced-motion)
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        
+        if (!prefersReducedMotion.matches) {
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg
+                    const rotateY = ((x - centerX) / centerX) * 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
                 
-                // Calculate center
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                // Calculate rotation (very subtle: max 5 degrees)
-                const rotateX = ((y - centerY) / centerY) * -5;
-                const rotateY = ((x - centerX) / centerX) * 5;
-
-                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+                });
             });
 
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            // 4. Animations GSAP au scroll
+            gsap.registerPlugin(ScrollTrigger);
+            
+            const elementsToReveal = document.querySelectorAll('.gs-reveal');
+            elementsToReveal.forEach((el) => {
+                gsap.fromTo(el, 
+                    { y: 50, opacity: 0 }, 
+                    {
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 1, 
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 85%", // Déclenche quand le haut de l'élément atteint 85% de la fenêtre
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
             });
-        });
+        }
     </script>
 </body>
 </html>
